@@ -51,7 +51,7 @@ function App() {
       setErrorMsgs( prevState => ({ ...prevState, transactionCategory: ""}))
     }
 
-    if(values.transactionAmount === undefined) {
+    if(values.transactionAmount === 0) {
       isFormValid = false;
       setErrorMsgs( prevState => ({ ...prevState, transactionAmount: "cannot be 0"}))
     }
@@ -172,8 +172,8 @@ function App() {
             name = "transactionAmount"
             onChange = {handleValueChange}
             min = "0"
-            onKeyDown = {blockInvalidCharacter}
             placeholder = "0"
+            onKeyDown = {blockInvalidCharacter}
           />
           <span style={{color: "red"}}>{errorMsgs.transactionAmount}</span>
 
