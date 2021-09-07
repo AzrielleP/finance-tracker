@@ -5,10 +5,7 @@ function App() {
 
   // Props to be passed down
   const [ accounts ] = useState(['cash', 'bank']);
-  const [ transaction, setTransaction] = useState({
-    month: "",
-    item: {}
-  });
+  const [ transaction, setTransaction] = useState([]);
   const [ categories ] = useState({
     income: ['salary', 'interest'],
     expense: ['food', 'transportation']
@@ -33,6 +30,10 @@ function App() {
   });
 
   // Handler Functions
+
+  useEffect(() => {
+    console.log(transaction)
+  }, [transaction])
 
   useEffect(() => {
     // Whenever we switch between transaction types, always reset transactionCategory
@@ -100,13 +101,9 @@ function App() {
       if (values.transactionType === "expense") {
         values.transactionAmount *= -1
       };
-      const month = values.transactionDate.toLocaleString('default', {month: 'long'});
+      // const month = values.transactionDate.toLocaleString('default', {month: 'long'});
   
-      setTransaction({
-        month: month,
-        item: values
-      })
-
+      setTransaction( prevTransactions => ([ ...prevTransactions, { values } ]))
       clearInputs();
     }
   }
@@ -279,23 +276,29 @@ function App() {
       </form>
 
       <h1>Recent Transactions</h1>
-      <p>Month: {transaction.month} </p>
-      <p>Date: {moment(transaction.item.transactionDate).format('LL')} </p>
-      <p>Category: {transaction.item.transactionCategory}</p>
+      {transaction.map((item, key) => {
+        return (
+          <div key = {key}>
+            <p>Date: {moment(item.values.transactionDate).format('LL')} </p>
+            <p>Category: {item.values.transactionCategory}</p>
 
-      {
-        values.transactionType !== "transfer" &&
-        <p>Account: {transaction.item.fromAccount}</p> 
-      }
-      {
-        values.transactionType === "transfer" &&
-        <div>
-          <p>From: {transaction.item.fromAccount}</p> 
-          <p>To: {transaction.item.toAccount}</p> 
-        </div>
-      }
-      <p>Amount: {transaction.item.transactionAmount}</p>
-      <p>Notes: {transaction.item.transactionNotes}</p>
+            {
+              item.values.transactionType !== "transfer" &&
+              <p>Account: {item.values.fromAccount}</p> 
+            }
+            {
+              item.values.transactionType === "transfer" &&
+              <div>
+                <p>From: {item.values.fromAccount}</p> 
+                <p>To: {item.values.toAccount}</p> 
+              </div>
+            }
+            <p>Amount: {item.values.transactionAmount}</p>
+            <p>Notes: {item.values.transactionNotes}</p>
+          </div>
+        )
+      } )}
+
     </div>
   );
 }
