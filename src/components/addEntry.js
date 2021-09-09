@@ -84,7 +84,6 @@ function AddEntry(props) {
             if (values.transactionType === "expense") {
                 values.transactionAmount *= -1;
             }
-            // const month = values.transactionDate.toLocaleString('default', {month: 'long'});
             handleTransaction(values);
             clearInputs();
         }
@@ -133,7 +132,8 @@ function AddEntry(props) {
                     type='date'
                     name='transactionDate'
                     onChange={handleValueChange}
-                    defaultValue={moment(new Date()).format("YYYY-MM-DD")}
+                    value = {moment(values.transactionDate).format("YYYY-MM-DD")}
+                    // defaultValue={moment(new Date()).format("YYYY-MM-DD")}
                 />
             </label>
             <br />

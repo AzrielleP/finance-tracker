@@ -1,5 +1,4 @@
 import React from "react";
-import moment from "moment";
 
 function Transaction(props) {
     const { data } = props;
@@ -10,23 +9,37 @@ function Transaction(props) {
             {data.map((item, key) => {
                 return (
                     <div key={key}>
-                        <p>Date: {moment(item.transactionDate).format("LL")} </p>
-                        <p>Category: {item.transactionCategory}</p>
+                        <h2>Month: {item.month}</h2>
+                        {item.dailyTrans.map((subItem, key) => {
+                            return (
+                                <div key={key}>
+                                    <p>Day: {subItem.day} </p>
+                                    {subItem.transactions.map((value, key) => {
+                                        return (
+                                            <div key={key}>
+                                                <p>Category: {value.transactionCategory}</p>
 
-                        {item.transactionType !== "transfer" && <p>Account: {item.fromAccount}</p>}
-                        {item.transactionType === "transfer" && (
-                            <div>
-                                <p>From: {item.fromAccount}</p>
-                                <p>To: {item.toAccount}</p>
-                            </div>
-                        )}
-                        <p>Amount: {item.transactionAmount}</p>
-                        <p>Notes: {item.transactionNotes}</p>
+                                                {value.transactionType !== "transfer" && (
+                                                    <p>Account: {value.fromAccount}</p>
+                                                )}
+                                                {value.transactionType === "transfer" && (
+                                                    <div>
+                                                        <p>From: {value.fromAccount}</p>
+                                                        <p>To: {value.toAccount}</p>
+                                                    </div>
+                                                )}
+                                                <p>Amount: {value.transactionAmount}</p>
+                                                <p>Notes: {value.transactionNotes}</p>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            );
+                        })}
                     </div>
                 );
             })}
         </div>
     );
 }
-
 export default Transaction;
