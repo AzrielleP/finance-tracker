@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import AddEntry from "./components/AddEntry";
 import Transaction from "./components/Transaction";
-import Settings from "./components/Settings";
+import Settings from "./components/settings/Settings";
 import { processData, updateTransaction } from "./helpers/processData";
+import Sidebar from "./components/sidebar/Sidebar";
 
 function App() {
     // Props to be passed down
-    const [accounts, setAccounts] = useState(["cash", "bank"]);
+    const [accounts, setAccounts] = useState(["cash", "bank", "other"]);
     const [processedData, setProcessedData] = useState([]);
     const [transaction, setTransaction] = useState([]);
     const [categories, setCategories] = useState({
@@ -57,6 +58,7 @@ function App() {
                 handleTransaction={handleTransaction}
             />
             <Transaction data={processedData} />
+            <Sidebar />
             <Settings accounts={accounts} 
                 categories={categories} 
                 handleAdd={handleAdd} 
