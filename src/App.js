@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import AddEntry from "./components/AddEntry";
 import Transaction from "./components/Transaction";
 import Settings from "./components/Settings";
-import { processData, updateTransaction} from "./helpers/processData";
+import { processData, updateTransaction } from "./helpers/processData";
 
 function App() {
     // Props to be passed down
@@ -19,26 +19,24 @@ function App() {
     };
 
     const handleAdd = (valueToAdd, whereToAdd) => {
-        whereToAdd === "accounts" ? 
-            setAccounts((prevData) => [valueToAdd, ...prevData]) :
-            setCategories((prevData) => [valueToAdd, ...prevData]);
-    }
+        whereToAdd === "accounts"
+            ? setAccounts((prevData) => [valueToAdd, ...prevData])
+            : setCategories((prevData) => [valueToAdd, ...prevData]);
+    };
 
     const handleEdit = (value, index, whereToEdit) => {
-      let items = whereToEdit;
-      let previousValue = items[index];
-      let currentValue = previousValue;
-      currentValue = value;
-      items[index] = currentValue;
+        let items = whereToEdit;
+        let previousValue = items[index];
+        let currentValue = previousValue;
+        currentValue = value;
+        items[index] = currentValue;
 
-      whereToEdit === accounts ?
-        setAccounts(items):
-        setCategories(items);
+        whereToEdit === accounts ? setAccounts(items) : setCategories(items);
 
-      const updatedTransaction = updateTransaction(transaction, currentValue, previousValue);
-      setTransaction(updatedTransaction)
-      setProcessedData(processData(transaction));
-    }
+        const updatedTransaction = updateTransaction(transaction, currentValue, previousValue);
+        setTransaction(updatedTransaction);
+        setProcessedData(processData(transaction));
+    };
 
     // Do not run useEffect on first render
     const firstUpdate = useRef(true);
@@ -48,7 +46,6 @@ function App() {
             return;
         }
         setProcessedData(processData(transaction));
-        ;
     }, [transaction]);
 
     return (
@@ -60,12 +57,10 @@ function App() {
                 handleTransaction={handleTransaction}
             />
             <Transaction data={processedData} />
-            <Settings
-                accounts = {accounts}
-                categories={categories}
-                handleAdd = {handleAdd}
-                handleEdit = {handleEdit}
-            />
+            <Settings accounts={accounts} 
+                categories={categories} 
+                handleAdd={handleAdd} 
+                handleEdit={handleEdit} />
         </div>
     );
 }

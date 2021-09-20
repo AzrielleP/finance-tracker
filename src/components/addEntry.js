@@ -21,8 +21,8 @@ function AddEntry(props) {
     });
 
     /*
-      * FUNCTIONS *
-    */
+     * FUNCTIONS *
+     */
     useEffect(() => {
         // Whenever we switch between transaction types, always reset transactionCategory
         setValues((prevValues) => ({ ...prevValues, transactionCategory: "" }));
@@ -132,7 +132,7 @@ function AddEntry(props) {
                     type='date'
                     name='transactionDate'
                     onChange={handleValueChange}
-                    value = {moment(values.transactionDate).format("YYYY-MM-DD")}
+                    value={moment(values.transactionDate).format("YYYY-MM-DD")}
                     // defaultValue={moment(new Date()).format("YYYY-MM-DD")}
                 />
             </label>
