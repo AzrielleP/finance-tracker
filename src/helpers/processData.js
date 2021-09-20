@@ -1,12 +1,48 @@
 import moment from "moment";
 
 const processData = (transaction) => {
+	/*
+	Return an object that looks like
+	[
+        {
+            month: ___
+			monthIncomeTotal: ___
+			monthExpenseTotal: ___
+            dailyTrans: [
+                {
+                    day: ___
+                    transactions: []
+					dayIncomeTotal: ___
+					dayExpenseTotal: ___
+                }
+            ]
+        }
+       ]
+	
+	*/
 	let sortedData = transaction;
 	sortedData = sortData(sortedData);
 	const groupedData = groupData(sortedData);
 	const finalizedData = computeTransAmounts(groupedData);
 	return finalizedData;
 };
+
+const updateTransaction = (transaction, currentValue, previousValue) => {
+	let updatedTransaction = transaction;
+	updatedTransaction.filter(({fromAccount, toAccount}) => 
+	fromAccount === previousValue || toAccount === previousValue)
+	.map((item) => {
+		if (item.fromAccount === previousValue) {
+			item.fromAccount = currentValue;
+		}
+		if(item.toAccount === previousValue) {
+			item.toAccount = currentValue;
+		}
+
+		return item;
+	});
+	return updatedTransaction;
+}
 
 // Sort data with the most recent one on top
 const sortData = (data) => {
@@ -108,4 +144,4 @@ const computeTransAmounts = (data) => {
 	return modifiedData;
 };
 
-export default processData;
+export { processData, updateTransaction };

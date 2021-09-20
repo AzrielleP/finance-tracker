@@ -4,8 +4,8 @@ function Settings(props) {
     const {
         accounts, 
         categories,
-        handleAddAccount,
-        handleEditAccount
+        handleAdd,
+        handleEdit
     } = props;
     
     const [ isEditing, setIsEditing] = useState(false);
@@ -17,9 +17,7 @@ function Settings(props) {
 
     const handleSave = (event) => {
         event.preventDefault();
-        console.log(testValue)
-
-        handleEditAccount(testValue, 0)
+        handleEdit(testValue, 0, accounts)
     }
 
     return (

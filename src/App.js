@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import AddEntry from "./components/AddEntry";
 import Transaction from "./components/Transaction";
 import Settings from "./components/Settings";
-import processData from "./helpers/processData";
+import { processData, updateTransaction} from "./helpers/processData";
 
 function App() {
     // Props to be passed down
@@ -18,17 +18,26 @@ function App() {
         setTransaction((prevData) => [value, ...prevData]);
     };
 
-    const handleAddAccount = (value) => {
-      setAccounts((prevData) => [value, ...prevData]);
+    const handleAdd = (valueToAdd, whereToAdd) => {
+        whereToAdd === "accounts" ? 
+            setAccounts((prevData) => [valueToAdd, ...prevData]) :
+            setCategories((prevData) => [valueToAdd, ...prevData]);
     }
 
-    const handleEditAccount = (value, index) => {
-      let items = accounts;
-      let itemToEdit = items[index];
-      itemToEdit = value;
-      items[index] = itemToEdit;
-      setAccounts(items);
-      console.log(accounts)
+    const handleEdit = (value, index, whereToEdit) => {
+      let items = whereToEdit;
+      let previousValue = items[index];
+      let currentValue = previousValue;
+      currentValue = value;
+      items[index] = currentValue;
+
+      whereToEdit === accounts ?
+        setAccounts(items):
+        setCategories(items);
+
+      const updatedTransaction = updateTransaction(transaction, currentValue, previousValue);
+      setTransaction(updatedTransaction)
+      setProcessedData(processData(transaction));
     }
 
     // Do not run useEffect on first render
@@ -54,8 +63,8 @@ function App() {
             <Settings
                 accounts = {accounts}
                 categories={categories}
-                handleAddAccount = {handleAddAccount}
-                handleEditAccount = {handleEditAccount}
+                handleAdd = {handleAdd}
+                handleEdit = {handleEdit}
             />
         </div>
     );
