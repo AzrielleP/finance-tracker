@@ -2,7 +2,9 @@ import React, {useState} from "react";
 import SidebarCategories from "./Sidebar-Categories";
 import SidebarAccounts from "./Sidebar-Accounts";
 
-function Sidebar() {
+function Sidebar(props) {
+    const { transaction, accounts, categories } = props;
+
     const [option, setOption] = useState("categories");
     const handleOptionChange = (event) => {
         let value = event.target.value;
@@ -31,8 +33,18 @@ function Sidebar() {
                 />
                 Accounts
             </label>
-            {option === "categories" && <SidebarCategories />}
-            {option === "accounts" && <SidebarAccounts />}
+            {option === "categories" && 
+                <SidebarCategories
+                    transaction = {transaction}
+                    categories={categories} 
+                />
+            }
+            {option === "accounts" && 
+                <SidebarAccounts 
+                    transaction = {transaction}
+                    accounts={accounts} 
+                />
+            }
         </div>
     );
 }

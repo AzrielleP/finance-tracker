@@ -57,12 +57,20 @@ function App() {
                 categories={categories}
                 handleTransaction={handleTransaction}
             />
-            <Transaction data={processedData} />
-            <Sidebar />
-            <Settings accounts={accounts} 
+            <Transaction 
+                data={processedData} 
+            />
+            <Sidebar 
+                transaction = {transaction}
+                accounts={accounts} 
+                categories={categories} 
+            />
+            <Settings 
+                accounts={accounts} 
                 categories={categories} 
                 handleAdd={handleAdd} 
-                handleEdit={handleEdit} />
+                handleEdit={handleEdit} 
+            />
         </div>
     );
 }
