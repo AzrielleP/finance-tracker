@@ -5,11 +5,12 @@ import SidebarAccounts from "./Sidebar-Accounts";
 function Sidebar(props) {
     const { transaction, accounts, categories } = props;
 
-    const [option, setOption] = useState("categories");
+    const [option, setOption] = useState("accounts");
     const handleOptionChange = (event) => {
         let value = event.target.value;
         setOption(value);
-    }
+    };
+    
     return (
         <div>
             <h2>Sidebar</h2>
