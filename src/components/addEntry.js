@@ -20,9 +20,6 @@ function AddEntry(props) {
         transactionAmount: "",
     });
 
-    /*
-     * FUNCTIONS *
-     */
     useEffect(() => {
         // Whenever we switch between transaction types, always reset transactionCategory
         setValues((prevValues) => ({ ...prevValues, transactionCategory: "" }));

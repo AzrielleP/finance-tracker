@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import AddEntry from "./components/AddEntry";
 import Transaction from "./components/Transaction";
 import Settings from "./components/settings/Settings";
-import { processData, updateTransaction } from "./helpers/processData";
+import { processData, updateTransaction } from "./helpers/groupingData";
 import Sidebar from "./components/sidebar/Sidebar";
 
 function App() {
@@ -11,8 +11,8 @@ function App() {
     const [processedData, setProcessedData] = useState([]);
     const [transaction, setTransaction] = useState([]);
     const [categories, setCategories] = useState({
-        income: ["other"],
-        expense: ["other"],
+        income: ["salary", "interest", "other"],
+        expense: ["food", "transportation", "other"],
     });
 
     const handleTransaction = (value) => {
@@ -47,6 +47,7 @@ function App() {
             return;
         }
         setProcessedData(processData(transaction));
+        console.log(processedData)
     }, [transaction]);
 
     return (
