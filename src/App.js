@@ -14,6 +14,7 @@ function App() {
         income: ["salary", "interest", "other"],
         expense: ["food", "transportation", "other"],
     });
+    const [showForm, setShowForm] = useState(false);
 
     const handleTransaction = (value) => {
         setTransaction((prevData) => [value, ...prevData]);
@@ -39,6 +40,19 @@ function App() {
         setProcessedData(processData(transaction));
     };
 
+    const showEdit = (id) => {
+        const index = transaction.findIndex(item => item.id === id);
+
+    }
+
+    const displayForm = () => {
+        setShowForm(true);
+    }
+
+    const hideForm = () => {
+        setShowForm(false);
+    }
+
     // Do not run useEffect on first render
     const firstUpdate = useRef(true);
     useEffect(() => {
@@ -52,14 +66,27 @@ function App() {
 
     return (
         <div>
-            <AddEntry
-                accounts={accounts}
-                transaction={transaction}
-                categories={categories}
-                handleTransaction={handleTransaction}
-            />
+            <button 
+                type = 'button'
+                onClick = {displayForm}
+            >
+            New
+            </button>
+            
+
+            {showForm &&
+                <AddEntry
+                    accounts={accounts}
+                    transaction={transaction}
+                    categories={categories}
+                    handleTransaction={handleTransaction}
+                    mode = 'add'
+                    hideForm = {hideForm}
+                />
+            }
             <Transaction 
                 data={processedData} 
+                showEdit = {showEdit}
             />
             <Sidebar 
                 transaction = {transaction}

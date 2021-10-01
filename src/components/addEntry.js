@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import moment from "moment";
 
 function AddEntry(props) {
-    const { accounts, categories, handleTransaction } = props;
+    const { accounts, categories, handleTransaction, mode, hideForm } = props;
     const initialState = {
+        id: "",
         transactionType: "income",
         transactionDate: new Date(),
         fromAccount: "",
@@ -75,16 +76,26 @@ function AddEntry(props) {
         setValues(initialState);
     };
 
+    const generateId = () => Date.now() + Math.random();
+
     const handleSubmit = (event) => {
         event.preventDefault();
         if (handleValidation()) {
             if (values.transactionType === "expense") {
                 values.transactionAmount *= -1;
             }
+            values.id = generateId();
             handleTransaction(values);
             clearInputs();
+            hideForm();
         }
     };
+
+    const cancelSubmit = (event) => {
+        event.preventDefault();
+        clearInputs();
+        hideForm();
+    }
     return (
         <div>
             <h2>Add New Transaction</h2>
@@ -132,7 +143,6 @@ function AddEntry(props) {
                         name='transactionDate'
                         onChange={handleValueChange}
                         value={moment(values.transactionDate).format("YYYY-MM-DD")}
-                        // defaultValue={moment(new Date()).format("YYYY-MM-DD")}
                     />
                 </label>
                 <br />
@@ -247,6 +257,7 @@ function AddEntry(props) {
                     />
                 </label>
                 <button type='submit'>Submit</button>
+                <button type = 'button' onClick = {cancelSubmit}>Cancel</button>
             </form>
         </div>
     );
