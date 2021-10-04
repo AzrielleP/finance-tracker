@@ -15,6 +15,9 @@ function App() {
         expense: ["food", "transportation", "other"],
     });
     const [showForm, setShowForm] = useState(false);
+    const [index, setIndex] = useState('');
+    const [getData, setGetData] = useState({});
+    const [mode, setMode] = useState('add');
 
     const handleTransaction = (value) => {
         setTransaction((prevData) => [value, ...prevData]);
@@ -37,12 +40,35 @@ function App() {
 
         const updatedTransaction = updateTransaction(transaction, currentValue, previousValue);
         setTransaction(updatedTransaction);
-        setProcessedData(processData(transaction));
     };
 
-    const showEdit = (id) => {
-        const index = transaction.findIndex(item => item.id === id);
+    const showEdit = (event) => {
+        event.preventDefault();
+        let target = event.currentTarget.getAttribute('data-id')
+        const index = transaction.map(item => item.id).indexOf(Number(target))
+        setIndex(index);
+        setGetData(transaction[index]);
+    }
 
+    const handleEditTransaction = (value) => { 
+        let  newTransaction = [...transaction];
+        newTransaction[index] = value;
+        setTransaction(newTransaction);
+    }
+
+    const first = useRef(true)
+    useEffect(() => {
+        if (first.current) {
+            first.current = false;
+            return;
+        }
+        setMode('edit')
+        displayForm();
+    }, [getData])
+
+    const showAdd = () => {
+        setMode('add');
+        displayForm();
     }
 
     const displayForm = () => {
@@ -61,14 +87,13 @@ function App() {
             return;
         }
         setProcessedData(processData(transaction));
-        console.log(processedData)
     }, [transaction]);
 
     return (
         <div>
             <button 
                 type = 'button'
-                onClick = {displayForm}
+                onClick = {showAdd}
             >
             New
             </button>
@@ -77,17 +102,21 @@ function App() {
             {showForm &&
                 <AddEntry
                     accounts={accounts}
-                    transaction={transaction}
                     categories={categories}
                     handleTransaction={handleTransaction}
-                    mode = 'add'
+                    getData = {getData}
+                    mode = {mode}
                     hideForm = {hideForm}
+                    handleEditTransaction = {handleEditTransaction}
+                    index = {index}
                 />
             }
+
             <Transaction 
                 data={processedData} 
                 showEdit = {showEdit}
             />
+            
             <Sidebar 
                 transaction = {transaction}
                 accounts={accounts} 

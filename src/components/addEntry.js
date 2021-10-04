@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import moment from "moment";
 
 function AddEntry(props) {
-    const { accounts, categories, handleTransaction, mode, hideForm } = props;
+    const { accounts, categories, handleTransaction, mode, hideForm, getData, index, handleEditTransaction } = props;
     const initialState = {
         id: "",
         transactionType: "income",
@@ -13,7 +13,7 @@ function AddEntry(props) {
         transactionAmount: 0,
         transactionNotes: "",
     };
-    const [values, setValues] = useState(initialState);
+    const [values, setValues] = useState(mode === 'add' ? initialState: getData);
     const [errorMsgs, setErrorMsgs] = useState({
         fromAccount: "",
         toAccount: "",
@@ -21,8 +21,14 @@ function AddEntry(props) {
         transactionAmount: "",
     });
 
+
+    const first = useRef(true)
     useEffect(() => {
         // Whenever we switch between transaction types, always reset transactionCategory
+        if (first.current) {
+            first.current = false;
+            return;
+        }
         setValues((prevValues) => ({ ...prevValues, transactionCategory: "" }));
     }, [values.transactionType]);
 
@@ -85,7 +91,9 @@ function AddEntry(props) {
                 values.transactionAmount *= -1;
             }
             values.id = generateId();
-            handleTransaction(values);
+            console.log(values)
+            mode === 'edit' ?  handleEditTransaction(values): handleTransaction(values);
+           
             clearInputs();
             hideForm();
         }

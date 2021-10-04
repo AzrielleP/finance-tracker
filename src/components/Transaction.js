@@ -1,7 +1,7 @@
 import React from "react";
 
 function Transaction(props) {
-    const { data } = props;
+    const { data, showEdit } = props;
 
     return (
         <div>
@@ -16,7 +16,10 @@ function Transaction(props) {
                                     <p>Day: {subItem.day} </p>
                                     {subItem.transactions.map((value, key) => {
                                         return (
-                                            <div key={key}>
+                                            <button key={key} 
+                                            onClick = {showEdit}
+                                            data-id = {value.id}
+                                            >
                                                 <p>Category: {value.transactionCategory}</p>
 
                                                 {value.transactionType !== "transfer" && (
@@ -30,7 +33,7 @@ function Transaction(props) {
                                                 )}
                                                 <p>Amount: {value.transactionAmount}</p>
                                                 <p>Notes: {value.transactionNotes}</p>
-                                            </div>
+                                            </button>
                                         );
                                     })}
                                 </div>
