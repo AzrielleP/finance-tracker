@@ -19,11 +19,11 @@ function App() {
     const [mode, setMode] = useState("add"); // Two values: add and edit for TransactionInput
 
     // * ==== FUNCTIONS ==== * //
-    const handleTransaction = (value) => {
+    const handleAddTransaction = (value) => {
         setTransaction((prevData) => [value, ...prevData]);
     };
 
-    const handleAddTransaction = (valueToAdd, whereToAdd) => {
+    const handleAddSettings = (valueToAdd, whereToAdd) => {
         whereToAdd === "accounts"
             ? setAccounts((prevData) => [valueToAdd, ...prevData])
             : setCategories((prevData) => [valueToAdd, ...prevData]);
@@ -57,6 +57,12 @@ function App() {
         setTransaction(newTransaction);
     };
 
+    const handleDeleteTransaction = () => {
+        const index = getTransactionIndex(transaction, transId);
+        setTransaction(prev => (prev.filter((item, i) => i !== index)));
+        hideForm();
+    }
+
     const setToAddForm = () => {
         setMode("add");
         displayForm();
@@ -81,6 +87,7 @@ function App() {
             return;
         }
         setProcessedData(processData(transaction));
+
     }, [transaction]);
 
     useEffect(() => {
@@ -93,6 +100,7 @@ function App() {
     }, [transId]);
 
     return (
+        
         <div>
             <button type='button' onClick={setToAddForm}>
                 New
@@ -102,11 +110,12 @@ function App() {
                 <TransactionInput
                     accounts={accounts}
                     categories={categories}
-                    handleTransaction={handleTransaction}
+                    handleAddTransaction={handleAddTransaction}
                     clickedTransData={clickedTransData}
                     mode={mode}
                     hideForm={hideForm}
                     handleEditTransaction={handleEditTransaction}
+                    handleDeleteTransaction = {handleDeleteTransaction}
                 />
             )}
 
@@ -124,7 +133,7 @@ function App() {
             <Settings
                 accounts={accounts}
                 categories={categories}
-                handleAddTransaction={handleAddTransaction}
+                handleAddSettings={handleAddSettings}
                 handleEdit={handleEdit}
             />
         </div>

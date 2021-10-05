@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Form from "./Form";
 
 function AddEntry(props) {
-    const { accounts, categories, handleTransaction, mode, hideForm, clickedTransData, handleEditTransaction } = props;
+    const { accounts, categories, handleAddTransaction, mode, hideForm, clickedTransData, handleEditTransaction, handleDeleteTransaction } = props;
     const initialState = {
         id: "",
         transactionType: "income",
@@ -90,8 +90,7 @@ function AddEntry(props) {
                 values.transactionAmount *= -1;
             }
             values.id = generateId();
-            console.log(values)
-            mode === 'edit' ?  handleEditTransaction(values): handleTransaction(values);
+            mode === 'edit' ?  handleEditTransaction(values): handleAddTransaction(values);
            
             clearInputs();
             hideForm();
@@ -103,6 +102,7 @@ function AddEntry(props) {
         clearInputs();
         hideForm();
     }
+
     return (
         <Form
             accounts = {accounts}
@@ -113,6 +113,7 @@ function AddEntry(props) {
             handleSubmit = {handleSubmit}
             cancelSubmit = {cancelSubmit}
             handleValueChange = {handleValueChange}
+            handleDeleteTransaction = {handleDeleteTransaction}
             blockInvalidCharacter = {blockInvalidCharacter}
         />
     );

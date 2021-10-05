@@ -11,6 +11,7 @@ function Form(props) {
         handleSubmit,
         cancelSubmit,
         handleValueChange,
+        handleDeleteTransaction,
         blockInvalidCharacter,
     } = props;
 
@@ -178,6 +179,11 @@ function Form(props) {
                 <button type='button' onClick={cancelSubmit}>
                     Cancel
                 </button>
+                {mode === 'edit' && 
+                    <button type = 'button' onClick = {handleDeleteTransaction}> 
+                        Delete
+                    </button>
+                }
             </form>
         </div>
     );
