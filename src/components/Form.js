@@ -1,112 +1,22 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import moment from "moment";
 
-function AddEntry(props) {
-    const { accounts, categories, handleTransaction, mode, hideForm, getData, index, handleEditTransaction } = props;
-    const initialState = {
-        id: "",
-        transactionType: "income",
-        transactionDate: new Date(),
-        fromAccount: "",
-        toAccount: "",
-        transactionCategory: "",
-        transactionAmount: 0,
-        transactionNotes: "",
-    };
-    const [values, setValues] = useState(mode === 'add' ? initialState: getData);
-    const [errorMsgs, setErrorMsgs] = useState({
-        fromAccount: "",
-        toAccount: "",
-        transactionCategory: "",
-        transactionAmount: "",
-    });
+function Form(props) {
+    const {
+        accounts,
+        categories,
+        errorMsgs,
+        values,
+        mode,
+        handleSubmit,
+        cancelSubmit,
+        handleValueChange,
+        blockInvalidCharacter,
+    } = props;
 
-
-    const first = useRef(true)
-    useEffect(() => {
-        // Whenever we switch between transaction types, always reset transactionCategory
-        if (first.current) {
-            first.current = false;
-            return;
-        }
-        setValues((prevValues) => ({ ...prevValues, transactionCategory: "" }));
-    }, [values.transactionType]);
-
-    // Block invalid characters in number input field
-    const blockInvalidCharacter = (event) => {
-        ["e", "E", "+", "-"].includes(event.key) && event.preventDefault();
-    };
-
-    const handleValidation = () => {
-        let isFormValid = true;
-
-        if (values.fromAccount === "") {
-            isFormValid = false;
-            setErrorMsgs((prevState) => ({ ...prevState, fromAccount: "cannot be empty" }));
-        } else {
-            setErrorMsgs((prevState) => ({ ...prevState, fromAccount: "" }));
-        }
-
-        if (values.transactionType === "transfer" && values.toAccount === "") {
-            isFormValid = false;
-            setErrorMsgs((prevState) => ({ ...prevState, toAccount: "cannot be empty" }));
-        } else {
-            setErrorMsgs((prevState) => ({ ...prevState, toAccount: "" }));
-        }
-
-        if (values.transactionType !== "transfer" && values.transactionCategory === "") {
-            isFormValid = false;
-            setErrorMsgs((prevState) => ({ ...prevState, transactionCategory: "cannot be empty" }));
-        } else {
-            setErrorMsgs((prevState) => ({ ...prevState, transactionCategory: "" }));
-        }
-
-        if (values.transactionAmount === 0) {
-            isFormValid = false;
-            setErrorMsgs((prevState) => ({ ...prevState, transactionAmount: "cannot be 0" }));
-        } else {
-            setErrorMsgs((prevState) => ({ ...prevState, transactionAmount: "" }));
-        }
-        return isFormValid;
-    };
-
-    const handleValueChange = (event) => {
-        let { name, value } = event.target;
-        if (name === "transactionDate") {
-            value = new Date(value);
-        }
-        setValues({ ...values, [name]: value });
-    };
-
-    const clearInputs = () => {
-        setValues(initialState);
-    };
-
-    const generateId = () => Date.now() + Math.random();
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        if (handleValidation()) {
-            if (values.transactionType === "expense") {
-                values.transactionAmount *= -1;
-            }
-            values.id = generateId();
-            console.log(values)
-            mode === 'edit' ?  handleEditTransaction(values): handleTransaction(values);
-           
-            clearInputs();
-            hideForm();
-        }
-    };
-
-    const cancelSubmit = (event) => {
-        event.preventDefault();
-        clearInputs();
-        hideForm();
-    }
     return (
         <div>
-            <h2>Add New Transaction</h2>
+            <h2>{mode === "add" ? "Add" : "Edit"} Transaction</h2>
             <form onSubmit={handleSubmit}>
                 {/* Select transaction type */}
                 <label>
@@ -265,10 +175,12 @@ function AddEntry(props) {
                     />
                 </label>
                 <button type='submit'>Submit</button>
-                <button type = 'button' onClick = {cancelSubmit}>Cancel</button>
+                <button type='button' onClick={cancelSubmit}>
+                    Cancel
+                </button>
             </form>
         </div>
     );
 }
 
-export default AddEntry;
+export default Form;

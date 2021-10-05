@@ -4,7 +4,7 @@ import SettingsCategories from "./Settings-Categories";
 import SettingsTheme from "./Settings-Theme.js";
 
 function Settings(props) {
-    const { accounts, categories, handleAdd, handleEdit } = props;
+    const { accounts, categories, handleAddTransaction, handleEdit } = props;
 
     // const [isEditing, setIsEditing] = useState(false);
     // const [testValue, setTestValue] = useState(accounts[0]);

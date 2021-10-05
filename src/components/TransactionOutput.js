@@ -1,7 +1,7 @@
 import React from "react";
 
 function Transaction(props) {
-    const { data, showEdit } = props;
+    const { data, getTransactionId } = props;
 
     return (
         <div>
@@ -17,7 +17,7 @@ function Transaction(props) {
                                     {subItem.transactions.map((value, key) => {
                                         return (
                                             <button key={key} 
-                                            onClick = {showEdit}
+                                            onClick = {getTransactionId}
                                             data-id = {value.id}
                                             >
                                                 <p>Category: {value.transactionCategory}</p>
