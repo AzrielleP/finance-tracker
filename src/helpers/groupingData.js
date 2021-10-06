@@ -108,7 +108,8 @@ const groupByCategory = (data, type) => {
 		};
 
 		// Calculate total amount of a category
-		category.value = calcTotalOfFiltered(filteredData, "transactionCategory", element, "transactionAmount");
+        // Use Math.abs for correct calculation in pie chart
+		category.value = Math.abs(calcTotalOfFiltered(filteredData, "transactionCategory", element, "transactionAmount"));
 
 		groupedData.push(category);
 	}
