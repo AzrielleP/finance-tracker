@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SidebarCategories from "./Sidebar-Categories";
 import SidebarAccounts from "./Sidebar-Accounts";
-import { calcTotalOfFiltered } from "../../helpers/calc";
+import { calcTotalOfFiltered, calcFromAccount } from "../../helpers/calc";
 import { computeAssets, computeLiabilities } from "../../helpers/calc";
 
 function Sidebar(props) {
@@ -44,7 +44,8 @@ function Sidebar(props) {
                 };
 
                 // Compute total amount of account
-                account.value = calcTotalOfFiltered(transaction, "fromAccount", element, "transactionAmount");
+                account.value = calcTotalOfFiltered(transaction, "toAccount", element, "transactionAmount") + calcFromAccount(transaction, "fromAccount", element, "transactionAmount")
+
                 data.items.push(account);
             }
 
