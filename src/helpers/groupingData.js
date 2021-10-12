@@ -46,23 +46,26 @@ const groupByDate = (data) => {
     */
     const formatTime = (date) => moment(date).format("LL");
     const getMonth = (date) => moment(date).format("MMMM");
+    const getYear = (date) => moment(date).format("YYYY");
 
     let modifiedData = [];
     data.forEach((item) => {
         const selectedDate = formatTime(item.transactionDate);
         const selectedDateMonth = getMonth(item.transactionDate);
+        const selectedDateYear = getYear(item.transactionDate)
 
-        // Create a new month if it doesn't exists yet
-        if (!modifiedData.some((item) => item.month === selectedDateMonth)) {
+        // Create a new month and year if it doesn't exists yet
+        if (!modifiedData.some((item) => item.month === selectedDateMonth) || !modifiedData.some((item) => item.year === selectedDateYear)) {
             modifiedData.push({
                 month: selectedDateMonth,
+                year: selectedDateYear,
                 dailyTrans: [],
                 monthIncomeTotal: 0,
                 monthExpenseTotal: 0,
             });
         }
 
-        const indexMonth = modifiedData.findIndex((item) => item.month === selectedDateMonth);
+        const indexMonth = modifiedData.findIndex((item) => item.month === selectedDateMonth && item.year === selectedDateYear);
 
         // Create a new day for a month if it doesn't exists yet
         if (!modifiedData[indexMonth].dailyTrans.some((item) => item.day === selectedDate)) {
