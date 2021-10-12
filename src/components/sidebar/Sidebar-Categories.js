@@ -4,14 +4,14 @@ import CategoriesExpense from "./charts/CategoriesExpense";
 import { groupByCategory } from "../../helpers/groupingData";
 
 function SidebarCategories(props) {
-	const { transaction } = props;
+	const { transaction, dateToRender } = props;
 	const [incomeCategories, setIncomeCategories] = useState([]);
 	const [expenseCategories, setExpenseCategories] = useState([]);
 
 	useEffect(() => {
-		setIncomeCategories(groupByCategory(transaction, "income"));
-		setExpenseCategories(groupByCategory(transaction, "expense"));
-	}, [transaction]);
+		setIncomeCategories(groupByCategory(transaction, "income", dateToRender));
+		setExpenseCategories(groupByCategory(transaction, "expense", dateToRender));
+	}, [transaction, dateToRender]);
 
 	return (
 		<div>

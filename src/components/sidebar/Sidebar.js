@@ -5,7 +5,7 @@ import { calcTotalOfFiltered, calcFromAccount } from "../../helpers/calc";
 import { computeAssets, computeLiabilities } from "../../helpers/calc";
 
 function Sidebar(props) {
-    const { transaction, accounts, categories } = props;
+    const { transaction, accounts, dateToRender } = props;
 
     const [option, setOption] = useState("categories");
     const handleOptionChange = (event) => {
@@ -85,7 +85,7 @@ function Sidebar(props) {
             {option === "categories" && 
                 <SidebarCategories 
                     transaction={transaction} 
-                    categories={categories} 
+                    dateToRender = {dateToRender}
                 />
             }
             {option === "accounts" && 

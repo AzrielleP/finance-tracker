@@ -172,7 +172,7 @@ function App() {
 				dataToRender={dataToRender}
 			/>
 
-			<Sidebar transaction={transaction} accounts={accounts} categories={categories} />
+			<Sidebar transaction={transaction} accounts={accounts} dateToRender = {dateToRender} />
 
 			<Settings
 				accounts={accounts}
