@@ -10,12 +10,14 @@ const processData = (transaction) => {
             month: ___
 			monthIncomeTotal: ___
 			monthExpenseTotal: ___
+			monthTotal: ___
             dailyTrans: [
                 {
                     day: ___
                     transactions: []
 					dayIncomeTotal: ___
 					dayExpenseTotal: ___
+					dayTotal: ___
                 }
             ]
         }

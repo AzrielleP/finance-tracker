@@ -84,8 +84,8 @@ function App() {
 		setShowForm(false);
 	};
 
-    // Move to previous month
-    const moveToPrevious = () => {
+	// Move to previous month
+	const moveToPrevious = () => {
 		let newDate = dateToRender;
 		if (newDate.month - 1 < 0) {
 			newDate.year = newDate.year - 1;
@@ -96,7 +96,7 @@ function App() {
 		setDateToRender({ year: newDate.year, month: newDate.month });
 	};
 
-    // Move to next month
+	// Move to next month
 	const moveToNext = () => {
 		let newDate = dateToRender;
 		if (newDate.month + 1 > 11) {
@@ -172,7 +172,7 @@ function App() {
 				dataToRender={dataToRender}
 			/>
 
-			<Sidebar transaction={transaction} accounts={accounts} dateToRender = {dateToRender} />
+			<Sidebar transaction={transaction} accounts={accounts} dateToRender={dateToRender} />
 
 			<Settings
 				accounts={accounts}
