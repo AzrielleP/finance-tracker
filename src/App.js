@@ -5,6 +5,7 @@ import TransactionOutput from "./components/TransactionOutput";
 import Settings from "./components/settings/Settings";
 import Sidebar from "./components/sidebar/Sidebar";
 import { processData, updateTransaction } from "./helpers/groupingData";
+import { GlobalStyle } from "./components/styled-components/GlobalStyle";
 
 function App() {
 	const [accounts, setAccounts] = useState(["cash", "bank", "other"]);
@@ -126,15 +127,20 @@ function App() {
 		const filterDataToRender = () => {
 			let data = processedData.filter(
 				({ month, year }) =>
-					month === moment.months(dateToRender.month) &&
+					month === moment.monthsShort(dateToRender.month) &&
 					year === dateToRender.year.toString()
 			);
 
 			data.length !== 0 ? setDataToRender(data[0]) : setDataToRender(dateToRender);
-		};
+
+			console.log(data)
+		};	
+		
 
 		filterDataToRender();
 	}, [processedData, dateToRender]);
+
+	console.log(dataToRender)
 
 	// Side effect when we're clicking a transaction to edit it
 	useEffect(() => {
@@ -148,10 +154,7 @@ function App() {
 
 	return (
 		<div>
-			<button type="button" onClick={setToAddForm}>
-				New
-			</button>
-
+		<GlobalStyle />
 			{showForm && (
 				<TransactionInput
 					accounts={accounts}
@@ -170,6 +173,7 @@ function App() {
 				moveToNext={moveToNext}
 				moveToPrevious={moveToPrevious}
 				dataToRender={dataToRender}
+				setToAddForm = {setToAddForm}
 			/>
 
 			<Sidebar transaction={transaction} accounts={accounts} dateToRender={dateToRender} />

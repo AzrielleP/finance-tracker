@@ -1,26 +1,43 @@
 import React from "react";
 import moment from "moment";
 
+import { ArrowButton, NewButton } from "./styled-components/Buttons";
+import { LargeHeader, Bold } from "./styled-components/Text";
+import { FlexContainer } from "./styled-components/Containers"
+import { generalColors }from "./styled-components/Themes-Style"
+
 function Transaction(props) {
-	const { getTransactionId, moveToNext, moveToPrevious, dataToRender } = props;
+	const { getTransactionId, moveToNext, moveToPrevious, dataToRender, setToAddForm } = props;
 
 	return (
 		<div>
-			<button type="button" onClick={moveToPrevious}>
-				Previous
-			</button>
-			<h1>
-				{typeof dataToRender.month !== "string"
-					? moment.months(dataToRender.month)
-					: dataToRender.month}{" "}
-				{dataToRender.year}
-			</h1>
+
+		<FlexContainer justify = "space-between">
+			<FlexContainer>
+				<ArrowButton type="button" onClick={moveToPrevious}>
+					<LargeHeader>{"<"}</LargeHeader>
+				</ArrowButton>
+
+				<LargeHeader>
+					{typeof dataToRender.month !== "string"
+						? moment.monthsShort(dataToRender.month)
+						: dataToRender.month}{" "}
+					{dataToRender.year}
+				</LargeHeader>
+
+				<ArrowButton type="button" onClick={moveToNext}>
+					<LargeHeader>{">"}</LargeHeader>
+				</ArrowButton>
+			</FlexContainer>
+
+			<NewButton type="button" onClick={setToAddForm}>
+				<Bold color = {generalColors.white}>New | + </Bold>
+			</NewButton>
+		</FlexContainer>
+
 			<p>Income: {dataToRender.monthIncomeTotal ? dataToRender.monthIncomeTotal : 0}</p>
 			<p>Expense: {dataToRender.monthExpenseTotal ? dataToRender.monthExpenseTotal : 0}</p>
 			<p>Total: {dataToRender.monthTotal ? dataToRender.monthTotal : 0}</p>
-			<button type="button" onClick={moveToNext}>
-				Next
-			</button>
 			{!dataToRender.hasOwnProperty("dailyTrans") ? (
 				"No data found"
 			) : (

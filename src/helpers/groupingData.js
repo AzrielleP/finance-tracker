@@ -47,7 +47,7 @@ const groupByDate = (data) => {
        ]
     */
 	const formatTime = (date) => moment(date).format("LL");
-	const getMonth = (date) => moment(date).format("MMMM");
+	const getMonth = (date) => moment(date).format("MMM");
 	const getYear = (date) => moment(date).format("YYYY");
 
 	let modifiedData = [];
