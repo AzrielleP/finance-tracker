@@ -1,60 +1,94 @@
 import React from "react";
 import moment from "moment";
 
-import { ArrowButton, NewButton } from "./styled-components/Buttons";
-import { LargeHeader, Bold } from "./styled-components/Text";
-import { FlexContainer } from "./styled-components/Containers"
-import { generalColors }from "./styled-components/Themes-Style"
+import { ArrowButton, NewButton, TransactionDetails } from "./styled-components/Buttons";
+import { LargeHeader, Bold, Subtitle, SubtitleLight, Small } from "./styled-components/Text";
+import {
+	FlexContainer,
+	Container,
+	LargeNumberContainer,
+	ScrollingContainer,
+	DailyTransactionData,
+	FixedContainer
+} from "./styled-components/Containers";
+import { generalColors } from "./styled-components/Themes-Style";
 
 function Transaction(props) {
 	const { getTransactionId, moveToNext, moveToPrevious, dataToRender, setToAddForm } = props;
 
 	return (
-		<div>
+		<Container>
 
-		<FlexContainer justify = "space-between">
-			<FlexContainer>
-				<ArrowButton type="button" onClick={moveToPrevious}>
-					<LargeHeader>{"<"}</LargeHeader>
-				</ArrowButton>
+		<FixedContainer>
+			<FlexContainer justify="space-between">
+				<FlexContainer>
+					<ArrowButton type="button" onClick={moveToPrevious}>
+						<LargeHeader>{"<"}</LargeHeader>
+					</ArrowButton>
 
-				<LargeHeader>
-					{typeof dataToRender.month !== "string"
-						? moment.monthsShort(dataToRender.month)
-						: dataToRender.month}{" "}
-					{dataToRender.year}
-				</LargeHeader>
+					<LargeHeader>
+						{typeof dataToRender.month !== "string"
+							? moment.monthsShort(dataToRender.month)
+							: dataToRender.month}{" "}
+						{dataToRender.year}
+					</LargeHeader>
 
-				<ArrowButton type="button" onClick={moveToNext}>
-					<LargeHeader>{">"}</LargeHeader>
-				</ArrowButton>
+					<ArrowButton type="button" onClick={moveToNext}>
+						<LargeHeader>{">"}</LargeHeader>
+					</ArrowButton>
+				</FlexContainer>
+
+				<NewButton type="button" onClick={setToAddForm}>
+					<Bold color={generalColors.white}>New | + </Bold>
+				</NewButton>
 			</FlexContainer>
 
-			<NewButton type="button" onClick={setToAddForm}>
-				<Bold color = {generalColors.white}>New | + </Bold>
-			</NewButton>
-		</FlexContainer>
+			<FlexContainer justify="space-around">
+				<LargeNumberContainer>
+					<Bold>INCOME</Bold>
+					<Subtitle>
+						{dataToRender.monthIncomeTotal ? dataToRender.monthIncomeTotal : 0}
+					</Subtitle>
+				</LargeNumberContainer>
 
-			<p>Income: {dataToRender.monthIncomeTotal ? dataToRender.monthIncomeTotal : 0}</p>
-			<p>Expense: {dataToRender.monthExpenseTotal ? dataToRender.monthExpenseTotal : 0}</p>
-			<p>Total: {dataToRender.monthTotal ? dataToRender.monthTotal : 0}</p>
+				<LargeNumberContainer>
+					<Bold>EXPENSE</Bold>
+					<Subtitle>
+						{dataToRender.monthExpenseTotal ? dataToRender.monthExpenseTotal : 0}
+					</Subtitle>
+				</LargeNumberContainer>
+
+				<LargeNumberContainer>
+					<Bold>TOTAL</Bold>
+					<Subtitle>{dataToRender.monthTotal ? dataToRender.monthTotal : 0}</Subtitle>
+				</LargeNumberContainer>
+			</FlexContainer>
+
+		</FixedContainer>
+
 			{!dataToRender.hasOwnProperty("dailyTrans") ? (
-				"No data found"
+				<ScrollingContainer>
+					<Small>No Data Available</Small>
+				</ScrollingContainer>
 			) : (
-				<div>
+				<ScrollingContainer>
 					{dataToRender.dailyTrans.map((subItem, key) => {
 						return (
-							<div key={key}>
-								<p>Day: {subItem.day} </p>
-								<p>Income: {subItem.dayIncomeTotal ? subItem.dayIncomeTotal : 0}</p>
-								<p>
-									Expense: {subItem.dayExpenseTotal ? subItem.dayExpenseTotal : 0}
-								</p>
-								<p>Total: {subItem.dayTotal ? subItem.dayTotal : 0}</p>
+							<DailyTransactionData key={key}>
+								<FlexContainer justify="space-between">
+									<Bold>{subItem.day}</Bold>
+									<Bold>
+										{subItem.dayIncomeTotal ? subItem.dayIncomeTotal : 0}
+									</Bold>
+									<Bold>
+										{subItem.dayExpenseTotal ? subItem.dayExpenseTotal : 0}
+									</Bold>
+									<Bold>{subItem.dayTotal ? subItem.dayTotal : 0}</Bold>
+								</FlexContainer>
 
 								{subItem.transactions.map((value, key) => {
 									return (
-										<button
+										<TransactionDetails
 											key={key}
 											onClick={getTransactionId}
 											data-id={value.id}
@@ -62,31 +96,33 @@ function Transaction(props) {
 											{value.transactionType === "transfer" ? (
 												"Transfer"
 											) : (
-												<p>Category: {value.transactionCategory}</p>
+												<Small>{value.transactionCategory}</Small>
 											)}
-
-											{value.transactionType !== "transfer" && (
-												<p>Account: {value.fromAccount}</p>
-											)}
+											
+											<div>
+												<p>{value.transactionNotes}</p>
+												{value.transactionType !== "transfer" && (
+													<Small>{value.fromAccount}</Small>
+												)}
+											</div>
 
 											{value.transactionType === "transfer" && (
-												<div>
 													<p>
 														{value.fromAccount} - {value.toAccount}{" "}
 													</p>
-												</div>
 											)}
-											<p>Amount: {value.transactionAmount}</p>
-											<p>Notes: {value.transactionNotes}</p>
-										</button>
+
+											<p>{value.transactionAmount}</p>
+											
+										</TransactionDetails>
 									);
 								})}
-							</div>
+							</DailyTransactionData>
 						);
 					})}
-				</div>
+				</ScrollingContainer>
 			)}
-		</div>
+		</Container>
 	);
 }
 export default Transaction;

@@ -176,14 +176,14 @@ function App() {
 				setToAddForm = {setToAddForm}
 			/>
 
-			<Sidebar transaction={transaction} accounts={accounts} dateToRender={dateToRender} />
+			{/* <Sidebar transaction={transaction} accounts={accounts} dateToRender={dateToRender} />
 
 			<Settings
 				accounts={accounts}
 				categories={categories}
 				handleAddSettings={handleAddSettings}
 				handleEdit={handleEdit}
-			/>
+			/> */}
 		</div>
 	);
 }

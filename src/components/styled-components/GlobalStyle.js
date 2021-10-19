@@ -4,6 +4,7 @@ export const GlobalStyle = createGlobalStyle`
     body {
         padding: 0;
         margin: 0;
+        height: 100vh;
     }
 
     h1, h2 {
@@ -13,7 +14,9 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     p {
-        font-family: 'Open Sans', sans-serif
+        margin: 0;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 12px;
     }
 
     button {

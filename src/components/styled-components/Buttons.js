@@ -11,3 +11,11 @@ export const NewButton = styled.button`
 	border-radius: 10px;
 	background-color: ${generalColors.lightBlue};
 `
+
+export const TransactionDetails = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 1em 0;
+`
