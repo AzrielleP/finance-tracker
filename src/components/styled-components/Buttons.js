@@ -13,9 +13,11 @@ export const NewButton = styled.button`
 `
 
 export const TransactionDetails = styled.button`
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 1em;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
-    margin: 1em 0;
+    margin: 1.5em 0;
 `

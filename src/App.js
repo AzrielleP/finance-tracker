@@ -6,14 +6,15 @@ import Settings from "./components/settings/Settings";
 import Sidebar from "./components/sidebar/Sidebar";
 import { processData, updateTransaction } from "./helpers/groupingData";
 import { GlobalStyle } from "./components/styled-components/GlobalStyle";
+import { ModalContainer } from "./components/styled-components/Containers"
 
 function App() {
-	const [accounts, setAccounts] = useState(["cash", "bank", "other"]);
+	const [accounts, setAccounts] = useState(["Cash", "Bank", "Other"]);
 	const [processedData, setProcessedData] = useState([]); // Stores the transaction data to be displayed on TransactionOutput
 	const [transaction, setTransaction] = useState([]); // Stores the submitted entries of the user
 	const [categories, setCategories] = useState({
-		income: ["salary", "interest", "other"],
-		expense: ["food", "transportation", "other"],
+		income: ["Salary", "Interest", "Other"],
+		expense: ["Food", "Transportation", "Other"],
 	});
 	const [showForm, setShowForm] = useState(false); // show/hide the TransactionInput component
 	const [transId, setTransId] = useState(""); // Stores the transaction ID
@@ -155,18 +156,20 @@ function App() {
 	return (
 		<div>
 		<GlobalStyle />
-			{showForm && (
-				<TransactionInput
-					accounts={accounts}
-					categories={categories}
-					handleAddTransaction={handleAddTransaction}
-					clickedTransData={clickedTransData}
-					mode={mode}
-					hideForm={hideForm}
-					handleEditTransaction={handleEditTransaction}
-					handleDeleteTransaction={handleDeleteTransaction}
-				/>
-			)}
+			<ModalContainer>
+				{showForm && (
+					<TransactionInput
+						accounts={accounts}
+						categories={categories}
+						handleAddTransaction={handleAddTransaction}
+						clickedTransData={clickedTransData}
+						mode={mode}
+						hideForm={hideForm}
+						handleEditTransaction={handleEditTransaction}
+						handleDeleteTransaction={handleDeleteTransaction}
+					/>
+				)}
+			</ModalContainer>
 
 			<TransactionOutput
 				getTransactionId={getTransactionId}

@@ -10,13 +10,18 @@ export const FlexContainer = styled.div`
 export const Container = styled.div`
     padding: 1em;
     background-color: ${generalColors.white};
-    height: 100vh;
 `
 
 export const ScrollingContainer = styled.div`
     position: absolute;
     top: 10em;
     overflow: auto;
+    z-index: 1;
+    width: 90%;
+
+    @media screen and (min-width: 1024px) {
+        top: 18em;
+    }
 `
 
 export const DailyTransactionData = styled.div`
@@ -28,8 +33,12 @@ export const DailyTransactionData = styled.div`
 
 export const FixedContainer = styled.div`
     position: fixed;
-    top: 1em;
+    top: 0;
+    left: 0;
+    padding: 1em;
     width: 90%;
+    z-index: 2;
+    background: ${generalColors.white};
 `
 
 export const LargeNumberContainer = styled.div`
@@ -41,3 +50,34 @@ export const LargeNumberContainer = styled.div`
     border-color: ${generalColors.darkAccent};
     text-align: center;
 `
+export const GridContainerHead = styled.div`
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    border-bottom: 0.5px solid ${generalColors.darkAccent};
+    padding-bottom: 1em;
+    margin-bottom: 1.5em;
+`
+
+export const GIFContainer = styled.div`
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    position: absolute;
+    top: 40%;
+    width: 90%;
+
+    @media screen and (min-width: 1024px) {
+        top: 50%;
+    }
+`
+
+// TransactionInput
+export const ModalContainer = styled.div`
+    z-index: 10;
+    background: ${generalColors.white};
+    height: 100vh;
+    position: absolute;
+`
+
