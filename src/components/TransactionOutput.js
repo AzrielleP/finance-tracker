@@ -1,9 +1,9 @@
 import React from "react";
 import moment from "moment";
-import { ReactComponent as NoDataImage} from './styled-components/NoData.svg';
+import { ReactComponent as NoDataImage} from './styled-components/svg/NoData.svg';
 
-import { ArrowButton, NewButton, TransactionDetails } from "./styled-components/Buttons";
-import { LargeHeader, Bold, Subtitle, SubtitleLight, Small, SmallOverflowingText } from "./styled-components/Text";
+import { ArrowButton, NewButton, TransactionDetails } from "./styled-components/Buttons.styled";
+import { LargeHeader, Bold, Subtitle, SubtitleLight, Small, SmallOverflowingText } from "./styled-components/Text.styled";
 import {
 	FlexContainer,
 	Container,
@@ -13,16 +13,20 @@ import {
 	FixedContainer,
 	GridContainerHead,
 	GIFContainer
-} from "./styled-components/Containers";
-import { generalColors } from "./styled-components/Themes-Style";
+} from "./styled-components/Containers.styled";
+import { generalColors } from "./styled-components/Themes-Style.styled";
+import { ShowSidebarButton } from "./styled-components/Buttons.styled"
+import { ReactComponent as SidebarButton } from "./styled-components/svg/Sidebar.svg"
 
 function Transaction(props) {
-	const { getTransactionId, moveToNext, moveToPrevious, dataToRender, setToAddForm } = props;
+	const { getTransactionId, moveToNext, moveToPrevious, dataToRender, setToAddForm, handleSidebar } = props;
 
 	return (
 		<Container>
-
 			<FixedContainer>
+				<ShowSidebarButton onClick = {handleSidebar}>
+						<SidebarButton/>
+				</ShowSidebarButton>
 				<FlexContainer justify="space-between">
 					<FlexContainer>
 						<ArrowButton type="button" onClick={moveToPrevious}>
@@ -78,7 +82,7 @@ function Transaction(props) {
 					<Small>No Data Available</Small>
 				</GIFContainer>
 			) : (
-				<ScrollingContainer>
+				<ScrollingContainer startHeight = {12}>
 					{dataToRender.dailyTrans.map((subItem, key) => {
 						return (
 							<DailyTransactionData key={key}>

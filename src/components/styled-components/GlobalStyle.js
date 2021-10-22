@@ -1,11 +1,16 @@
 import { createGlobalStyle } from 'styled-components';
-import { generalColors } from './Themes-Style';
+import { generalColors } from './Themes-Style.styled';
 
 export const GlobalStyle = createGlobalStyle`
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
     body {
         padding: 0;
         margin: 0;
-        height: 100vh;
         background: ${generalColors.white};
     }
 
@@ -15,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
         letter-spacing: 0%;
     }
 
-    p {
+    p, label {
         margin: 0;
         font-family: 'Open Sans', sans-serif;
         font-size: 12px;

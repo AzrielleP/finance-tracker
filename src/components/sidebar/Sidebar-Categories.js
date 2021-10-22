@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import CategoriesIncome from "./charts/CategoriesIncome";
-import CategoriesExpense from "./charts/CategoriesExpense";
+import CategoriesChart from "./charts/CategoriesChart";
 import { groupByCategory } from "../../helpers/groupingData";
+
+import {Container} from "../styled-components/Containers.styled";
+import * as Text from "../styled-components/Text.styled";
 
 function SidebarCategories(props) {
 	const { transaction, dateToRender } = props;
@@ -14,11 +16,11 @@ function SidebarCategories(props) {
 	}, [transaction, dateToRender]);
 
 	return (
-		<div>
-			<h2>Categories</h2>
-			<div>
-				<h3>Income</h3>
-				{incomeCategories.length === 0 && <p>No available data</p>}
+			<Container>
+				<Text.Subtitle>Income</Text.Subtitle>
+				{incomeCategories.length === 0 && <Text.Small>No available data</Text.Small>}
+
+				<CategoriesChart data={incomeCategories} />
 				{incomeCategories.length > 0 &&
 					incomeCategories.map((item, key) => {
 						return (
@@ -29,10 +31,11 @@ function SidebarCategories(props) {
 							</div>
 						);
 					})}
-				<CategoriesIncome data={incomeCategories} />
+				
+				<Text.Subtitle>Expense</Text.Subtitle>
+				{expenseCategories.length === 0 && <Text.Small>No available data</Text.Small>}
 
-				<h3>Expense</h3>
-				{expenseCategories.length === 0 && <p>No available data</p>}
+				<CategoriesChart data={expenseCategories} />
 				{expenseCategories.map((item, key) => {
 					return (
 						<div key={key}>
@@ -42,9 +45,7 @@ function SidebarCategories(props) {
 						</div>
 					);
 				})}
-				<CategoriesExpense data={expenseCategories} />
-			</div>
-		</div>
+			</Container>
 	);
 }
 

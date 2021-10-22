@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { generalColors, lightTheme, darkTheme } from "./Themes-Style";
+import { generalColors, lightTheme, darkTheme } from "./Themes-Style.styled";
 
 // Buttons inside TransactionOutput
 export const ArrowButton = styled.button`
@@ -20,4 +20,14 @@ export const TransactionDetails = styled.button`
     align-items: center;
     width: 100%;
     margin: 1.5em 0;
+`
+
+// App
+export const ShowSidebarButton = styled.button`
+    display: block;
+    margin-left: auto;
+
+    @media screen and (min-width: 768px) {
+        display: none;
+    }
 `

@@ -6,12 +6,35 @@ import Settings from "./components/settings/Settings";
 import Sidebar from "./components/sidebar/Sidebar";
 import { processData, updateTransaction } from "./helpers/groupingData";
 import { GlobalStyle } from "./components/styled-components/GlobalStyle";
-import { ModalContainer } from "./components/styled-components/Containers"
+import { ModalContainer } from "./components/styled-components/Containers.styled";
+
 
 function App() {
 	const [accounts, setAccounts] = useState(["Cash", "Bank", "Other"]);
 	const [processedData, setProcessedData] = useState([]); // Stores the transaction data to be displayed on TransactionOutput
-	const [transaction, setTransaction] = useState([]); // Stores the submitted entries of the user
+	const [transaction, setTransaction] = useState([
+		{
+			fromAccount: "Cash",
+			id: 1634914723214.3079,
+			toAccount: "",
+			transactionAmount: "123",
+			transactionCategory: "Salary",
+			transactionDate: new Date(),
+			transactionNotes: "Test",
+			transactionType: "income"
+		},
+		{
+			fromAccount: "Cash",
+			id: 1634914723214.3079,
+			toAccount: "",
+			transactionAmount: "123",
+			transactionCategory: "Food",
+			transactionDate: new Date(),
+			transactionNotes: "Test",
+			transactionType: "expense"
+		}
+
+	]); // Stores the submitted entries of the user
 	const [categories, setCategories] = useState({
 		income: ["Salary", "Interest", "Other"],
 		expense: ["Food", "Transportation", "Other"],
@@ -26,6 +49,8 @@ function App() {
 	}); // Stores the month (based on index) and year to be displayed in TransactionOutput
 
 	const [dataToRender, setDataToRender] = useState(dateToRender); // Stores the filtered data that the user will see based on the date selected
+
+	const [showSideBar, setShowSidebar] = useState(false); // Determines if the sidebar is displayed or not on mobile mode
 
 	// * ==== FUNCTIONS ==== * //
 	const handleAddTransaction = (value) => {
@@ -110,6 +135,11 @@ function App() {
 		setDateToRender({ year: newDate.year, month: newDate.month });
 	};
 
+	const handleSidebar = (event) => {
+		event.preventDefault();
+		setShowSidebar(prev => !prev);
+	}
+
 	// * ==== USEEFFECT ==== * //
 
 	// Do not run useEffect on first render
@@ -133,15 +163,11 @@ function App() {
 			);
 
 			data.length !== 0 ? setDataToRender(data[0]) : setDataToRender(dateToRender);
-
-			console.log(data)
 		};	
 		
 
 		filterDataToRender();
 	}, [processedData, dateToRender]);
-
-	console.log(dataToRender)
 
 	// Side effect when we're clicking a transaction to edit it
 	useEffect(() => {
@@ -171,17 +197,22 @@ function App() {
 				)}
 			</ModalContainer>
 
-			<TransactionOutput
+			{/* <TransactionOutput
 				getTransactionId={getTransactionId}
 				moveToNext={moveToNext}
 				moveToPrevious={moveToPrevious}
 				dataToRender={dataToRender}
 				setToAddForm = {setToAddForm}
+				handleSidebar = {handleSidebar}
+			/> */}
+
+			<Sidebar 
+				transaction={transaction} 
+				accounts={accounts} 
+				dateToRender={dateToRender} 
 			/>
 
-			{/* <Sidebar transaction={transaction} accounts={accounts} dateToRender={dateToRender} />
-
-			<Settings
+			{/* <Settings
 				accounts={accounts}
 				categories={categories}
 				handleAddSettings={handleAddSettings}

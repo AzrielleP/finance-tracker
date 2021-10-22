@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { generalColors, lightTheme, darkTheme } from "./Themes-Style";
+import { generalColors, lightTheme, darkTheme } from "./Themes-Style.styled";
 
 export const FlexContainer = styled.div`
     display: flex;
@@ -9,18 +9,22 @@ export const FlexContainer = styled.div`
 
 export const Container = styled.div`
     padding: 1em;
-    background-color: ${generalColors.white};
+`
+
+export const SidebarContainer = styled(Container)`
+    height: 100vh;
+    background: ${generalColors.lightAccent};
 `
 
 export const ScrollingContainer = styled.div`
     position: absolute;
-    top: 10em;
+    top: ${({startHeight}) => `${startHeight}em`};
     overflow: auto;
     z-index: 1;
     width: 90%;
 
     @media screen and (min-width: 1024px) {
-        top: 18em;
+        top: ${({startHeight}) => `${startHeight + 6}em`};
     }
 `
 
@@ -36,7 +40,7 @@ export const FixedContainer = styled.div`
     top: 0;
     left: 0;
     padding: 1em;
-    width: 90%;
+    width: 100%;
     z-index: 2;
     background: ${generalColors.white};
 `

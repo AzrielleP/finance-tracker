@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { generalColors, lightTheme, darkTheme } from "./Themes-Style";
+import { generalColors, lightTheme, darkTheme } from "./Themes-Style.styled";
 
 
 export const LargeHeader = styled.h1`

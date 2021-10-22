@@ -4,6 +4,11 @@ import SidebarAccounts from "./Sidebar-Accounts";
 import { calcTotalOfFiltered, calcFromAccount } from "../../helpers/calc";
 import { computeAssets, computeLiabilities } from "../../helpers/calc";
 
+// Styled Components
+import * as Container from "../styled-components/Containers.styled";
+import { SidebarRadio, RadioLabel } from "../styled-components/Forms.styled";
+import { Bold } from "../styled-components/Text.styled";
+
 function Sidebar(props) {
 	const { transaction, accounts, dateToRender } = props;
 
@@ -62,39 +67,46 @@ function Sidebar(props) {
 	}, [transaction, accounts]);
 
 	return (
-		<div>
-			<h2>Sidebar</h2>
-			<label>
-				<input
+		<Container.SidebarContainer>
+			<Container.FixedContainer>
+				<SidebarRadio
 					type="radio"
 					name="sidebarOption"
 					value="categories"
 					checked={option === "categories"}
 					onChange={handleOptionChange}
+					id = "categories"
 				/>
-				Categories
-			</label>
-			<label>
-				<input
+				<Bold as="label" for="categories">
+					Categories
+				</Bold>
+			
+				<SidebarRadio
 					type="radio"
 					name="sidebarOption"
 					value="accounts"
 					checked={option === "accounts"}
 					onChange={handleOptionChange}
+					id = "accounts"
 				/>
-				Accounts
-			</label>
-			{option === "categories" && (
-				<SidebarCategories transaction={transaction} dateToRender={dateToRender} />
-			)}
-			{option === "accounts" && (
-				<SidebarAccounts
-					accountsInfo={accountsInfo}
-					getAccounts={getAccounts}
-					initialState={initialState}
-				/>
-			)}
-		</div>
+				<Bold as = "label" for = "accounts">
+					Accounts
+				</Bold>
+			</Container.FixedContainer>
+			
+			<Container.ScrollingContainer startHeight = {4}>
+				{option === "categories" && (
+					<SidebarCategories transaction={transaction} dateToRender={dateToRender} />
+				)}
+				{option === "accounts" && (
+					<SidebarAccounts
+						accountsInfo={accountsInfo}
+						getAccounts={getAccounts}
+						initialState={initialState}
+					/>
+				)}
+			</Container.ScrollingContainer>
+		</Container.SidebarContainer>
 	);
 }
 
