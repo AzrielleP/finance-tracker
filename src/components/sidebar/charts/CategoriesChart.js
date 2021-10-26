@@ -38,7 +38,7 @@ function CategoriesChart(props) {
 	};
 
 	return (
-		<ResponsiveContainer width = "100%" height = {300}>
+		<ResponsiveContainer width = "100%" height = {250}>
 			<PieChart >
 				<Pie
 					data={data}
@@ -46,7 +46,7 @@ function CategoriesChart(props) {
 					cy="50%"
 					labelLine={false}
 					label={renderCustomizedLabel}
-					outerRadius="70%"
+					outerRadius="90%"
 					fill="#8884d8"
 					dataKey="value"
 				>

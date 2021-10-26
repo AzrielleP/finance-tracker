@@ -16,8 +16,8 @@ function SidebarCategories(props) {
 	}, [transaction, dateToRender]);
 
 	return (
-			<Container>
-				<Text.Subtitle>Income</Text.Subtitle>
+			<div>
+				<Text.Bold>Income</Text.Bold>
 				{incomeCategories.length === 0 && <Text.Small>No available data</Text.Small>}
 
 				<CategoriesChart data={incomeCategories} />
@@ -32,7 +32,7 @@ function SidebarCategories(props) {
 						);
 					})}
 				
-				<Text.Subtitle>Expense</Text.Subtitle>
+				<Text.Bold>Expense</Text.Bold>
 				{expenseCategories.length === 0 && <Text.Small>No available data</Text.Small>}
 
 				<CategoriesChart data={expenseCategories} />
@@ -45,7 +45,7 @@ function SidebarCategories(props) {
 						</div>
 					);
 				})}
-			</Container>
+			</div>
 	);
 }
 

@@ -3,8 +3,7 @@ import { generalColors, lightTheme, darkTheme } from "./Themes-Style.styled";
 
 
 export const LargeHeader = styled.h1`
-	${'' /* font-size: 48px; */}
-    font-size: 18px;
+    font-size: 20px;
 
     @media screen and (min-width: 1024px) {
         font-size: 48px;

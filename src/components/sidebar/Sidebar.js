@@ -6,11 +6,14 @@ import { computeAssets, computeLiabilities } from "../../helpers/calc";
 
 // Styled Components
 import * as Container from "../styled-components/Containers.styled";
-import { SidebarRadio, RadioLabel } from "../styled-components/Forms.styled";
-import { Bold } from "../styled-components/Text.styled";
+import { SidebarRadio } from "../styled-components/Forms.styled";
+import { Subtitle } from "../styled-components/Text.styled";
+import { ShowSidebarButton } from "../styled-components/Buttons.styled";
+import { ReactComponent as CloseButton} from './../styled-components/svg/CloseButton.svg';
+import { ReactComponent as SettingsIcon} from './../styled-components/svg/Settings.svg';
 
 function Sidebar(props) {
-	const { transaction, accounts, dateToRender } = props;
+	const { transaction, accounts, dateToRender, handleSidebar, showSidebar } = props;
 
 	const [option, setOption] = useState("categories");
 	const handleOptionChange = (event) => {
@@ -67,34 +70,43 @@ function Sidebar(props) {
 	}, [transaction, accounts]);
 
 	return (
-		<Container.SidebarContainer>
+		<Container.SidebarContainer display = {showSidebar}>
 			<Container.FixedContainer>
-				<SidebarRadio
-					type="radio"
-					name="sidebarOption"
-					value="categories"
-					checked={option === "categories"}
-					onChange={handleOptionChange}
-					id = "categories"
-				/>
-				<Bold as="label" for="categories">
-					Categories
-				</Bold>
-			
-				<SidebarRadio
-					type="radio"
-					name="sidebarOption"
-					value="accounts"
-					checked={option === "accounts"}
-					onChange={handleOptionChange}
-					id = "accounts"
-				/>
-				<Bold as = "label" for = "accounts">
-					Accounts
-				</Bold>
+				<Container.FlexContainer justifySmall = "space-between" justifyLarge = "flex-end">
+					<ShowSidebarButton onClick = {handleSidebar} alignment = "right">
+						<CloseButton/>
+					</ShowSidebarButton>
+					<SettingsIcon/>
+				</Container.FlexContainer>
+
+				<Container.FlexContainer justifySmall = "space-around" padding = "2em 0 0 0">
+					<SidebarRadio
+						type="radio"
+						name="sidebarOption"
+						value="categories"
+						checked={option === "categories"}
+						onChange={handleOptionChange}
+						id = "categories"
+					/>
+					<Subtitle as="label" htmlFor="categories">
+						Categories
+					</Subtitle>
+				
+					<SidebarRadio
+						type="radio"
+						name="sidebarOption"
+						value="accounts"
+						checked={option === "accounts"}
+						onChange={handleOptionChange}
+						id = "accounts"
+					/>
+					<Subtitle as = "label" htmlFor = "accounts">
+						Accounts
+					</Subtitle>
+				</Container.FlexContainer>
 			</Container.FixedContainer>
 			
-			<Container.ScrollingContainer startHeight = {4}>
+			<Container.ScrollingContainer>
 				{option === "categories" && (
 					<SidebarCategories transaction={transaction} dateToRender={dateToRender} />
 				)}

@@ -6,7 +6,7 @@ import Settings from "./components/settings/Settings";
 import Sidebar from "./components/sidebar/Sidebar";
 import { processData, updateTransaction } from "./helpers/groupingData";
 import { GlobalStyle } from "./components/styled-components/GlobalStyle";
-import { ModalContainer } from "./components/styled-components/Containers.styled";
+import { AppContainer, ModalContainer } from "./components/styled-components/Containers.styled";
 
 
 function App() {
@@ -50,7 +50,7 @@ function App() {
 
 	const [dataToRender, setDataToRender] = useState(dateToRender); // Stores the filtered data that the user will see based on the date selected
 
-	const [showSideBar, setShowSidebar] = useState(false); // Determines if the sidebar is displayed or not on mobile mode
+	const [showSidebar, setShowSidebar] = useState(false); // Determines if the sidebar is displayed or not on mobile mode
 
 	// * ==== FUNCTIONS ==== * //
 	const handleAddTransaction = (value) => {
@@ -197,20 +197,24 @@ function App() {
 				)}
 			</ModalContainer>
 
-			{/* <TransactionOutput
-				getTransactionId={getTransactionId}
-				moveToNext={moveToNext}
-				moveToPrevious={moveToPrevious}
-				dataToRender={dataToRender}
-				setToAddForm = {setToAddForm}
-				handleSidebar = {handleSidebar}
-			/> */}
+			<AppContainer>
+				<TransactionOutput
+					getTransactionId={getTransactionId}
+					moveToNext={moveToNext}
+					moveToPrevious={moveToPrevious}
+					dataToRender={dataToRender}
+					setToAddForm = {setToAddForm}
+					handleSidebar = {handleSidebar}
+				/>
 
-			<Sidebar 
-				transaction={transaction} 
-				accounts={accounts} 
-				dateToRender={dateToRender} 
-			/>
+				<Sidebar 
+					transaction={transaction} 
+					accounts={accounts} 
+					dateToRender={dateToRender} 
+					handleSidebar = {handleSidebar}
+					showSidebar = {showSidebar}
+				/>
+			</AppContainer>
 
 			{/* <Settings
 				accounts={accounts}

@@ -1,4 +1,6 @@
 import React from "react";
+import {Container} from "../styled-components/Containers.styled";
+
 
 function SidebarAccounts(props) {
     const { accountsInfo, getAccounts, initialState } = props;

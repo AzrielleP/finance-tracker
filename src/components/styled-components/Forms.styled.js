@@ -11,14 +11,13 @@ export const SidebarRadio = styled.input`
     -o-appearance: none;
     appearance: none;
 
-    & + label{
-        padding: 1em 3em;
-        border-bottom: 5px solid ${generalColors.lightAccent};
-    }
 
-    &:checked + label{
+    ${'' /* &:checked + label{
         border-bottom: 5px solid ${lightTheme.blue};
-    };
+    }; */}
+
+    @media screen and (min-width: 768px) {
+    }
 `
 
 

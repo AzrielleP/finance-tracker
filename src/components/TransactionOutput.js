@@ -6,28 +6,28 @@ import { ArrowButton, NewButton, TransactionDetails } from "./styled-components/
 import { LargeHeader, Bold, Subtitle, SubtitleLight, Small, SmallOverflowingText } from "./styled-components/Text.styled";
 import {
 	FlexContainer,
-	Container,
+	TransactionOutput,
 	LargeNumberContainer,
 	ScrollingContainer,
 	DailyTransactionData,
 	FixedContainer,
 	GridContainerHead,
-	GIFContainer
+	NoDataContainer
 } from "./styled-components/Containers.styled";
 import { generalColors } from "./styled-components/Themes-Style.styled";
 import { ShowSidebarButton } from "./styled-components/Buttons.styled"
-import { ReactComponent as SidebarButton } from "./styled-components/svg/Sidebar.svg"
+import { ReactComponent as SidebarIcon } from "./styled-components/svg/Sidebar.svg"
 
 function Transaction(props) {
 	const { getTransactionId, moveToNext, moveToPrevious, dataToRender, setToAddForm, handleSidebar } = props;
 
 	return (
-		<Container>
+		<TransactionOutput>
 			<FixedContainer>
-				<ShowSidebarButton onClick = {handleSidebar}>
-						<SidebarButton/>
+				<ShowSidebarButton onClick = {handleSidebar} alignment = "left">
+						<SidebarIcon/>
 				</ShowSidebarButton>
-				<FlexContainer justify="space-between">
+				<FlexContainer justifySmall="space-between" padding = "0 0 0 0">
 					<FlexContainer>
 						<ArrowButton type="button" onClick={moveToPrevious}>
 							<LargeHeader>{"<"}</LargeHeader>
@@ -76,11 +76,11 @@ function Transaction(props) {
 			</FixedContainer>
 
 			{!dataToRender.hasOwnProperty("dailyTrans") ? (
-				<GIFContainer>
+				<NoDataContainer>
 					<NoDataImage/>
 					<br/>
 					<Small>No Data Available</Small>
-				</GIFContainer>
+				</NoDataContainer>
 			) : (
 				<ScrollingContainer startHeight = {12}>
 					{dataToRender.dailyTrans.map((subItem, key) => {
@@ -131,7 +131,7 @@ function Transaction(props) {
 					})}
 				</ScrollingContainer>
 			)}
-		</Container>
+		</TransactionOutput>
 	);
 }
 export default Transaction;

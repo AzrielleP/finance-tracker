@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import { generalColors, lightTheme, darkTheme } from "./Themes-Style.styled";
 
 // Buttons inside TransactionOutput
@@ -25,7 +25,15 @@ export const TransactionDetails = styled.button`
 // App
 export const ShowSidebarButton = styled.button`
     display: block;
-    margin-left: auto;
+    ${({alignment}) => alignment === 'left' ? 
+        css`
+            margin-left: auto;
+        `
+        :
+        css`
+            margin-right: auto;
+        `
+    }
 
     @media screen and (min-width: 768px) {
         display: none;

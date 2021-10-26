@@ -4,28 +4,50 @@ import { generalColors, lightTheme, darkTheme } from "./Themes-Style.styled";
 export const FlexContainer = styled.div`
     display: flex;
     align-items: center;
-    justify-content: ${({justify}) => justify};
+    justify-content: ${({justifySmall}) => justifySmall};
+    padding: ${({padding}) => padding};
+    @media screen and (min-width: 768px) {
+        justify-content: ${({justifyLarge}) => justifyLarge};
+    }
 `
 
-export const Container = styled.div`
-    padding: 1em;
+export const TransactionOutput = styled.div`
+    padding: 0 2em;
+
+    @media screen and (min-width: 1024px) {
+        padding: 0 5em;
+    }
 `
 
-export const SidebarContainer = styled(Container)`
+export const AppContainer = styled.div`
+    @media screen and (min-width: 768px) {
+        display: grid; 
+        grid-auto-columns: 1fr; 
+        grid-template-columns: 70% 30%; 
+        grid-template-rows: 1fr; 
+    }
+`
+
+export const SidebarContainer = styled.div`
+    display: ${({display}) => display ? "block" : "none"};
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0 2em;
+    z-index: 10;
     height: 100vh;
+    width: 100%;
     background: ${generalColors.lightAccent};
+
+    @media screen and (min-width: 768px) {
+        display: block;
+        position: static;
+    }
 `
 
 export const ScrollingContainer = styled.div`
-    position: absolute;
-    top: ${({startHeight}) => `${startHeight}em`};
     overflow: auto;
     z-index: 1;
-    width: 90%;
-
-    @media screen and (min-width: 1024px) {
-        top: ${({startHeight}) => `${startHeight + 6}em`};
-    }
 `
 
 export const DailyTransactionData = styled.div`
@@ -36,10 +58,10 @@ export const DailyTransactionData = styled.div`
 `
 
 export const FixedContainer = styled.div`
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
-    padding: 1em;
+    padding: 2em 0;
     width: 100%;
     z-index: 2;
     background: ${generalColors.white};
@@ -64,17 +86,12 @@ export const GridContainerHead = styled.div`
     margin-bottom: 1.5em;
 `
 
-export const GIFContainer = styled.div`
+export const NoDataContainer = styled.div`
     display: flex;
     flex-flow: column;
     align-items: center;
-    position: absolute;
-    top: 40%;
-    width: 90%;
-
-    @media screen and (min-width: 1024px) {
-        top: 50%;
-    }
+    justify-content: center;
+    height: 50vh;
 `
 
 // TransactionInput
