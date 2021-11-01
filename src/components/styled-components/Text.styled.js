@@ -70,7 +70,7 @@ export const Small = styled.p`
     }
 `
 
-export const SmallOverflowingText = styled(Small)`
+export const OverflowingText = styled.p`
     overflow: hidden;
     text-overflow: ellipsis;
 `
