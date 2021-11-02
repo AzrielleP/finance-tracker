@@ -31,12 +31,8 @@ export const ScrollingContainer = styled.div`
 export const DailyTransactionData = styled.div`
     border-radius: 10px;
     margin: 1em 0;
-    padding: 1em;
+    padding: 1.5em 1em;
     background: ${generalColors.lightAccent};
-
-    @media screen and (min-width: 1024px) {
-        padding: 1.5em;
-    }
 `
 
 export const FixedContainer = styled.div`
@@ -63,10 +59,9 @@ export const GridContainerHead = styled.div`
     grid-auto-columns: 1fr;
     grid-template-columns: 2fr 1fr 1fr;
     grid-template-rows: 1fr;
-    grid-gap: 1em;
     border-bottom: 0.5px solid ${generalColors.darkAccent};
     padding-bottom: 1em;
-    align-items: center;
+    margin-bottom: 1.5em;
 `
 
 export const GIFContainer = styled.div`
