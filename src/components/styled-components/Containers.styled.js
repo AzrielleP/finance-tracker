@@ -75,6 +75,10 @@ export const LargeNumberContainer = styled.div`
     border-radius: 10px;
     border-color: ${generalColors.darkAccent};
     text-align: center;
+
+    p {
+        text-align: center;
+    }
 `
 export const GridContainerHead = styled.div`
     display: grid;
@@ -102,3 +106,15 @@ export const ModalContainer = styled.div`
     position: absolute;
 `
 
+export const Dot = styled.span`
+    height: 10px;
+    width: 10px;
+    background-color: ${({color}) => color < 0 ? generalColors.red : lightTheme.blue};
+    border-radius: 50%;
+    display: inline-block;
+
+    @media screen and (min-width: 768px) {
+        height: 15px;
+        width: 15px;
+    }
+`

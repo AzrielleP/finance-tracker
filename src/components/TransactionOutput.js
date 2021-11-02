@@ -52,22 +52,22 @@ function Transaction(props) {
 
 				<FlexContainer justify="space-around">
 					<LargeNumberContainer>
-						<Bold textAlign = "center">INCOME</Bold>
-						<Subtitle textAlign = "center">
+						<Bold>INCOME</Bold>
+						<Subtitle>
 							{dataToRender.monthIncomeTotal ? dataToRender.monthIncomeTotal : 0}
 						</Subtitle>
 					</LargeNumberContainer>
 
 					<LargeNumberContainer>
-						<Bold textAlign = "center" color = {generalColors.red}>EXPENSE</Bold>
-						<Subtitle textAlign = "center" color = {generalColors.red}>
+						<Bold color = {generalColors.red}>EXPENSE</Bold>
+						<Subtitle color = {generalColors.red}>
 							{dataToRender.monthExpenseTotal ? Math.abs(dataToRender.monthExpenseTotal) : 0}
 						</Subtitle>
 					</LargeNumberContainer>
 
 					<LargeNumberContainer>
-						<Bold textAlign = "center">TOTAL</Bold>
-						<Subtitle textAlign = "center" amount = {dataToRender.monthTotal}>
+						<Bold>TOTAL</Bold>
+						<Subtitle amount = {dataToRender.monthTotal}>
 							{dataToRender.monthTotal ? Math.abs(dataToRender.monthTotal) : 0}
 						</Subtitle>
 					</LargeNumberContainer>

@@ -7,7 +7,7 @@ import { computeAssets, computeLiabilities } from "../../helpers/calc";
 // Styled Components
 import * as Container from "../styled-components/Containers.styled";
 import { SidebarRadio } from "../styled-components/Forms.styled";
-import { Subtitle } from "../styled-components/Text.styled";
+import { Subtitle, Bold } from "../styled-components/Text.styled";
 import { ShowSidebarButton } from "../styled-components/Buttons.styled";
 import { ReactComponent as CloseButton} from './../styled-components/svg/CloseButton.svg';
 import { ReactComponent as SettingsIcon} from './../styled-components/svg/Settings.svg';
@@ -88,9 +88,9 @@ function Sidebar(props) {
 						onChange={handleOptionChange}
 						id = "categories"
 					/>
-					<Subtitle as="label" htmlFor="categories">
-						Categories
-					</Subtitle>
+					<Bold as="label" htmlFor="categories">
+						CATEGORIES
+					</Bold>
 				
 					<SidebarRadio
 						type="radio"
@@ -100,9 +100,9 @@ function Sidebar(props) {
 						onChange={handleOptionChange}
 						id = "accounts"
 					/>
-					<Subtitle as = "label" htmlFor = "accounts">
-						Accounts
-					</Subtitle>
+					<Bold as = "label" htmlFor = "accounts">
+						ACCOUNTS
+					</Bold>
 				</Container.FlexContainer>
 			</Container.FixedContainer>
 			

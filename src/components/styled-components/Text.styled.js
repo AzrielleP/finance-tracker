@@ -6,17 +6,14 @@ export const LargeHeader = styled.h1`
     font-size: 20px;
 
     @media screen and (min-width: 1024px) {
-        font-size: 48px;
+        font-size: 36px;
     }
 `
-export const Header = styled.h2`
-	font-size: 16px 
-`
+
 export const Subtitle = styled.p`
     margin: 5px 0;
     font-weight: bold;
     font-size: 14px;
-    text-align: ${({textAlign}) => textAlign};
     color: ${({color, amount}) => {
         if (amount < 0 ) { 
             return generalColors.red
@@ -25,15 +22,7 @@ export const Subtitle = styled.p`
     }};
 
     @media screen and (min-width: 1024px) {
-        font-size: 24px;
-    }
-`
-export const SubtitleLight = styled.p`
-    font-weight: thin;
-    font-size: 14px;
-
-    @media screen and (min-width: 1024px) {
-        font-size: 24px;
+        font-size: 22px;
     }
 `
 
@@ -50,22 +39,22 @@ export const Bold = styled.p`
     text-align: ${({textAlign}) => textAlign};
 
     @media screen and (min-width: 1024px) {
-        font-size: 18px;
+        font-size: 16px;
     }
 `
 export const Small = styled.p`
     font-size: 10px;
     letter-spacing: 0.1em;
-    text-align: ${({textAlign}) => textAlign};
     color: ${({color, amount}) => {
         if (amount < 0 ) { 
             return generalColors.red
         }
         return color;
     }};
+    text-align: ${({textAlign}) => textAlign};
 
     @media screen and (min-width: 1024px) {
-        font-size: 16px;
+        font-size: 14px;
     }
 `
 

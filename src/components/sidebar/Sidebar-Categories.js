@@ -17,7 +17,7 @@ function SidebarCategories(props) {
 
 	return (
 			<div>
-				<Text.Bold>Income</Text.Bold>
+				<p>Income</p>
 				{incomeCategories.length === 0 && <Text.Small>No available data</Text.Small>}
 
 				<CategoriesChart data={incomeCategories} />
@@ -25,23 +25,23 @@ function SidebarCategories(props) {
 					incomeCategories.map((item, key) => {
 						return (
 							<div key={key}>
-								<p>
+								<Text.Small>
 									{item.categoryName}: {item.value}
-								</p>
+								</Text.Small>
 							</div>
 						);
 					})}
 				
-				<Text.Bold>Expense</Text.Bold>
+				<p>Expense</p>
 				{expenseCategories.length === 0 && <Text.Small>No available data</Text.Small>}
 
 				<CategoriesChart data={expenseCategories} />
 				{expenseCategories.map((item, key) => {
 					return (
 						<div key={key}>
-							<p>
+							<Text.Small>
 								{item.categoryName}: {item.value}
-							</p>
+							</Text.Small>
 						</div>
 					);
 				})}
