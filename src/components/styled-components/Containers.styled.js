@@ -12,10 +12,14 @@ export const FlexContainer = styled.div`
 `
 
 export const TransactionOutput = styled.div`
-    padding: 0 2em;
+    padding: 0 1em;
+
+    @media screen and (min-width: 768px) {
+        padding: 0 3em;
+    }
 
     @media screen and (min-width: 1024px) {
-        padding: 0 5em;
+        padding: 0 7em;
     }
 `
 
@@ -85,9 +89,10 @@ export const GridContainerHead = styled.div`
     grid-auto-columns: 1fr;
     grid-template-columns: 2fr 1fr 1fr;
     grid-template-rows: 1fr;
+    grid-gap: 0.5em;
     border-bottom: 0.5px solid ${generalColors.darkAccent};
     padding-bottom: 1em;
-    margin-bottom: 1.5em;
+    align-items: center;
 `
 
 export const NoDataContainer = styled.div`
