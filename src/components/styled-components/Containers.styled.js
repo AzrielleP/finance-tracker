@@ -1,76 +1,28 @@
 import styled from "styled-components";
 import { generalColors, lightTheme, darkTheme } from "./Themes-Style.styled";
 
+// GENERAL
 export const FlexContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: ${({justifySmall}) => justifySmall};
-    padding: ${({padding}) => padding};
     @media screen and (min-width: 768px) {
         justify-content: ${({justifyLarge}) => justifyLarge};
     }
 `
-
-export const TransactionOutput = styled.div`
-    padding: 0 1em;
-
-    @media screen and (min-width: 768px) {
-        padding: 0 3em;
-    }
-
-    @media screen and (min-width: 1024px) {
-        padding: 0 7em;
-    }
-`
-
-export const AppContainer = styled.div`
-    @media screen and (min-width: 768px) {
-        display: grid; 
-        grid-auto-columns: 1fr; 
-        grid-template-columns: 70% 30%; 
-        grid-template-rows: 1fr; 
-    }
-`
-
-export const SidebarContainer = styled.div`
-    display: ${({display}) => display ? "block" : "none"};
-    position: absolute;
-    left: 0;
-    top: 0;
-    padding: 0 2em;
-    z-index: 10;
-    height: 100vh;
-    width: 100%;
-    background: ${generalColors.lightAccent};
-
-    @media screen and (min-width: 768px) {
-        display: block;
-        position: static;
-    }
-`
-
 export const ScrollingContainer = styled.div`
     overflow: auto;
     z-index: 1;
 `
-
-export const DailyTransactionData = styled.div`
-    border-radius: 10px;
-    margin: 1em 0;
-    padding: 1.5em 1em;
-    background: ${generalColors.lightAccent};
-`
-
 export const FixedContainer = styled.div`
     position: sticky;
     top: 0;
     left: 0;
-    padding: 2em 0;
+    padding: 2em 0 1em 0;
     width: 100%;
     z-index: 2;
     background: ${generalColors.white};
 `
-
 export const LargeNumberContainer = styled.div`
     flex: 1;
     margin: 0.25em;
@@ -84,6 +36,25 @@ export const LargeNumberContainer = styled.div`
         text-align: center;
     }
 `
+
+// App
+export const AppContainer = styled.div`
+    @media screen and (min-width: 768px) {
+        display: grid; 
+        grid-auto-columns: 1fr; 
+        grid-template-columns: 70% 30%; 
+        grid-template-rows: 1fr; 
+    }
+`
+
+// TransactionOutput
+export const TransactionOutput = styled.div`
+    padding: 0 8vw;
+
+    @media screen and (min-width: 1024px) {
+        padding: 0 7em;
+    }
+`
 export const GridContainerHead = styled.div`
     display: grid;
     grid-auto-columns: 1fr;
@@ -94,13 +65,67 @@ export const GridContainerHead = styled.div`
     padding-bottom: 1em;
     align-items: center;
 `
-
 export const NoDataContainer = styled.div`
     display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: center;
     height: 50vh;
+`
+export const DailyTransactionData = styled.div`
+    border-radius: 10px;
+    margin: 0 0 1em 0;
+    padding: 1.5em 1em;
+    background: ${generalColors.lightAccent};
+`
+
+// Sidebar
+export const SidebarContainer = styled.div`
+    display: ${({$display}) => $display ? "block" : "none"};
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0 8vw;
+    z-index: 10;
+    height: 100vh;
+    width: 100%;
+    background: ${generalColors.lightAccent};
+
+    @media screen and (min-width: 768px) {
+        display: block;
+        position: static;
+        padding: 0 2em;
+    }
+`
+export const SidebarSelectors = styled(FlexContainer)`
+    padding: 1em 0 0 0;
+
+    @media screen and (min-width: 768px) {
+        padding: 0.5em 0 1em 0;
+    }
+
+    @media screen and (min-width: 1024px) {
+        padding: 1.5em 0 2.5em 0;
+    }
+`
+export const AccountContainer = styled(FlexContainer)`
+    justify-content: space-between;
+    margin: 1.25em 0.5em 0 0.5em;
+
+    ${FlexContainer} {
+        gap: 1em;
+    }
+`
+export const Dot = styled.span`
+    height: 10px;
+    width: 10px;
+    background-color: ${({color}) => color < 0 ? generalColors.red : lightTheme.blue};
+    border-radius: 50%;
+
+    @media screen and (min-width: 768px) {
+        height: 15px;
+        width: 15px;
+    }
 `
 
 // TransactionInput
@@ -109,17 +134,4 @@ export const ModalContainer = styled.div`
     background: ${generalColors.white};
     height: 100vh;
     position: absolute;
-`
-
-export const Dot = styled.span`
-    height: 10px;
-    width: 10px;
-    background-color: ${({color}) => color < 0 ? generalColors.red : lightTheme.blue};
-    border-radius: 50%;
-    display: inline-block;
-
-    @media screen and (min-width: 768px) {
-        height: 15px;
-        width: 15px;
-    }
 `

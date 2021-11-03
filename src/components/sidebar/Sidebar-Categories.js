@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import CategoriesChart from "./charts/CategoriesChart";
 import { groupByCategory } from "../../helpers/groupingData";
 
-import {Container} from "../styled-components/Containers.styled";
+import {Container, ScrollingContainer} from "../styled-components/Containers.styled";
 import * as Text from "../styled-components/Text.styled";
 
 function SidebarCategories(props) {
@@ -16,7 +16,7 @@ function SidebarCategories(props) {
 	}, [transaction, dateToRender]);
 
 	return (
-			<div>
+			<ScrollingContainer>
 				<p>Income</p>
 				{incomeCategories.length === 0 && <Text.Small>No available data</Text.Small>}
 
@@ -45,7 +45,7 @@ function SidebarCategories(props) {
 						</div>
 					);
 				})}
-			</div>
+			</ScrollingContainer>
 	);
 }
 

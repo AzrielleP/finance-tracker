@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 import numeral from "numeral";
-import { formattedValue } from "../helpers/calc"
+import { formattedValue } from "../helpers/calc";
 import { ReactComponent as NoDataImage } from "./styled-components/svg/NoData.svg";
 import { ArrowButton, NewButton, TransactionDetails } from "./styled-components/Buttons.styled";
 import {
@@ -29,15 +29,13 @@ import { ReactComponent as SidebarIcon } from "./styled-components/svg/Sidebar.s
 function Transaction(props) {
     const { getTransactionId, moveToNext, moveToPrevious, dataToRender, setToAddForm, handleSidebar } = props;
 
-
-
     return (
         <TransactionOutput>
             <FixedContainer>
                 <ShowSidebarButton onClick={handleSidebar} alignment='left'>
                     <SidebarIcon />
                 </ShowSidebarButton>
-                <FlexContainer justifySmall='space-between' padding='0 0 0 0'>
+                <FlexContainer justifySmall='space-between'>
                     <FlexContainer>
                         <ArrowButton type='button' onClick={moveToPrevious}>
                             <LargeHeader>{"<"}</LargeHeader>
@@ -46,7 +44,8 @@ function Transaction(props) {
                         <LargeHeader>
                             {typeof dataToRender.month !== "string"
                                 ? moment.monthsShort(dataToRender.month)
-                                : dataToRender.month}{" "}
+                                : dataToRender.month}
+                            {"  "}
                             {dataToRender.year}
                         </LargeHeader>
 
@@ -85,7 +84,7 @@ function Transaction(props) {
                     <Small>No Data Available</Small>
                 </NoDataContainer>
             ) : (
-                <ScrollingContainer startHeight={12}>
+                <ScrollingContainer>
                     {dataToRender.dailyTrans.map((subItem, key) => {
                         return (
                             <DailyTransactionData key={key}>
