@@ -33,7 +33,8 @@ const calcFromAccount = (arr, criteria, criteriaContent, amount) => {
 
 // * For formatting
 
-const formattedValue = (value) => {
+// Use on values with calculated totals
+const totalValueFormat = (value) => {
     return value
         ? value > 999999
             ? numeral(Math.abs(value)).format("0.0a")
@@ -41,6 +42,10 @@ const formattedValue = (value) => {
         : numeral(0).format("0.00");
 };
 
+const singleValueFormat = (value) => {
+    return numeral(Math.abs(value)).format("0.00");
+}
+ 
 // * For transactions
 
 // Calculate the total transaction amount of income and expense per day and per month
@@ -98,5 +103,6 @@ export {
     computeAssets,
     computeLiabilities,
     computeTransAmounts,
-    formattedValue,
+    totalValueFormat,
+    singleValueFormat
 };

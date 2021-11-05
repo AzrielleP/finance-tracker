@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { generalColors, lightTheme, darkTheme } from "./Themes-Style.styled";
 
 // GENERAL
@@ -94,18 +94,44 @@ export const SidebarContainer = styled.div`
     @media screen and (min-width: 768px) {
         display: block;
         position: static;
-        padding: 0 2em;
+        padding: 0 2vw;
     }
 `
 export const SidebarSelectors = styled(FlexContainer)`
-    padding: 1em 0 0 0;
+    padding: 1em 0 0.5em 0;
+    border-bottom: 5px solid black;
+    position: relative;
+
+    label {
+        cursor: pointer;
+    }
+
+    &:after {
+        position: absolute;
+        bottom: -5px;
+        height: 5.1px;
+        width: 50%;
+        ${({option}) => option === "categories" ?
+        css`
+            right: 0;
+        `
+        :
+        css`
+            left: 0;
+        `
+        };
+        content: "";
+        background-color: white;
+    }
 
     @media screen and (min-width: 768px) {
-        padding: 0.5em 0 1em 0;
+        padding: 0.5em 0 0.5em 0;
+        margin: 0 0 0.5em 0;
     }
 
     @media screen and (min-width: 1024px) {
-        padding: 1.5em 0 2.5em 0;
+        padding: 1.5em 0 0.5em 0;
+        margin: 0 0 2em 0;
     }
 `
 export const AccountContainer = styled(FlexContainer)`

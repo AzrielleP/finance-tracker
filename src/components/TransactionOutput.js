@@ -1,7 +1,6 @@
 import React from "react";
 import moment from "moment";
-import numeral from "numeral";
-import { formattedValue } from "../helpers/calc";
+import { totalValueFormat, singleValueFormat } from "../helpers/calc";
 import { ReactComponent as NoDataImage } from "./styled-components/svg/NoData.svg";
 import { ArrowButton, NewButton, TransactionDetails } from "./styled-components/Buttons.styled";
 import {
@@ -62,17 +61,17 @@ function Transaction(props) {
                 <FlexContainer justify='space-around'>
                     <LargeNumberContainer>
                         <Bold>INCOME</Bold>
-                        <Subtitle>{formattedValue(dataToRender.monthIncomeTotal)}</Subtitle>
+                        <Subtitle>{totalValueFormat(dataToRender.monthIncomeTotal)}</Subtitle>
                     </LargeNumberContainer>
 
                     <LargeNumberContainer>
                         <Bold color={generalColors.red}>EXPENSE</Bold>
-                        <Subtitle color={generalColors.red}>{formattedValue(dataToRender.monthExpenseTotal)}</Subtitle>
+                        <Subtitle color={generalColors.red}>{totalValueFormat(dataToRender.monthExpenseTotal)}</Subtitle>
                     </LargeNumberContainer>
 
                     <LargeNumberContainer>
                         <Bold>TOTAL</Bold>
-                        <Subtitle amount={dataToRender.monthTotal}>{formattedValue(dataToRender.monthTotal)}</Subtitle>
+                        <Subtitle amount={dataToRender.monthTotal}>{totalValueFormat(dataToRender.monthTotal)}</Subtitle>
                     </LargeNumberContainer>
                 </FlexContainer>
             </FixedContainer>
@@ -92,9 +91,9 @@ function Transaction(props) {
                                     <Bold>
                                         {moment(subItem.day).format("DD")} | {moment(subItem.day).format("ddd")}
                                     </Bold>
-                                    <Bold>{formattedValue(subItem.dayIncomeTotal)}</Bold>
+                                    <Bold>{totalValueFormat(subItem.dayIncomeTotal)}</Bold>
                                     <Bold textAlign='right' color={generalColors.red}>
-                                        {formattedValue(subItem.dayExpenseTotal)}
+                                        {totalValueFormat(subItem.dayExpenseTotal)}
                                     </Bold>
                                 </GridContainerHead>
 
@@ -119,7 +118,7 @@ function Transaction(props) {
                                             </div>
 
                                             <Small textAlign='right' amount={value.transactionAmount}>
-                                                {numeral(Math.abs(value.transactionAmount)).format("0.00")}
+                                                {singleValueFormat(value.transactionAmount)}
                                             </Small>
                                         </TransactionDetails>
                                     );

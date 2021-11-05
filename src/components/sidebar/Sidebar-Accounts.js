@@ -1,5 +1,5 @@
 import React from "react";
-import { formattedValue } from "../../helpers/calc";
+import { totalValueFormat, singleValueFormat } from "../../helpers/calc";
 import { ScrollingContainer, LargeNumberContainer, FlexContainer, Dot, AccountContainer } from "../styled-components/Containers.styled";
 import { Subtitle, Small, Bold } from "../styled-components/Text.styled";
 
@@ -11,11 +11,11 @@ function SidebarAccounts(props) {
             <FlexContainer justify='space-around'>
                 <LargeNumberContainer>
                     <Small>ASSETS</Small>
-                    <Subtitle>{formattedValue(accountsInfo.totalAssets)}</Subtitle>
+                    <Subtitle>{totalValueFormat(accountsInfo.totalAssets)}</Subtitle>
                 </LargeNumberContainer>
                 <LargeNumberContainer>
                     <Small>LIABILITIES</Small>
-                    <Subtitle>{formattedValue(accountsInfo.totalLiabilities)}</Subtitle>
+                    <Subtitle>{totalValueFormat(accountsInfo.totalLiabilities)}</Subtitle>
                 </LargeNumberContainer>
             </FlexContainer>
             {(accountsInfo !== initialState ? accountsInfo : getAccounts()).items.map((item, key) => {
@@ -25,7 +25,7 @@ function SidebarAccounts(props) {
                             <Dot color={item.accountName} />
                             <Bold>{item.accountName}</Bold>
                         </FlexContainer>
-                        <p>{item.value}</p>
+                        <p>{singleValueFormat(item.value)}</p>
                     </AccountContainer>
                 );
             })}
