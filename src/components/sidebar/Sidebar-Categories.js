@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import CategoriesChart from "./charts/CategoriesChart";
+import { Pie } from 'react-chartjs-2';
+import {createData, customization} from "./charts/chartSettings";
 import { groupByCategory } from "../../helpers/groupingData";
 
-import {Container, ScrollingContainer} from "../styled-components/Containers.styled";
-import * as Text from "../styled-components/Text.styled";
+// Styled Components
+import {ScrollingContainer, ChartContainer} from "../styled-components/Containers.styled";
+import {Bold, Small} from "../styled-components/Text.styled";
 
 function SidebarCategories(props) {
 	const { transaction, dateToRender } = props;
@@ -17,34 +19,21 @@ function SidebarCategories(props) {
 
 	return (
 			<ScrollingContainer>
-				<p>Income</p>
-				{incomeCategories.length === 0 && <Text.Small>No available data</Text.Small>}
-
-				<CategoriesChart data={incomeCategories} />
-				{incomeCategories.length > 0 &&
-					incomeCategories.map((item, key) => {
-						return (
-							<div key={key}>
-								<Text.Small>
-									{item.categoryName}: {item.value}
-								</Text.Small>
-							</div>
-						);
-					})}
+				<ChartContainer>
+					<Bold>Income</Bold>
+					{incomeCategories.length === 0 ?
+						<Small>No available data</Small> :
+						<Pie data = {createData(incomeCategories, 'income')} options = {customization(incomeCategories)}/>
+					}
+				</ChartContainer>
 				
-				<p>Expense</p>
-				{expenseCategories.length === 0 && <Text.Small>No available data</Text.Small>}
-
-				<CategoriesChart data={expenseCategories} />
-				{expenseCategories.map((item, key) => {
-					return (
-						<div key={key}>
-							<Text.Small>
-								{item.categoryName}: {item.value}
-							</Text.Small>
-						</div>
-					);
-				})}
+				<ChartContainer>
+					<Bold>Expense</Bold>
+					{expenseCategories.length === 0 ? 
+						<Small>No available data</Small> :
+						<Pie data = {createData(expenseCategories, 'expense')} options = {customization(expenseCategories)}/>
+					}
+				</ChartContainer>
 			</ScrollingContainer>
 	);
 }

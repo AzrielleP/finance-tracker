@@ -1,6 +1,6 @@
 import moment from "moment";
 import { computeTransAmounts, filter, calcTotalOfFiltered } from "./calc";
-import { sortByDate, sortByCategory } from "./sort";
+import { sortByDate, sortByCategory, sortByValue } from "./sort";
 
 const processData = (transaction) => {
 	/*
@@ -140,7 +140,7 @@ const groupByCategory = (data, type, date) => {
 			groupedData.push(category);
 		}
 	}
-
+	groupedData = sortByValue(groupedData);
 	return groupedData;
 };
 

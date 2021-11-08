@@ -134,6 +134,10 @@ export const SidebarSelectors = styled(FlexContainer)`
         margin: 0 0 2em 0;
     }
 `
+export const ChartContainer = styled.div`
+    margin: 0 1.5em  1.5em 1.5em;
+    min-height: 30vh;
+`
 export const AccountContainer = styled(FlexContainer)`
     justify-content: space-between;
     margin: 1.25em 0.5em 0 0.5em;

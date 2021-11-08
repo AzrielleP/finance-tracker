@@ -13,30 +13,30 @@ function App() {
 	const [accounts, setAccounts] = useState(["Cash", "Bank", "Other"]);
 	const [processedData, setProcessedData] = useState([]); // Stores the transaction data to be displayed on TransactionOutput
 	const [transaction, setTransaction] = useState([
-		{
-			fromAccount: "Cash",
-			id: 1634914723214.3079,
-			toAccount: "",
-			transactionAmount: "123",
-			transactionCategory: "Salary",
-			transactionDate: new Date(),
-			transactionNotes: "Test",
-			transactionType: "income"
-		},
-		{
-			fromAccount: "Cash",
-			id: 1634914723214.3079,
-			toAccount: "",
-			transactionAmount: "123",
-			transactionCategory: "Food",
-			transactionDate: new Date(),
-			transactionNotes: "Test",
-			transactionType: "expense"
-		}
+		// {
+		// 	fromAccount: "Cash",
+		// 	id: 1634914723214.3079,
+		// 	toAccount: "",
+		// 	transactionAmount: "123",
+		// 	transactionCategory: "Salary",
+		// 	transactionDate: new Date(),
+		// 	transactionNotes: "Test",
+		// 	transactionType: "income"
+		// },
+		// {
+		// 	fromAccount: "Cash",
+		// 	id: 1634914723214.3079,
+		// 	toAccount: "",
+		// 	transactionAmount: "123",
+		// 	transactionCategory: "Food",
+		// 	transactionDate: new Date(),
+		// 	transactionNotes: "Test",
+		// 	transactionType: "expense"
+		// }
 
 	]); // Stores the submitted entries of the user
 	const [categories, setCategories] = useState({
-		income: ["Salary", "Interest", "Other"],
+		income: ["Salary", "Interest", "x", "y", "z", "a", "b","Other"],
 		expense: ["Food", "Transportation", "Other"],
 	});
 	const [showForm, setShowForm] = useState(false); // show/hide the TransactionInput component
