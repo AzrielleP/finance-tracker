@@ -6,6 +6,7 @@ export const FlexContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: ${({justifySmall}) => justifySmall};
+
     @media screen and (min-width: 768px) {
         justify-content: ${({justifyLarge}) => justifyLarge};
     }
@@ -21,7 +22,7 @@ export const FixedContainer = styled.div`
     padding: 2em 0 1em 0;
     width: 100%;
     z-index: 2;
-    background: ${generalColors.white};
+    background-color: ${generalColors.white};
 `
 export const LargeNumberContainer = styled.div`
     flex: 1;
@@ -87,7 +88,7 @@ export const SidebarContainer = styled.div`
     top: 0;
     padding: 0 8vw;
     z-index: 10;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     background: ${generalColors.lightAccent};
 
@@ -96,6 +97,9 @@ export const SidebarContainer = styled.div`
         position: static;
         padding: 0 2vw;
     }
+`
+export const SidebarFixedContainer = styled(FixedContainer)`
+    background-color: ${generalColors.lightAccent};
 `
 export const SidebarSelectors = styled(FlexContainer)`
     padding: 1em 0 0.5em 0;
@@ -121,7 +125,7 @@ export const SidebarSelectors = styled(FlexContainer)`
         `
         };
         content: "";
-        background-color: white;
+        background-color: ${generalColors.lightAccent};
     }
 
     @media screen and (min-width: 768px) {
@@ -135,8 +139,10 @@ export const SidebarSelectors = styled(FlexContainer)`
     }
 `
 export const ChartContainer = styled.div`
-    margin: 0 1.5em  1.5em 1.5em;
     min-height: 30vh;
+    @media screen and (min-width: 1024px) {
+        margin: 0 2em 2em 2em;
+    }
 `
 export const AccountContainer = styled(FlexContainer)`
     justify-content: space-between;

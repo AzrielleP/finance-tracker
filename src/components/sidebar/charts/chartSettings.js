@@ -60,7 +60,6 @@ const customization = (data) => {
 		}
 		
 	});
-	
 };
 
 export {createData, customization}

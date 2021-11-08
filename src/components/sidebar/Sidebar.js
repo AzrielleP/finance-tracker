@@ -7,7 +7,7 @@ import { computeAssets, computeLiabilities } from "../../helpers/calc";
 // Styled Components
 import * as Container from "../styled-components/Containers.styled";
 import { SidebarRadio } from "../styled-components/Forms.styled";
-import { Subtitle, Bold } from "../styled-components/Text.styled";
+import { Bold } from "../styled-components/Text.styled";
 import { ShowSidebarButton } from "../styled-components/Buttons.styled";
 import { ReactComponent as CloseButton } from "./../styled-components/svg/CloseButton.svg";
 import { ReactComponent as SettingsIcon } from "./../styled-components/svg/Settings.svg";
@@ -71,7 +71,7 @@ function Sidebar(props) {
 
     return (
         <Container.SidebarContainer $display={showSidebar}>
-            <Container.FixedContainer>
+            <Container.SidebarFixedContainer>
                 <Container.FlexContainer justifySmall='space-between' justifyLarge='flex-end'>
                     <ShowSidebarButton onClick={handleSidebar} alignment='right'>
                         <CloseButton />
@@ -104,7 +104,7 @@ function Sidebar(props) {
                         ACCOUNTS
                     </Bold>
                 </Container.SidebarSelectors>
-            </Container.FixedContainer>
+            </Container.SidebarFixedContainer>
 
             {option === "categories" && <SidebarCategories transaction={transaction} dateToRender={dateToRender} />}
             {option === "accounts" && (
