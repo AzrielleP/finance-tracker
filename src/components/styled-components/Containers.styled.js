@@ -166,8 +166,22 @@ export const Dot = styled.span`
 
 // TransactionInput
 export const ModalContainer = styled.div`
-    z-index: 10;
-    background: ${generalColors.white};
-    height: 100vh;
     position: absolute;
+    height: 100vh;
+    width: 100vw;
+    z-index: 10;
+    padding: 2em;
+    background: ${generalColors.white};
+`
+
+export const TransTypeContainer = styled(FlexContainer)`
+    margin: 1em 0;
+
+    & label:nth-child(4) {
+        margin: 0 0.5em;
+    }
+`
+
+export const TransInputContainer = styled.div`
+    margin: 1em 0;
 `

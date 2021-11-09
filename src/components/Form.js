@@ -1,6 +1,10 @@
 import React from "react";
 import moment from "moment";
 
+import { Small, Bold} from './styled-components/Text.styled';
+import { FlexContainer, ModalContainer, TransTypeContainer, TransInputContainer } from './styled-components/Containers.styled';
+import { FormRadio, FormLabel, FormInput, FormSelect, FormTxtArea } from './styled-components/Forms.styled';
+
 function Form(props) {
     const {
         accounts,
@@ -16,176 +20,217 @@ function Form(props) {
     } = props;
 
     return (
-        <div>
-            <h2>{mode === "add" ? "Add" : "Edit"} Transaction</h2>
+        <ModalContainer>
+            <Small>{mode === "add" ? "Add" : "Edit"} Transaction</Small>
+
             <form onSubmit={handleSubmit}>
                 {/* Select transaction type */}
-                <label>
-                    <input
+                <TransTypeContainer>
+                    <FormRadio
                         type='radio'
                         name='transactionType'
                         value='income'
+                        id = "income"
                         checked={values.transactionType === "income"}
                         onChange={handleValueChange}
                     />
-                    Income
-                </label>
 
-                <label>
-                    <input
+                    <FormLabel htmlFor = 'income'>    
+                        <Bold textAlign = 'center'>
+                            Income
+                        </Bold>
+                    </FormLabel>
+
+                    <FormRadio
                         type='radio'
                         name='transactionType'
                         value='expense'
+                        id='expense'
                         checked={values.transactionType === "expense"}
                         onChange={handleValueChange}
                     />
-                    Expense
-                </label>
 
-                <label>
-                    <input
+                    <FormLabel htmlFor = 'expense'>
+                        <Bold textAlign = 'center'>
+                            Expense
+                        </Bold>
+                    </FormLabel>
+
+                    <FormRadio
                         type='radio'
                         name='transactionType'
                         value='transfer'
+                        id='transfer'
                         checked={values.transactionType === "transfer"}
                         onChange={handleValueChange}
                     />
-                    Transfer
-                </label>
-                <br />
 
-                {/* Transaction information */}
-                <label>
-                    Transaction Date:
-                    <input
-                        type='date'
-                        name='transactionDate'
-                        onChange={handleValueChange}
-                        value={moment(values.transactionDate).format("YYYY-MM-DD")}
-                    />
-                </label>
-                <br />
+                    <FormLabel htmlFor = 'transfer'>
+                        <Bold textAlign = 'center'>
+                            Transfer
+                        </Bold>
+                    </FormLabel>
 
-                {/* For Income and Expense transaction types */}
-                {values.transactionType !== "transfer" && (
-                    <div>
-                        <label>
-                            Account:
-                            <select value={values.fromAccount} onChange={handleValueChange} name='fromAccount'>
-                                <option value='' disabled>
-                                    -- Select one --
-                                </option>
-                                {accounts.map((item, key) => {
-                                    return (
-                                        <option value={item} key={key}>
-                                            {item}
-                                        </option>
-                                    );
-                                })}
-                            </select>
-                            <span style={{ color: "red" }}>{errorMsgs.fromAccount}</span>
-                        </label>
-                        <br />
+                </TransTypeContainer>
+   
+                <TransInputContainer>
+                    {/* Transaction information */}
+                    <FlexContainer justifySmall = 'space-between'>
+                    <p htmlFor = 'transactionDate' as = 'label'>
+                        Date
+                    </p>
+                    <FormInput
+                            type='date'
+                            name='transactionDate'
+                            id = 'transactionDate'
+                            onChange={handleValueChange}
+                            value={moment(values.transactionDate).format("YYYY-MM-DD")}
+                        />
+                    </FlexContainer>
 
-                        <label>
-                            Category:
-                            <select
-                                value={values.transactionCategory}
-                                onChange={handleValueChange}
-                                name='transactionCategory'
-                            >
-                                <option value='' disabled>
-                                    -- Select one --
-                                </option>
-                                {categories[values.transactionType].map((item, key) => {
-                                    return (
-                                        <option value={item} key={key}>
-                                            {item}
-                                        </option>
-                                    );
-                                })}
-                            </select>
-                            <span style={{ color: "red" }}>{errorMsgs.transactionCategory}</span>
-                        </label>
-                        <br />
-                    </div>
-                )}
+                    {/* For Income and Expense transaction types */}
+                    {values.transactionType !== "transfer" && (
+                        <div>
+                            <FlexContainer justifySmall = 'space-between'>
+                                <p htmlFor = 'fromAccount' as = 'label'>
+                                    Account
+                                </p>
+                                <FormSelect 
+                                    value={values.fromAccount} 
+                                    onChange={handleValueChange} 
+                                    name='fromAccount'
+                                    id = 'fromAccount'
+                                >
+                                    <option value='' disabled>
+                                        -- Select one --
+                                    </option>
+                                    {accounts.map((item, key) => {
+                                        return (
+                                            <option value={item} key={key}>
+                                                {item}
+                                            </option>
+                                        );
+                                    })}
+                                </FormSelect>
+                                {/* <span style={{ color: "red" }}>{errorMsgs.fromAccount}</span> */}
+                            </FlexContainer>
 
-                {/* For transfer transaction type */}
-                {values.transactionType === "transfer" && (
-                    <div>
-                        <label>
-                            From:
-                            <select value={values.fromAccount} onChange={handleValueChange} name='fromAccount'>
-                                <option value='' disabled>
-                                    -- Select One --
-                                </option>
-                                {accounts.map((item, key) => {
-                                    return (
-                                        <option value={item} key={key}>
-                                            {item}
-                                        </option>
-                                    );
-                                })}
-                            </select>
-                            <span style={{ color: "red" }}>{errorMsgs.fromAccount}</span>
-                        </label>
-                        <br />
+                            <FlexContainer justifySmall = 'space-between'>
+                                <p htmlFor = 'transactionCategory' as = 'label'>
+                                Category
+                                </p>
+                                <FormSelect
+                                    value={values.transactionCategory}
+                                    onChange={handleValueChange}
+                                    id = 'transactionCategory'
+                                    name='transactionCategory'
+                                >
+                                    <option value='' disabled>
+                                        -- Select one --
+                                    </option>
+                                    {categories[values.transactionType].map((item, key) => {
+                                        return (
+                                            <option value={item} key={key}>
+                                                {item}
+                                            </option>
+                                        );
+                                    })}
+                                </FormSelect>
+                                {/* <span style={{ color: "red" }}>{errorMsgs.transactionCategory}</span> */}
+                            </FlexContainer>
+                        </div>
+                    )}
 
-                        <label>
-                            To:
-                            <select value={values.toAccount} onChange={handleValueChange} name='toAccount'>
-                                <option value='' disabled>
-                                    -- Select One --
-                                </option>
-                                {accounts.map((item, key) => {
-                                    return (
-                                        <option value={item} key={key}>
-                                            {item}
-                                        </option>
-                                    );
-                                })}
-                            </select>
-                            <span style={{ color: "red" }}>{errorMsgs.toAccount}</span>
-                        </label>
-                        <br />
-                    </div>
-                )}
+                    {/* For transfer transaction type */}
+                    {values.transactionType === "transfer" && (
+                        <div>
+                            <FlexContainer justifySmall = 'space-between'>
+                                <p htmlFor = 'fromAccount' as = 'label'>
+                                    From
+                                </p>
+                                <FormSelect value={values.fromAccount} onChange={handleValueChange} name='fromAccount' id = 'fromAccount'>
+                                    <option value='' disabled>
+                                        -- Select One --
+                                    </option>
+                                    {accounts.map((item, key) => {
+                                        return (
+                                            <option value={item} key={key}>
+                                                {item}
+                                            </option>
+                                        );
+                                    })}
+                                </FormSelect>
+                                {/* <span style={{ color: "red" }}>{errorMsgs.fromAccount}</span> */}
+                            </FlexContainer>
 
-                <label>
-                    Amount:
-                    <input
-                        type='number'
-                        name='transactionAmount'
-                        onChange={handleValueChange}
-                        value={values.transactionAmount}
-                        min='0'
-                        placeholder='0'
-                        onKeyDown={blockInvalidCharacter}
-                    />
-                    <span style={{ color: "red" }}>{errorMsgs.transactionAmount}</span>
-                </label>
-                <br />
-                <label>
-                    Notes:
-                    <input
-                        type='text'
-                        name='transactionNotes'
-                        value={values.transactionNotes}
-                        onChange={handleValueChange}
-                    />
-                </label>
-                <button type='submit'>Submit</button>
-                <button type='button' onClick={cancelSubmit}>
-                    Cancel
-                </button>
-                {mode === 'edit' && 
-                    <button type = 'button' onClick = {handleDeleteTransaction}> 
-                        Delete
-                    </button>
-                }
+                            <FlexContainer justifySmall = 'space-between'>
+                                <p htmlFor = 'toAccount' as = 'label'>
+                                    To
+                                </p>
+                                <FormSelect value={values.toAccount} onChange={handleValueChange} name='toAccount' id='toAccount'>
+                                    <option value='' disabled>
+                                        -- Select One --
+                                    </option>
+                                    {accounts.map((item, key) => {
+                                        return (
+                                            <option value={item} key={key}>
+                                                {item}
+                                            </option>
+                                        );
+                                    })}
+                                </FormSelect>
+                                {/* <span style={{ color: "red" }}>{errorMsgs.toAccount}</span> */}
+                            </FlexContainer>
+                        </div>
+                    )}
+
+                    <FlexContainer justifySmall = 'space-between'>
+                        <p htmlFor = 'transactionAmount' as = 'label'>
+                            Amount
+                        </p>
+                        <FormInput
+                            type='number'
+                            name='transactionAmount'
+                            id = 'transactionAmount'
+                            onChange={handleValueChange}
+                            value={values.transactionAmount}
+                            min='0'
+                            placeholder='0'
+                            onKeyDown={blockInvalidCharacter}
+                        />
+                            {/* <span style={{ color: "red" }}>{errorMsgs.transactionAmount}</span> */}
+                    </FlexContainer>
+
+                    <FlexContainer justifySmall = 'space-between'>
+                        <p htmlFor = 'transactionNotes' as = 'label'>
+                            Notes
+                        </p>
+                        <FormInput
+                            type='text'
+                            name='transactionNotes'
+                            id='transactionNotes'
+                            value={values.transactionNotes}
+                            onChange={handleValueChange}
+                        />
+                    </FlexContainer>
+                </TransInputContainer>
+
+                <TransInputContainer>
+                    {mode === 'edit' && 
+                        <button type = 'button' onClick = {handleDeleteTransaction}> 
+                            Delete
+                        </button>
+                    }
+                    <FlexContainer>
+                        <button type='submit'>Save</button>
+                        <button type='button' onClick={cancelSubmit}>
+                            Cancel
+                        </button>
+                    </FlexContainer>
+                    
+                </TransInputContainer>
             </form>
-        </div>
+        </ModalContainer>
     );
 }
 

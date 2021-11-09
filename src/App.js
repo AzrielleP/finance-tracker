@@ -159,20 +159,19 @@ function App() {
 	return (
 		<div>
 		<GlobalStyle />
-			<ModalContainer>
-				{showForm && (
-					<TransactionInput
-						accounts={accounts}
-						categories={categories}
-						handleAddTransaction={handleAddTransaction}
-						clickedTransData={clickedTransData}
-						mode={mode}
-						hideForm={hideForm}
-						handleEditTransaction={handleEditTransaction}
-						handleDeleteTransaction={handleDeleteTransaction}
-					/>
-				)}
-			</ModalContainer>
+			
+			{showForm && (
+				<TransactionInput
+					accounts={accounts}
+					categories={categories}
+					handleAddTransaction={handleAddTransaction}
+					clickedTransData={clickedTransData}
+					mode={mode}
+					hideForm={hideForm}
+					handleEditTransaction={handleEditTransaction}
+					handleDeleteTransaction={handleDeleteTransaction}
+				/>
+			)}
 
 			<AppContainer>
 				<TransactionOutput
