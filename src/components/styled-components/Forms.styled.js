@@ -42,7 +42,7 @@ const inputStyles = css`
     background-color: ${generalColors.white};
     outline: 0;
     border-width: 0 0 0.5px;
-    border-color: ${generalColors.lightAccent};
+    border-color: ${generalColors.darkAccent};
 `
 
 export const FormInput = styled.input `${inputStyles}`

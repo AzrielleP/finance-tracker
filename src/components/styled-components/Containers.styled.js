@@ -183,5 +183,17 @@ export const TransTypeContainer = styled(FlexContainer)`
 `
 
 export const TransInputContainer = styled.div`
-    margin: 1em 0;
+    margin: 2em 0;
+
+    & button:nth-child(1) {
+        margin-right: 0.5em;
+    }
+
+    & button:nth-child(2) {
+        margin: 0 0.25em;
+    }
+
+    & button:nth-child(3) {
+        margin-left: 0.5em;
+    }
 `

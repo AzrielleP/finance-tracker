@@ -3,7 +3,9 @@ import moment from "moment";
 
 import { Small, Bold} from './styled-components/Text.styled';
 import { FlexContainer, ModalContainer, TransTypeContainer, TransInputContainer } from './styled-components/Containers.styled';
-import { FormRadio, FormLabel, FormInput, FormSelect, FormTxtArea } from './styled-components/Forms.styled';
+import { FormRadio, FormLabel, FormInput, FormSelect } from './styled-components/Forms.styled';
+import { FormButton } from './styled-components/Buttons.styled';
+import { generalColors, lightTheme } from "./styled-components/Themes-Style.styled";
 
 function Form(props) {
     const {
@@ -216,16 +218,17 @@ function Form(props) {
                 </TransInputContainer>
 
                 <TransInputContainer>
-                    {mode === 'edit' && 
-                        <button type = 'button' onClick = {handleDeleteTransaction}> 
-                            Delete
-                        </button>
-                    }
                     <FlexContainer>
-                        <button type='submit'>Save</button>
-                        <button type='button' onClick={cancelSubmit}>
+                        <FormButton type='submit' color = {lightTheme.blue}>Save</FormButton>
+                        {
+                            mode === 'edit' && 
+                            <FormButton type = 'button' onClick = {handleDeleteTransaction} color = {generalColors.red}> 
+                                Delete
+                            </FormButton>
+                        }
+                        <FormButton type='button' onClick={cancelSubmit} color = {generalColors.darkAccent}>
                             Cancel
-                        </button>
+                        </FormButton>
                     </FlexContainer>
                     
                 </TransInputContainer>

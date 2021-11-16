@@ -39,3 +39,13 @@ export const ShowSidebarButton = styled.button`
         display: none;
     }
 `
+
+// TransactionInput Form
+export const FormButton = styled.button`
+    flex: 1;
+    padding: 0.75em;
+    border-radius: 5px;
+    font: 12px 'Open Sans', sans-serif;
+    color: ${generalColors.white};
+    background-color: ${({color}) => color};
+`
