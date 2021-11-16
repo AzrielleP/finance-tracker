@@ -157,7 +157,7 @@ function App() {
 	}, [transId]);
 
 	return (
-		<div>
+		<>
 		<GlobalStyle />
 			
 			{showForm && (
@@ -198,7 +198,7 @@ function App() {
 				handleAddSettings={handleAddSettings}
 				handleEdit={handleEdit}
 			/> */}
-		</div>
+		</>
 	);
 }
 

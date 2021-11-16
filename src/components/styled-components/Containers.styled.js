@@ -196,4 +196,8 @@ export const TransInputContainer = styled.div`
     & button:nth-child(3) {
         margin-left: 0.5em;
     }
+
+    & >div {
+        margin: 1em 0;
+    }
 `

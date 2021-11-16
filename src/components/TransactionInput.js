@@ -38,31 +38,32 @@ function AddEntry(props) {
 
     const handleValidation = () => {
         let isFormValid = true;
+        const message = "Required Field"
 
         if (values.fromAccount === "") {
             isFormValid = false;
-            setErrorMsgs((prevState) => ({ ...prevState, fromAccount: "cannot be empty" }));
+            setErrorMsgs((prevState) => ({ ...prevState, fromAccount: message }));
         } else {
             setErrorMsgs((prevState) => ({ ...prevState, fromAccount: "" }));
         }
 
         if (values.transactionType === "transfer" && values.toAccount === "") {
             isFormValid = false;
-            setErrorMsgs((prevState) => ({ ...prevState, toAccount: "cannot be empty" }));
+            setErrorMsgs((prevState) => ({ ...prevState, toAccount: message }));
         } else {
             setErrorMsgs((prevState) => ({ ...prevState, toAccount: "" }));
         }
 
         if (values.transactionType !== "transfer" && values.transactionCategory === "") {
             isFormValid = false;
-            setErrorMsgs((prevState) => ({ ...prevState, transactionCategory: "cannot be empty" }));
+            setErrorMsgs((prevState) => ({ ...prevState, transactionCategory: message }));
         } else {
             setErrorMsgs((prevState) => ({ ...prevState, transactionCategory: "" }));
         }
 
         if (values.transactionAmount === 0) {
             isFormValid = false;
-            setErrorMsgs((prevState) => ({ ...prevState, transactionAmount: "cannot be 0" }));
+            setErrorMsgs((prevState) => ({ ...prevState, transactionAmount: message }));
         } else {
             setErrorMsgs((prevState) => ({ ...prevState, transactionAmount: "" }));
         }
@@ -115,6 +116,7 @@ function AddEntry(props) {
             handleValueChange = {handleValueChange}
             handleDeleteTransaction = {handleDeleteTransaction}
             blockInvalidCharacter = {blockInvalidCharacter}
+            handleValidation = {handleValidation}
         />
     );
 }

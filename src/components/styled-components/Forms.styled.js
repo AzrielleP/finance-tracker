@@ -36,7 +36,6 @@ export const FormLabel = styled.label`
 `
 
 const inputStyles = css`
-    margin: 0.5em;
     width: 14em;
     font-family: 'Open Sans', sans-serif;
     background-color: ${generalColors.white};
