@@ -44,7 +44,12 @@ const inputStyles = css`
     border-color: ${generalColors.darkAccent};
 
     @media screen and (min-width: 768px) {
-        width: 33em;
+        width: 30em;
+    }
+
+    @media screen and (min-width: 1024px) {
+        width: 28em;
+        font-size: 16px;
     }
 `
 

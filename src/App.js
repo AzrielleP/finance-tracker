@@ -6,7 +6,7 @@ import Settings from "./components/settings/Settings";
 import Sidebar from "./components/sidebar/Sidebar";
 import { processData, updateTransaction } from "./helpers/groupingData";
 import { GlobalStyle } from "./components/styled-components/GlobalStyle";
-import { AppContainer, ModalBackground, ModalContainer } from "./components/styled-components/Containers.styled";
+import { AppContainer, ModalBackground} from "./components/styled-components/Containers.styled";
 
 function App() {
 	const [accounts, setAccounts] = useState(["Cash", "Bank", "Other"]);
@@ -160,22 +160,19 @@ function App() {
 		<>
 		<GlobalStyle />
 			
-			<ModalContainer>
-				<ModalBackground show = {showForm}/>
-				{showForm && (
-					<TransactionInput
-						accounts={accounts}
-						categories={categories}
-						handleAddTransaction={handleAddTransaction}
-						clickedTransData={clickedTransData}
-						mode={mode}
-						hideForm={hideForm}
-						handleEditTransaction={handleEditTransaction}
-						handleDeleteTransaction={handleDeleteTransaction}
-					/>
-				)}
-			</ModalContainer>
-			
+			<ModalBackground show = {showForm}/>
+			{showForm && (
+				<TransactionInput
+					accounts={accounts}
+					categories={categories}
+					handleAddTransaction={handleAddTransaction}
+					clickedTransData={clickedTransData}
+					mode={mode}
+					hideForm={hideForm}
+					handleEditTransaction={handleEditTransaction}
+					handleDeleteTransaction={handleDeleteTransaction}
+				/>
+			)}
 
 			<AppContainer>
 				<TransactionOutput

@@ -4,7 +4,7 @@ import moment from "moment";
 import { Small, Bold } from "./styled-components/Text.styled";
 import {
 	FlexContainer,
-	FormContainer,
+	ModalContainer,
 	TransTypeContainer,
 	TransInputContainer,
 } from "./styled-components/Containers.styled";
@@ -27,7 +27,7 @@ function Form(props) {
 	} = props;
 
 	return (
-		<FormContainer>
+		<ModalContainer>
 			<Small>{mode === "add" ? "Add" : "Edit"} Transaction</Small>
 
 			<form onSubmit={handleSubmit}>
@@ -262,7 +262,7 @@ function Form(props) {
 					</FlexContainer>
 				</TransInputContainer>
 			</form>
-		</FormContainer>
+		</ModalContainer>
 	);
 }
 

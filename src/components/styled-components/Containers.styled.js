@@ -54,11 +54,24 @@ export const ModalBackground = styled.div`
 `
 export const ModalContainer = styled.div`
     position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
     width: 100vw;
+    z-index: 10;
+    padding: 10vw;
+    background: ${generalColors.white};
+
+    @media screen and (min-width: 768px) {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        height: 35em;
+        width: 45em;
+        z-index: 30;
+        padding: 5em;
+        margin-left: auto; 
+        margin-right: auto; 
+        border-radius: 10px;
+    }
 `
 
 // App
@@ -188,22 +201,6 @@ export const Dot = styled.span`
 `
 
 // TransactionInput
-export const FormContainer = styled.div`
-    height: 100vh;
-    width: 100vw;
-    z-index: 10;
-    padding: 10vw;
-    background: ${generalColors.white};
-
-    @media screen and (min-width: 768px) {
-        height: 35em;
-        width: 45em;
-        z-index: 30;
-        padding: 5em;
-        border-radius: 10px;
-    }
-`
-
 export const TransTypeContainer = styled(FlexContainer)`
     margin: 1em 0;
 
