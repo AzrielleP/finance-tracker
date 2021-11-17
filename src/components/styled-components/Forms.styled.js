@@ -36,12 +36,16 @@ export const FormLabel = styled.label`
 `
 
 const inputStyles = css`
-    width: 14em;
+    width: 60vw;
     font-family: 'Open Sans', sans-serif;
     background-color: ${generalColors.white};
     outline: 0;
     border-width: 0 0 0.5px;
     border-color: ${generalColors.darkAccent};
+
+    @media screen and (min-width: 768px) {
+        width: 33em;
+    }
 `
 
 export const FormInput = styled.input `${inputStyles}`

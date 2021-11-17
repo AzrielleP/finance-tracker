@@ -38,6 +38,29 @@ export const LargeNumberContainer = styled.div`
     }
 `
 
+// Modal
+export const ModalBackground = styled.div`
+    @media screen and (min-width: 768px) {
+        display: ${({show}) => show? "block": "none"};
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 25;
+        height: 100vh;
+        width: 100vw;
+        opacity: 0.6;
+        background-color: ${generalColors.darkAccent};   
+    }         
+`
+export const ModalContainer = styled.div`
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+`
+
 // App
 export const AppContainer = styled.div`
     @media screen and (min-width: 768px) {
@@ -165,13 +188,20 @@ export const Dot = styled.span`
 `
 
 // TransactionInput
-export const ModalContainer = styled.div`
-    position: absolute;
+export const FormContainer = styled.div`
     height: 100vh;
     width: 100vw;
     z-index: 10;
-    padding: 2em;
+    padding: 10vw;
     background: ${generalColors.white};
+
+    @media screen and (min-width: 768px) {
+        height: 35em;
+        width: 45em;
+        z-index: 30;
+        padding: 5em;
+        border-radius: 10px;
+    }
 `
 
 export const TransTypeContainer = styled(FlexContainer)`

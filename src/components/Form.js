@@ -4,7 +4,7 @@ import moment from "moment";
 import { Small, Bold } from "./styled-components/Text.styled";
 import {
 	FlexContainer,
-	ModalContainer,
+	FormContainer,
 	TransTypeContainer,
 	TransInputContainer,
 } from "./styled-components/Containers.styled";
@@ -24,11 +24,10 @@ function Form(props) {
 		handleValueChange,
 		handleDeleteTransaction,
 		blockInvalidCharacter,
-		handleValidation,
 	} = props;
 
 	return (
-		<ModalContainer>
+		<FormContainer>
 			<Small>{mode === "add" ? "Add" : "Edit"} Transaction</Small>
 
 			<form onSubmit={handleSubmit}>
@@ -164,7 +163,7 @@ function Form(props) {
 										id="fromAccount"
 									>
 										<option value="" disabled>
-											-- Select One --
+											-- Select one --
 										</option>
 										{accounts.map((item, key) => {
 											return (
@@ -190,7 +189,7 @@ function Form(props) {
 										id="toAccount"
 									>
 										<option value="" disabled>
-											-- Select One --
+											-- Select one --
 										</option>
 										{accounts.map((item, key) => {
 											return (
@@ -263,7 +262,7 @@ function Form(props) {
 					</FlexContainer>
 				</TransInputContainer>
 			</form>
-		</ModalContainer>
+		</FormContainer>
 	);
 }
 

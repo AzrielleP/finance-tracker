@@ -116,7 +116,6 @@ function AddEntry(props) {
             handleValueChange = {handleValueChange}
             handleDeleteTransaction = {handleDeleteTransaction}
             blockInvalidCharacter = {blockInvalidCharacter}
-            handleValidation = {handleValidation}
         />
     );
 }
