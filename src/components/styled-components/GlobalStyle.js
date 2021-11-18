@@ -32,6 +32,7 @@ export const GlobalStyle = createGlobalStyle`
         border: none;
         outline: none;
         background: none;
+        cursor: pointer;
     }
 
     @media screen and (min-width: 1024px) {

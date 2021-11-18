@@ -44,8 +44,8 @@ const totalValueFormat = (value) => {
 
 const singleValueFormat = (value) => {
     return numeral(Math.abs(value)).format("0.00");
-}
- 
+};
+
 // * For transactions
 
 // Calculate the total transaction amount of income and expense per day and per month
@@ -104,5 +104,5 @@ export {
     computeLiabilities,
     computeTransAmounts,
     totalValueFormat,
-    singleValueFormat
+    singleValueFormat,
 };

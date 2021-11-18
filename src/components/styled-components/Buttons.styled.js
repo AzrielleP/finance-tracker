@@ -3,8 +3,8 @@ import { generalColors, lightTheme, darkTheme } from "./Themes-Style.styled";
 
 // Buttons inside TransactionOutput
 export const ArrowButton = styled.button`
+	margin: 0 1em;
 	color: ${lightTheme.blue};
-	margin: 1em;
 `
 export const NewButton = styled.button`
 	padding: 0.5em 1em;
@@ -44,8 +44,9 @@ export const ShowSidebarButton = styled.button`
 export const FormButton = styled.button`
     flex: 1;
     padding: 0.75em;
+    font: bold 14px 'Open Sans', sans-serif;
+    color: ${({fontColor}) => fontColor};
+    background-color: ${({bgColor}) => bgColor};
+    border: 1px solid ${({borderColor}) => borderColor};
     border-radius: 5px;
-    font: 12px 'Open Sans', sans-serif;
-    color: ${generalColors.white};
-    background-color: ${({color}) => color};
 `

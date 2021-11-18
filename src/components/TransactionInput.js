@@ -2,7 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 import Form from "./Form";
 
 function AddEntry(props) {
-    const { accounts, categories, handleAddTransaction, mode, hideForm, clickedTransData, handleEditTransaction, handleDeleteTransaction } = props;
+    const {
+        accounts,
+        categories,
+        handleAddTransaction,
+        mode,
+        hideForm,
+        clickedTransData,
+        handleEditTransaction,
+        handleDeleteTransaction,
+    } = props;
     const initialState = {
         id: "",
         transactionType: "income",
@@ -13,7 +22,7 @@ function AddEntry(props) {
         transactionAmount: 0,
         transactionNotes: "",
     };
-    const [values, setValues] = useState(mode === 'add' ? initialState: clickedTransData);
+    const [values, setValues] = useState(mode === "add" ? initialState : clickedTransData);
     const [errorMsgs, setErrorMsgs] = useState({
         fromAccount: "",
         toAccount: "",
@@ -21,7 +30,7 @@ function AddEntry(props) {
         transactionAmount: "",
     });
 
-    const first = useRef(true)
+    const first = useRef(true);
     useEffect(() => {
         // Whenever we switch between transaction types, always reset transactionCategory
         if (first.current) {
@@ -38,7 +47,7 @@ function AddEntry(props) {
 
     const handleValidation = () => {
         let isFormValid = true;
-        const message = "Required Field"
+        const message = "Required Field";
 
         if (values.fromAccount === "") {
             isFormValid = false;
@@ -91,8 +100,8 @@ function AddEntry(props) {
                 values.transactionAmount *= -1;
             }
             values.id = generateId();
-            mode === 'edit' ?  handleEditTransaction(values): handleAddTransaction(values);
-           
+            mode === "edit" ? handleEditTransaction(values) : handleAddTransaction(values);
+
             clearInputs();
             hideForm();
         }
@@ -102,20 +111,20 @@ function AddEntry(props) {
         event.preventDefault();
         clearInputs();
         hideForm();
-    }
+    };
 
     return (
         <Form
-            accounts = {accounts}
-            categories = {categories}
-            errorMsgs = {errorMsgs}
-            values = {values}
-            mode = {mode}
-            handleSubmit = {handleSubmit}
-            cancelSubmit = {cancelSubmit}
-            handleValueChange = {handleValueChange}
-            handleDeleteTransaction = {handleDeleteTransaction}
-            blockInvalidCharacter = {blockInvalidCharacter}
+            accounts={accounts}
+            categories={categories}
+            errorMsgs={errorMsgs}
+            values={values}
+            mode={mode}
+            handleSubmit={handleSubmit}
+            cancelSubmit={cancelSubmit}
+            handleValueChange={handleValueChange}
+            handleDeleteTransaction={handleDeleteTransaction}
+            blockInvalidCharacter={blockInvalidCharacter}
         />
     );
 }

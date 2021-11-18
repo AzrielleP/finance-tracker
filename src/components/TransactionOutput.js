@@ -3,14 +3,7 @@ import moment from "moment";
 import { totalValueFormat, singleValueFormat } from "../helpers/calc";
 import { ReactComponent as NoDataImage } from "./styled-components/svg/NoData.svg";
 import { ArrowButton, NewButton, TransactionDetails } from "./styled-components/Buttons.styled";
-import {
-    LargeHeader,
-    Bold,
-    Subtitle,
-    SubtitleLight,
-    Small,
-    SmallOverflowingText,
-} from "./styled-components/Text.styled";
+import { LargeHeader, Bold, Subtitle, Small, SmallOverflowingText } from "./styled-components/Text.styled";
 import {
     FlexContainer,
     TransactionOutput,
@@ -66,12 +59,16 @@ function Transaction(props) {
 
                     <LargeNumberContainer>
                         <Bold color={generalColors.red}>EXPENSE</Bold>
-                        <Subtitle color={generalColors.red}>{totalValueFormat(dataToRender.monthExpenseTotal)}</Subtitle>
+                        <Subtitle color={generalColors.red}>
+                            {totalValueFormat(dataToRender.monthExpenseTotal)}
+                        </Subtitle>
                     </LargeNumberContainer>
 
                     <LargeNumberContainer>
                         <Bold>TOTAL</Bold>
-                        <Subtitle amount={dataToRender.monthTotal}>{totalValueFormat(dataToRender.monthTotal)}</Subtitle>
+                        <Subtitle amount={dataToRender.monthTotal}>
+                            {totalValueFormat(dataToRender.monthTotal)}
+                        </Subtitle>
                     </LargeNumberContainer>
                 </FlexContainer>
             </FixedContainer>

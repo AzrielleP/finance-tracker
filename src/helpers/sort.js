@@ -1,10 +1,8 @@
-// * CONTAINS ALL SORT FUNCTIONS 
+// * CONTAINS ALL SORT FUNCTIONS
 
 // Sort data with the most recent one on top
 const sortByDate = (data) => {
-	return data.sort(
-		(item1, item2) => item2.transactionDate.getTime() - item1.transactionDate.getTime()
-	);
+    return data.sort((item1, item2) => item2.transactionDate.getTime() - item1.transactionDate.getTime());
 };
 
 // Sort categories alphabetically

@@ -28,6 +28,7 @@ export const FormRadio = styled.input`
 `
 export const FormLabel = styled.label`
     flex: 1;
+    cursor: pointer;
     padding: 0.25em 0.5em;
     border: 0.5px solid ${generalColors.darkAccent};
     border-radius: 5px;

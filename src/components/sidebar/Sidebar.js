@@ -79,7 +79,7 @@ function Sidebar(props) {
                     <SettingsIcon />
                 </Container.FlexContainer>
 
-                <Container.SidebarSelectors justifySmall='space-around' option = {option}>
+                <Container.SidebarSelectors justifySmall='space-around' option={option}>
                     <SidebarRadio
                         type='radio'
                         name='sidebarOption'
