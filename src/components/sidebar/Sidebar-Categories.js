@@ -23,7 +23,9 @@ function SidebarCategories(props) {
 					<Bold>Income</Bold>
 					{incomeCategories.length === 0 ?
 						<Small>No available data</Small> :
-						<Pie data = {createData(incomeCategories, 'income')} options = {customization(incomeCategories)}/>
+						<div>
+							<Pie data = {createData(incomeCategories, 'income')} options = {customization(incomeCategories)}/>
+						</div>
 					}
 				</ChartContainer>
 				
@@ -31,7 +33,9 @@ function SidebarCategories(props) {
 					<Bold>Expense</Bold>
 					{expenseCategories.length === 0 ? 
 						<Small>No available data</Small> :
-						<Pie data = {createData(expenseCategories, 'expense')} options = {customization(expenseCategories)}/>
+						<div>
+							<Pie data = {createData(expenseCategories, 'expense')} options = {customization(expenseCategories)}/>
+						</div>
 					}
 				</ChartContainer>
 			</ScrollingContainer>

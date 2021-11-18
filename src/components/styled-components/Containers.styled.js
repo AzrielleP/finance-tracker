@@ -86,7 +86,7 @@ export const AppContainer = styled.div`
 
 // TransactionOutput
 export const TransactionOutput = styled.div`
-    padding: 0 8vw;
+    padding: 0 5vw;
 
     @media screen and (min-width: 1024px) {
         padding: 0 7em;
@@ -171,13 +171,24 @@ export const SidebarSelectors = styled(FlexContainer)`
 
     @media screen and (min-width: 1024px) {
         padding: 1.5em 0 0.5em 0;
-        margin: 0 0 2em 0;
     }
 `
 export const ChartContainer = styled.div`
     min-height: 30vh;
+
+    @media screen and (max-width: 767px) {
+        div {
+            margin: auto;
+            max-width: 20em; 
+        }
+    }
+
     @media screen and (min-width: 1024px) {
-        margin: 0 2em 2em 2em;
+        margin: 0;
+
+        div {
+            padding: 1em;
+        }
     }
 `
 export const AccountContainer = styled(FlexContainer)`

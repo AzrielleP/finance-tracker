@@ -56,7 +56,7 @@ const customization = (data) => {
 			}
 		},
 		layout: {
-			padding: 15
+			padding: 5
 		}
 		
 	});
