@@ -1,15 +1,17 @@
 import styled, {css} from "styled-components";
-import { generalColors, lightTheme, darkTheme } from "./Themes-Style.styled";
+import { generalColors, light, dark } from "./ThemeColors.styled";
 
 // Buttons inside TransactionOutput
 export const ArrowButton = styled.button`
 	margin: 0 1em;
-	color: ${lightTheme.blue};
+	color: ${generalColors.blue};
 `
 export const NewButton = styled.button`
 	padding: 0.5em 1em;
 	border-radius: 10px;
-	background-color: ${generalColors.lightBlue};
+	background-color: ${generalColors.blue};
+    font: bold 14px 'Open Sans', sans-serif;
+    color: ${generalColors.white};
 `
 
 export const TransactionDetails = styled.button`

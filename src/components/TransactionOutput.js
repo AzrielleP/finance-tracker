@@ -14,7 +14,7 @@ import {
     GridContainerHead,
     NoDataContainer,
 } from "./styled-components/Containers.styled";
-import { generalColors } from "./styled-components/Themes-Style.styled";
+import * as Theme from "./styled-components/ThemeColors.styled";
 import { ShowSidebarButton } from "./styled-components/Buttons.styled";
 import { ReactComponent as SidebarIcon } from "./styled-components/svg/Sidebar.svg";
 
@@ -47,19 +47,19 @@ function Transaction(props) {
                     </FlexContainer>
 
                     <NewButton type='button' onClick={setToAddForm}>
-                        <Bold color={generalColors.white}>New | + </Bold>
+                        New | + 
                     </NewButton>
                 </FlexContainer>
 
                 <FlexContainer justify='space-around'>
-                    <LargeNumberContainer>
-                        <Bold>INCOME</Bold>
-                        <Subtitle>{totalValueFormat(dataToRender.monthIncomeTotal)}</Subtitle>
+                    <LargeNumberContainer borderColor = {Theme.generalColors.blue}>
+                        <Bold color = {Theme.generalColors.blue}>INCOME</Bold>
+                        <Subtitle color = {Theme.generalColors.blue}>{totalValueFormat(dataToRender.monthIncomeTotal)}</Subtitle>
                     </LargeNumberContainer>
 
-                    <LargeNumberContainer>
-                        <Bold color={generalColors.red}>EXPENSE</Bold>
-                        <Subtitle color={generalColors.red}>
+                    <LargeNumberContainer borderColor = {Theme.generalColors.red}>
+                        <Bold color={Theme.generalColors.red}>EXPENSE</Bold>
+                        <Subtitle color={Theme.generalColors.red}>
                             {totalValueFormat(dataToRender.monthExpenseTotal)}
                         </Subtitle>
                     </LargeNumberContainer>
@@ -89,7 +89,7 @@ function Transaction(props) {
                                         {moment(subItem.day).format("DD")} | {moment(subItem.day).format("ddd")}
                                     </Bold>
                                     <Bold>{totalValueFormat(subItem.dayIncomeTotal)}</Bold>
-                                    <Bold textAlign='right' color={generalColors.red}>
+                                    <Bold textAlign='right' color={Theme.generalColors.red}>
                                         {totalValueFormat(subItem.dayExpenseTotal)}
                                     </Bold>
                                 </GridContainerHead>

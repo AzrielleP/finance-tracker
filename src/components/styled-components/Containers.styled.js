@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { generalColors, lightTheme, darkTheme } from "./Themes-Style.styled";
+import { generalColors, light, dark } from "./ThemeColors.styled";
 
 // GENERAL
 export const FlexContainer = styled.div`
@@ -30,7 +30,7 @@ export const LargeNumberContainer = styled.div`
     padding: 0.5em;
     border: 1px solid;
     border-radius: 10px;
-    border-color: ${generalColors.darkAccent};
+    border-color: ${({borderColor}) => borderColor };
     text-align: center;
 
     p {
@@ -176,16 +176,12 @@ export const SidebarSelectors = styled(FlexContainer)`
 export const ChartContainer = styled.div`
     min-height: 30vh;
 
-    @media screen and (max-width: 767px) {
-        div {
+    div {
             margin: auto;
             max-width: 20em; 
         }
-    }
 
     @media screen and (min-width: 1024px) {
-        margin: 0;
-
         div {
             padding: 1em;
         }
@@ -202,7 +198,7 @@ export const AccountContainer = styled(FlexContainer)`
 export const Dot = styled.span`
     height: 10px;
     width: 10px;
-    background-color: ${({color}) => color < 0 ? generalColors.red : lightTheme.blue};
+    background-color: ${({color}) => color < 0 ? generalColors.red : light.blue};
     border-radius: 50%;
 
     @media screen and (min-width: 768px) {

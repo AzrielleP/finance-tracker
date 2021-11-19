@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { generalColors, lightTheme, darkTheme } from "./Themes-Style.styled";
+import { generalColors, light, dark } from "./ThemeColors.styled";
 import { Bold } from "./Text.styled";
 
 
@@ -22,8 +22,8 @@ export const FormRadio = styled.input`
 
     &:checked + label {
         background-color: ${generalColors.white};
-        color: ${lightTheme.blue};
-        border-color: ${lightTheme.blue};
+        color: ${light.blue};
+        border-color: ${light.blue};
     }
 `
 export const FormLabel = styled.label`

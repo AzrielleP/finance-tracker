@@ -10,7 +10,7 @@ import {
 } from "./styled-components/Containers.styled";
 import { FormRadio, FormLabel, FormInput, FormSelect } from "./styled-components/Forms.styled";
 import { FormButton } from "./styled-components/Buttons.styled";
-import { generalColors, lightTheme } from "./styled-components/Themes-Style.styled";
+import { generalColors, light, dark } from "./styled-components/ThemeColors.styled";
 
 function Form(props) {
     const {
