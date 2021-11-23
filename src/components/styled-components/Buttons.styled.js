@@ -4,7 +4,7 @@ import { generalColors, light, dark } from "./ThemeColors.styled";
 // Buttons inside TransactionOutput
 export const ArrowButton = styled.button`
 	margin: 0 1em;
-	color: ${generalColors.blue};
+	color: ${({theme}) => theme.text};
 `
 export const NewButton = styled.button`
 	padding: 0.5em 1em;
@@ -22,6 +22,21 @@ export const TransactionDetails = styled.button`
     align-items: center;
     width: 100%;
     margin: 1.5em 0;
+
+    p:nth-child(3) {
+        text-align: right;
+        color: ${({theme, amount}) => {
+            if (amount && amount > 0) {
+                return generalColors.blue;
+            }
+            else if (amount && amount < 0) {
+                return generalColors.red;
+            }
+            else {
+                return theme.text;
+            }
+        }}
+    }
 `
 
 // App

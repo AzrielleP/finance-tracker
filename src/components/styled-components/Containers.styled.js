@@ -1,5 +1,13 @@
 import styled, { css } from "styled-components";
-import { generalColors, light, dark } from "./ThemeColors.styled";
+import { generalColors } from "./ThemeColors.styled";
+
+const handleColorType = (type) => {
+    switch (type) {
+        case "income" : return generalColors.blue;
+        case "expense" : return generalColors.red;
+        default : return false;
+    }
+}
 
 // GENERAL
 export const FlexContainer = styled.div`
@@ -22,7 +30,7 @@ export const FixedContainer = styled.div`
     padding: 2em 0 1em 0;
     width: 100%;
     z-index: 2;
-    background-color: ${generalColors.white};
+    background-color: ${({theme}) => theme.background};
 `
 export const LargeNumberContainer = styled.div`
     flex: 1;
@@ -30,12 +38,12 @@ export const LargeNumberContainer = styled.div`
     padding: 0.5em;
     border: 1px solid;
     border-radius: 10px;
-    border-color: ${({borderColor}) => borderColor };
-    text-align: center;
+    border-color: ${({type, theme}) => handleColorType(type, theme) || theme.text};
 
     p {
         text-align: center;
-    }
+        color: ${({type, theme}) => handleColorType(type, theme) || theme.text};
+    };
 `
 
 // Modal
@@ -49,7 +57,7 @@ export const ModalBackground = styled.div`
         height: 100vh;
         width: 100vw;
         opacity: 0.6;
-        background-color: ${generalColors.darkAccent};   
+        background-color: ${generalColors.darkGrey};   
     }         
 `
 export const ModalContainer = styled.div`
@@ -58,7 +66,7 @@ export const ModalContainer = styled.div`
     width: 100vw;
     z-index: 10;
     padding: 10vw;
-    background: ${generalColors.white};
+    background: ${({theme}) => theme.background};
 
     @media screen and (min-width: 768px) {
         left: 50%;
@@ -98,9 +106,13 @@ export const GridContainerHead = styled.div`
     grid-template-columns: 2fr 1fr 1fr;
     grid-template-rows: 1fr;
     grid-gap: 0.5em;
-    border-bottom: 0.5px solid ${generalColors.darkAccent};
     padding-bottom: 1em;
-    align-items: center;
+    border-bottom: 0.5px solid ${({theme}) => theme.border};
+
+    p:nth-child(3) {
+        text-align: right;
+    }
+
 `
 export const NoDataContainer = styled.div`
     display: flex;
@@ -113,7 +125,7 @@ export const DailyTransactionData = styled.div`
     border-radius: 10px;
     margin: 0 0 1em 0;
     padding: 1.5em 1em;
-    background: ${generalColors.lightAccent};
+    background: ${({theme}) => theme.textBg};
 `
 
 // Sidebar
@@ -126,7 +138,7 @@ export const SidebarContainer = styled.div`
     z-index: 10;
     min-height: 100vh;
     width: 100%;
-    background: ${generalColors.lightAccent};
+    background: ${({theme}) => theme.background};
 
     @media screen and (min-width: 768px) {
         display: block;
@@ -135,7 +147,7 @@ export const SidebarContainer = styled.div`
     }
 `
 export const SidebarFixedContainer = styled(FixedContainer)`
-    background-color: ${generalColors.lightAccent};
+    background-color: ${({theme}) => theme.background};
 `
 export const SidebarSelectors = styled(FlexContainer)`
     padding: 1em 0 0.5em 0;
@@ -161,7 +173,7 @@ export const SidebarSelectors = styled(FlexContainer)`
         `
         };
         content: "";
-        background-color: ${generalColors.lightAccent};
+        background-color: ${({theme}) => theme.background};
     }
 
     @media screen and (min-width: 768px) {
@@ -198,7 +210,7 @@ export const AccountContainer = styled(FlexContainer)`
 export const Dot = styled.span`
     height: 10px;
     width: 10px;
-    background-color: ${({color}) => color < 0 ? generalColors.red : light.blue};
+    background-color: ${({color}) => color < 0 ? generalColors.red : generalColors.blue};
     border-radius: 50%;
 
     @media screen and (min-width: 768px) {

@@ -7,6 +7,8 @@ import Sidebar from "./components/sidebar/Sidebar";
 import { processData, updateTransaction } from "./helpers/groupingData";
 import { GlobalStyle } from "./components/styled-components/GlobalStyle";
 import { AppContainer, ModalBackground } from "./components/styled-components/Containers.styled";
+import { ThemeProvider } from "styled-components";
+import * as ThemeColors from "./components/styled-components/ThemeColors.styled";
 
 function App() {
     const [accounts, setAccounts] = useState(["Cash", "Bank", "Other"]);
@@ -28,6 +30,8 @@ function App() {
     const [dataToRender, setDataToRender] = useState(dateToRender); // Stores the filtered data that the user will see based on the date selected
 
     const [showSidebar, setShowSidebar] = useState(false); // Determines if the sidebar is displayed or not on mobile mode
+
+    const [theme, setTheme] = useState('dark');
 
     // * ==== FUNCTIONS ==== * //
     const handleAddTransaction = (value) => {
@@ -156,47 +160,50 @@ function App() {
 
     return (
         <>
-            <GlobalStyle />
 
-            <ModalBackground show={showForm} />
-            {showForm && (
-                <TransactionInput
+            <ThemeProvider theme = {ThemeColors[theme]}>
+                <GlobalStyle />
+
+                <ModalBackground show={showForm} />
+                {showForm && (
+                    <TransactionInput
+                        accounts={accounts}
+                        categories={categories}
+                        handleAddTransaction={handleAddTransaction}
+                        clickedTransData={clickedTransData}
+                        mode={mode}
+                        hideForm={hideForm}
+                        handleEditTransaction={handleEditTransaction}
+                        handleDeleteTransaction={handleDeleteTransaction}
+                    />
+                )}
+
+                <AppContainer>
+                    <TransactionOutput
+                        getTransactionId={getTransactionId}
+                        moveToNext={moveToNext}
+                        moveToPrevious={moveToPrevious}
+                        dataToRender={dataToRender}
+                        setToAddForm={setToAddForm}
+                        handleSidebar={handleSidebar}
+                    />
+
+                    {/* <Sidebar
+                        transaction={transaction}
+                        accounts={accounts}
+                        dateToRender={dateToRender}
+                        handleSidebar={handleSidebar}
+                        showSidebar={showSidebar}
+                    /> */}
+                </AppContainer>
+
+                {/* <Settings
                     accounts={accounts}
                     categories={categories}
-                    handleAddTransaction={handleAddTransaction}
-                    clickedTransData={clickedTransData}
-                    mode={mode}
-                    hideForm={hideForm}
-                    handleEditTransaction={handleEditTransaction}
-                    handleDeleteTransaction={handleDeleteTransaction}
-                />
-            )}
-
-            <AppContainer>
-                <TransactionOutput
-                    getTransactionId={getTransactionId}
-                    moveToNext={moveToNext}
-                    moveToPrevious={moveToPrevious}
-                    dataToRender={dataToRender}
-                    setToAddForm={setToAddForm}
-                    handleSidebar={handleSidebar}
-                />
-
-                {/* <Sidebar
-                    transaction={transaction}
-                    accounts={accounts}
-                    dateToRender={dateToRender}
-                    handleSidebar={handleSidebar}
-                    showSidebar={showSidebar}
+                    handleAddSettings={handleAddSettings}
+                    handleEdit={handleEdit}
                 /> */}
-            </AppContainer>
-
-            {/* <Settings
-				accounts={accounts}
-				categories={categories}
-				handleAddSettings={handleAddSettings}
-				handleEdit={handleEdit}
-			/> */}
+            </ThemeProvider>
         </>
     );
 }

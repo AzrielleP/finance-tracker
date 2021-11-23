@@ -34,11 +34,12 @@ const calcFromAccount = (arr, criteria, criteriaContent, amount) => {
 // * For formatting
 
 // Use on values with calculated totals
-const totalValueFormat = (value) => {
+const totalValueFormat = (value, signed) => {
+    let toFormat = signed ? value : Math.abs(value);
     return value
-        ? value > 999999
-            ? numeral(Math.abs(value)).format("0.0a")
-            : numeral(Math.abs(value)).format("0.00")
+        ?  (Math.abs(value)) > 999999
+            ? numeral(toFormat).format("0.0a")
+            : numeral(toFormat).format("0.00")
         : numeral(0).format("0.00");
 };
 

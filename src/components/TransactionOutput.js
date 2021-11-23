@@ -14,7 +14,6 @@ import {
     GridContainerHead,
     NoDataContainer,
 } from "./styled-components/Containers.styled";
-import * as Theme from "./styled-components/ThemeColors.styled";
 import { ShowSidebarButton } from "./styled-components/Buttons.styled";
 import { ReactComponent as SidebarIcon } from "./styled-components/svg/Sidebar.svg";
 
@@ -47,28 +46,24 @@ function Transaction(props) {
                     </FlexContainer>
 
                     <NewButton type='button' onClick={setToAddForm}>
-                        New | + 
+                        New | +
                     </NewButton>
                 </FlexContainer>
 
                 <FlexContainer justify='space-around'>
-                    <LargeNumberContainer borderColor = {Theme.generalColors.blue}>
-                        <Bold color = {Theme.generalColors.blue}>INCOME</Bold>
-                        <Subtitle color = {Theme.generalColors.blue}>{totalValueFormat(dataToRender.monthIncomeTotal)}</Subtitle>
+                    <LargeNumberContainer type='income'>
+                        <Bold>INCOME</Bold>
+                        <Subtitle>{totalValueFormat(dataToRender.monthIncomeTotal)}</Subtitle>
                     </LargeNumberContainer>
 
-                    <LargeNumberContainer borderColor = {Theme.generalColors.red}>
-                        <Bold color={Theme.generalColors.red}>EXPENSE</Bold>
-                        <Subtitle color={Theme.generalColors.red}>
-                            {totalValueFormat(dataToRender.monthExpenseTotal)}
-                        </Subtitle>
+                    <LargeNumberContainer type='expense'>
+                        <Bold>EXPENSE</Bold>
+                        <Subtitle>{totalValueFormat(dataToRender.monthExpenseTotal)}</Subtitle>
                     </LargeNumberContainer>
 
-                    <LargeNumberContainer>
+                    <LargeNumberContainer type='total' amount={dataToRender.monthTotal}>
                         <Bold>TOTAL</Bold>
-                        <Subtitle amount={dataToRender.monthTotal}>
-                            {totalValueFormat(dataToRender.monthTotal)}
-                        </Subtitle>
+                        <Subtitle>{totalValueFormat(dataToRender.monthTotal, true)}</Subtitle>
                     </LargeNumberContainer>
                 </FlexContainer>
             </FixedContainer>
@@ -88,15 +83,18 @@ function Transaction(props) {
                                     <Bold>
                                         {moment(subItem.day).format("DD")} | {moment(subItem.day).format("ddd")}
                                     </Bold>
-                                    <Bold>{totalValueFormat(subItem.dayIncomeTotal)}</Bold>
-                                    <Bold textAlign='right' color={Theme.generalColors.red}>
-                                        {totalValueFormat(subItem.dayExpenseTotal)}
-                                    </Bold>
+                                    <Bold type='income'>{totalValueFormat(subItem.dayIncomeTotal)}</Bold>
+                                    <Bold type='expense'>{totalValueFormat(subItem.dayExpenseTotal)}</Bold>
                                 </GridContainerHead>
 
                                 {subItem.transactions.map((value, key) => {
                                     return (
-                                        <TransactionDetails key={key} onClick={getTransactionId} data-id={value.id}>
+                                        <TransactionDetails
+                                            key={key}
+                                            onClick={getTransactionId}
+                                            data-id={value.id}
+                                            amount={value.transactionAmount}
+                                        >
                                             {value.transactionType === "transfer" ? (
                                                 <Small>Transfer</Small>
                                             ) : (
@@ -114,9 +112,7 @@ function Transaction(props) {
                                                 )}
                                             </div>
 
-                                            <Small textAlign='right' amount={value.transactionAmount}>
-                                                {singleValueFormat(value.transactionAmount)}
-                                            </Small>
+                                            <Small>{singleValueFormat(value.transactionAmount)}</Small>
                                         </TransactionDetails>
                                     );
                                 })}
