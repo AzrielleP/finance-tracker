@@ -2,13 +2,12 @@ import React from "react";
 import { totalValueFormat, singleValueFormat } from "../../helpers/calc";
 import {
     ScrollingContainer,
-    LargeNumberContainer,
     FlexContainer,
     Dot,
     AccountContainer,
     AccountTotalContainer,
 } from "../styled-components/Containers.styled";
-import { Subtitle, Small, Bold } from "../styled-components/Text.styled";
+import { Bold } from "../styled-components/Text.styled";
 
 function SidebarAccounts(props) {
     const { accountsInfo, getAccounts, initialState } = props;

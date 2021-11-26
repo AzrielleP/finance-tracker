@@ -5,7 +5,7 @@ import { calcTotalOfFiltered, calcFromAccount } from "../../helpers/calc";
 import { computeAssets, computeLiabilities } from "../../helpers/calc";
 
 // Styled Components
-import * as Container from "../styled-components/Containers.styled";
+import { SidebarContainer, SidebarFixedContainer, FlexContainer, SidebarSelectors } from "../styled-components/Containers.styled";
 import { SidebarRadio } from "../styled-components/Forms.styled";
 import { Bold } from "../styled-components/Text.styled";
 import { ShowSidebarButton } from "../styled-components/Buttons.styled";
@@ -70,16 +70,16 @@ function Sidebar(props) {
     }, [transaction, accounts]);
 
     return (
-        <Container.SidebarContainer $display={showSidebar}>
-            <Container.SidebarFixedContainer>
-                <Container.FlexContainer justifySmall='space-between' justifyLarge='flex-end'>
+        <SidebarContainer $display={showSidebar}>
+            <SidebarFixedContainer>
+                <FlexContainer justifySmall='space-between' justifyLarge='flex-end'>
                     <ShowSidebarButton onClick={handleSidebar} alignment='right'>
                         <CloseButton />
                     </ShowSidebarButton>
                     <SettingsIcon />
-                </Container.FlexContainer>
+                </FlexContainer>
 
-                <Container.SidebarSelectors justifySmall='space-around' option={option}>
+                <SidebarSelectors justifySmall='space-around' option={option}>
                     <SidebarRadio
                         type='radio'
                         name='sidebarOption'
@@ -103,14 +103,14 @@ function Sidebar(props) {
                     <Bold as='label' htmlFor='accounts'>
                         ACCOUNTS
                     </Bold>
-                </Container.SidebarSelectors>
-            </Container.SidebarFixedContainer>
+                </SidebarSelectors>
+            </SidebarFixedContainer>
 
             {option === "categories" && <SidebarCategories transaction={transaction} dateToRender={dateToRender} />}
             {option === "accounts" && (
                 <SidebarAccounts accountsInfo={accountsInfo} getAccounts={getAccounts} initialState={initialState} />
             )}
-        </Container.SidebarContainer>
+        </SidebarContainer>
     );
 }
 

@@ -1,5 +1,5 @@
 import styled, {css} from "styled-components";
-import { generalColors, light, dark } from "./ThemeColors.styled";
+import { generalColors } from "./ThemeColors.styled";
 
 const handleColorType = (type) => {
     switch (type) {

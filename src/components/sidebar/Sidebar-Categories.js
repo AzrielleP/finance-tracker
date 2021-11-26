@@ -5,7 +5,7 @@ import { groupByCategory } from "../../helpers/groupingData";
 
 // Styled Components
 import { ScrollingContainer, ChartContainer } from "../styled-components/Containers.styled";
-import { Bold, Small, Subtitle } from "../styled-components/Text.styled";
+import { Small, Subtitle } from "../styled-components/Text.styled";
 
 function SidebarCategories(props) {
     const { transaction, dateToRender } = props;

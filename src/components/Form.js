@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 
-import { Small, Bold } from "./styled-components/Text.styled";
+import { Small } from "./styled-components/Text.styled";
 import {
     FlexContainer,
     ModalContainer,
@@ -10,7 +10,7 @@ import {
 } from "./styled-components/Containers.styled";
 import { FormRadio, FormLabel, FormInput, FormSelect } from "./styled-components/Forms.styled";
 import { FormButton } from "./styled-components/Buttons.styled";
-import { generalColors, light, dark } from "./styled-components/ThemeColors.styled";
+import { generalColors } from "./styled-components/ThemeColors.styled";
 
 function Form(props) {
     const {
