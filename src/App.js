@@ -15,8 +15,8 @@ function App() {
     const [processedData, setProcessedData] = useState([]); // Stores the transaction data to be displayed on TransactionOutput
     const [transaction, setTransaction] = useState([]); // Stores the submitted entries of the user
     const [categories, setCategories] = useState({
-        income: ["Salary", "Interest", "x", "y", "z", "a", "b", "Other"],
-        expense: ["Food", "Transportation", "x", "y", "z", "a", "b", "Other"],
+        income: ["Salary", "Interest", "Other"],
+        expense: ["Food", "Transportation", "Other"],
     });
     const [showForm, setShowForm] = useState(false); // show/hide the TransactionInput component
     const [transId, setTransId] = useState(""); // Stores the transaction ID
@@ -31,7 +31,7 @@ function App() {
 
     const [showSidebar, setShowSidebar] = useState(false); // Determines if the sidebar is displayed or not on mobile mode
 
-    const [theme, setTheme] = useState('dark');
+    const [theme, setTheme] = useState('light');
 
     // * ==== FUNCTIONS ==== * //
     const handleAddTransaction = (value) => {
