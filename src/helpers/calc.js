@@ -43,8 +43,9 @@ const totalValueFormat = (value, signed) => {
         : numeral(0).format("0.00");
 };
 
-const singleValueFormat = (value) => {
-    return numeral(Math.abs(value)).format("0.00");
+const singleValueFormat = (value, signed) => {
+    let toFormat = signed ? value : Math.abs(value);
+    return numeral(toFormat).format("0.00");
 };
 
 // * For transactions

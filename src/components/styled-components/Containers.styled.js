@@ -27,7 +27,7 @@ export const FixedContainer = styled.div`
     position: sticky;
     top: 0;
     left: 0;
-    padding: 2em 0 1em 0;
+    padding: 3em 0 1em 0;
     width: 100%;
     z-index: 2;
     background-color: ${({theme}) => theme.background};
@@ -89,6 +89,10 @@ export const AppContainer = styled.div`
         grid-auto-columns: 1fr; 
         grid-template-columns: 70% 30%; 
         grid-template-rows: 1fr; 
+    }
+
+    @media screen and (min-width: 1024px) {
+        grid-template-columns: 75% 25%;
     }
 `
 
@@ -200,12 +204,30 @@ export const ChartContainer = styled.div`
         }
     }
 `
+
+export const AccountTotalContainer = styled.div`
+    width: 100%;
+    border-bottom: 0.5px solid ${({theme}) => theme.border};
+
+    div {
+        padding-bottom: 1em;
+        width: 100%;
+    }
+
+    p {
+        color: ${({type}) => handleColorType(type)};
+    }
+`
 export const AccountContainer = styled(FlexContainer)`
     justify-content: space-between;
     margin: 1.25em 0.5em 0 0.5em;
 
     ${FlexContainer} {
         gap: 1em;
+    }
+
+    p {
+        color: ${({theme}) => theme.text};
     }
 `
 export const Dot = styled.span`

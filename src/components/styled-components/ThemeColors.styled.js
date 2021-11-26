@@ -19,7 +19,7 @@ export const light = {
 }
 
 export const dark = { 
-    text: white,
+    text: lightGrey,
     textBg: blackAccent,
     background: black,
     border: lightGrey,

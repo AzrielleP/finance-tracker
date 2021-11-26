@@ -27,7 +27,7 @@ export const FormRadio = styled.input`
     appearance: none;
 
     &:checked + label {
-        background-color: none;
+        background-color: ${({theme}) => theme.background};
         border-color: ${({value, theme}) => handleColorType(value, theme) || theme.text};
 
         p {
