@@ -2,6 +2,13 @@ import styled, { css } from "styled-components";
 import { generalColors, light, dark } from "./ThemeColors.styled";
 import { Bold } from "./Text.styled";
 
+const handleColorType = (type) => {
+    switch (type) {
+        case "income" : return generalColors.blue;
+        case "expense" : return generalColors.red;
+        default : return false;
+    }
+}
 
 export const SidebarRadio = styled.input`
     display: none;
@@ -21,28 +28,36 @@ export const FormRadio = styled.input`
     appearance: none;
 
     &:checked + label {
-        background-color: ${generalColors.white};
-        color: ${light.blue};
-        border-color: ${light.blue};
+        background-color: none;
+        border-color: ${({value, theme}) => handleColorType(value, theme) || theme.text};
+
+        p {
+            color: ${({value, theme}) => handleColorType(value, theme) || theme.text};
+        }
     }
 `
 export const FormLabel = styled.label`
     flex: 1;
     cursor: pointer;
     padding: 0.25em 0.5em;
-    border: 0.5px solid ${generalColors.darkAccent};
+    border: 0.25px solid ${({theme}) => theme.textFaded};
     border-radius: 5px;
-    background-color: ${generalColors.lightAccent};
-    color: ${generalColors.darkAccent};
+    background-color: ${({theme}) => theme.textBg};
+
+    p {
+        text-align: center;
+        color: ${({theme}) => theme.textFaded};
+    }
 `
 
 const inputStyles = css`
     width: 60vw;
     font-family: 'Open Sans', sans-serif;
-    background-color: ${generalColors.white};
     outline: 0;
     border-width: 0 0 0.5px;
-    border-color: ${generalColors.darkAccent};
+    color: ${({theme}) => theme.text};
+    background-color: ${({theme}) => theme.background};
+    border-color: ${({theme}) => theme.border};
 
     @media screen and (min-width: 768px) {
         width: 30em;

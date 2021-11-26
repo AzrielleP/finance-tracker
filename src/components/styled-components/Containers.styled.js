@@ -245,5 +245,9 @@ export const TransInputContainer = styled.div`
 
     & >div {
         margin: 1em 0;
+
+        & > p {
+            color: ${({theme}) => theme.text}
+        }
     }
 `

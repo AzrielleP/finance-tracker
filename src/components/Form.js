@@ -43,7 +43,7 @@ function Form(props) {
                     />
 
                     <FormLabel htmlFor='income'>
-                        <Bold textAlign='center'>Income</Bold>
+                        <p>Income</p>
                     </FormLabel>
 
                     <FormRadio
@@ -56,7 +56,7 @@ function Form(props) {
                     />
 
                     <FormLabel htmlFor='expense'>
-                        <Bold textAlign='center'>Expense</Bold>
+                        <p>Expense</p>
                     </FormLabel>
 
                     <FormRadio
@@ -69,7 +69,7 @@ function Form(props) {
                     />
 
                     <FormLabel htmlFor='transfer'>
-                        <Bold textAlign='center'>Transfer</Bold>
+                        <p>Transfer</p>
                     </FormLabel>
                 </TransTypeContainer>
 
@@ -240,9 +240,7 @@ function Form(props) {
                     <FlexContainer>
                         <FormButton
                             type='submit'
-                            fontColor={generalColors.white}
-                            bgColor={generalColors.lightBlue}
-                            borderColor={generalColors.lightBlue}
+                            value = 'save'
                         >
                             Save
                         </FormButton>
@@ -250,9 +248,7 @@ function Form(props) {
                             <FormButton
                                 type='button'
                                 onClick={handleDeleteTransaction}
-                                bgColor={generalColors.red}
-                                fontColor={generalColors.white}
-                                borderColor={generalColors.red}
+                                value = 'delete'
                             >
                                 Delete
                             </FormButton>
@@ -260,9 +256,6 @@ function Form(props) {
                         <FormButton
                             type='button'
                             onClick={cancelSubmit}
-                            bgColor='none'
-                            fontColor={generalColors.darkAccent}
-                            borderColor={generalColors.darkAccent}
                         >
                             Cancel
                         </FormButton>

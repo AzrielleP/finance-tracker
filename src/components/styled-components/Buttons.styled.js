@@ -1,6 +1,14 @@
 import styled, {css} from "styled-components";
 import { generalColors, light, dark } from "./ThemeColors.styled";
 
+const handleColorType = (type) => {
+    switch (type) {
+        case "save" : return generalColors.blue;
+        case "delete" : return generalColors.red;
+        default : return false;
+    }
+}
+
 // Buttons inside TransactionOutput
 export const ArrowButton = styled.button`
 	margin: 0 1em;
@@ -62,8 +70,8 @@ export const FormButton = styled.button`
     flex: 1;
     padding: 0.75em;
     font: bold 14px 'Open Sans', sans-serif;
-    color: ${({fontColor}) => fontColor};
-    background-color: ${({bgColor}) => bgColor};
-    border: 1px solid ${({borderColor}) => borderColor};
+    color: ${({value}) => !value ? generalColors.darkGrey : generalColors.white};
+    background-color: ${({value}) => handleColorType(value) || "none"};
+    border: 1px solid ${({value}) => handleColorType(value) || generalColors.darkGrey};
     border-radius: 5px;
 `

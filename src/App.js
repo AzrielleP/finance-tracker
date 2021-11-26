@@ -31,7 +31,7 @@ function App() {
 
     const [showSidebar, setShowSidebar] = useState(false); // Determines if the sidebar is displayed or not on mobile mode
 
-    const [theme, setTheme] = useState('dark');
+    const [theme, setTheme] = useState('light');
 
     // * ==== FUNCTIONS ==== * //
     const handleAddTransaction = (value) => {
