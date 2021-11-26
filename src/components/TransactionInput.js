@@ -2,7 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 import Form from "./Form";
 
 function AddEntry(props) {
-    const { accounts, categories, handleAddTransaction, mode, hideForm, clickedTransData, handleEditTransaction, handleDeleteTransaction } = props;
+    const {
+        accounts,
+        categories,
+        handleAddTransaction,
+        mode,
+        hideForm,
+        clickedTransData,
+        handleEditTransaction,
+        handleDeleteTransaction,
+    } = props;
     const initialState = {
         id: "",
         transactionType: "income",
@@ -13,7 +22,7 @@ function AddEntry(props) {
         transactionAmount: 0,
         transactionNotes: "",
     };
-    const [values, setValues] = useState(mode === 'add' ? initialState: clickedTransData);
+    const [values, setValues] = useState(mode === "add" ? initialState : clickedTransData);
     const [errorMsgs, setErrorMsgs] = useState({
         fromAccount: "",
         toAccount: "",
@@ -21,7 +30,7 @@ function AddEntry(props) {
         transactionAmount: "",
     });
 
-    const first = useRef(true)
+    const first = useRef(true);
     useEffect(() => {
         // Whenever we switch between transaction types, always reset transactionCategory
         if (first.current) {
@@ -38,31 +47,32 @@ function AddEntry(props) {
 
     const handleValidation = () => {
         let isFormValid = true;
+        const message = "Required Field";
 
         if (values.fromAccount === "") {
             isFormValid = false;
-            setErrorMsgs((prevState) => ({ ...prevState, fromAccount: "cannot be empty" }));
+            setErrorMsgs((prevState) => ({ ...prevState, fromAccount: message }));
         } else {
             setErrorMsgs((prevState) => ({ ...prevState, fromAccount: "" }));
         }
 
         if (values.transactionType === "transfer" && values.toAccount === "") {
             isFormValid = false;
-            setErrorMsgs((prevState) => ({ ...prevState, toAccount: "cannot be empty" }));
+            setErrorMsgs((prevState) => ({ ...prevState, toAccount: message }));
         } else {
             setErrorMsgs((prevState) => ({ ...prevState, toAccount: "" }));
         }
 
         if (values.transactionType !== "transfer" && values.transactionCategory === "") {
             isFormValid = false;
-            setErrorMsgs((prevState) => ({ ...prevState, transactionCategory: "cannot be empty" }));
+            setErrorMsgs((prevState) => ({ ...prevState, transactionCategory: message }));
         } else {
             setErrorMsgs((prevState) => ({ ...prevState, transactionCategory: "" }));
         }
 
         if (values.transactionAmount === 0) {
             isFormValid = false;
-            setErrorMsgs((prevState) => ({ ...prevState, transactionAmount: "cannot be 0" }));
+            setErrorMsgs((prevState) => ({ ...prevState, transactionAmount: message }));
         } else {
             setErrorMsgs((prevState) => ({ ...prevState, transactionAmount: "" }));
         }
@@ -90,8 +100,8 @@ function AddEntry(props) {
                 values.transactionAmount *= -1;
             }
             values.id = generateId();
-            mode === 'edit' ?  handleEditTransaction(values): handleAddTransaction(values);
-           
+            mode === "edit" ? handleEditTransaction(values) : handleAddTransaction(values);
+
             clearInputs();
             hideForm();
         }
@@ -101,20 +111,20 @@ function AddEntry(props) {
         event.preventDefault();
         clearInputs();
         hideForm();
-    }
+    };
 
     return (
         <Form
-            accounts = {accounts}
-            categories = {categories}
-            errorMsgs = {errorMsgs}
-            values = {values}
-            mode = {mode}
-            handleSubmit = {handleSubmit}
-            cancelSubmit = {cancelSubmit}
-            handleValueChange = {handleValueChange}
-            handleDeleteTransaction = {handleDeleteTransaction}
-            blockInvalidCharacter = {blockInvalidCharacter}
+            accounts={accounts}
+            categories={categories}
+            errorMsgs={errorMsgs}
+            values={values}
+            mode={mode}
+            handleSubmit={handleSubmit}
+            cancelSubmit={cancelSubmit}
+            handleValueChange={handleValueChange}
+            handleDeleteTransaction={handleDeleteTransaction}
+            blockInvalidCharacter={blockInvalidCharacter}
         />
     );
 }

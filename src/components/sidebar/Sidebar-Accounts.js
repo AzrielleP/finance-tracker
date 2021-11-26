@@ -1,23 +1,41 @@
 import React from "react";
+import { totalValueFormat, singleValueFormat } from "../../helpers/calc";
+import {
+    ScrollingContainer,
+    FlexContainer,
+    Dot,
+    AccountContainer,
+    AccountTotalContainer,
+} from "../styled-components/Containers.styled";
+import { Bold } from "../styled-components/Text.styled";
 
 function SidebarAccounts(props) {
     const { accountsInfo, getAccounts, initialState } = props;
 
     return (
-        <div>
-            <h2>Accounts</h2>
-            <p>Total Assets: {accountsInfo.totalAssets}</p>
-            <p>Total Liabilities: {accountsInfo.totalLiabilities}</p>
-            <div>
-                {(accountsInfo !== initialState ? accountsInfo : getAccounts()).items.map((item, key) => {
-                    return (
-                        <div key={key}>
-                            <p>{item.accountName}: {item.value}</p>
-                        </div>
-                    );
-                })}
-            </div>
-        </div>
+        <ScrollingContainer>
+            <AccountTotalContainer>
+                <FlexContainer justifySmall='space-between'>
+                        <Bold type = "income">Total Assets</Bold>
+                        <Bold type = "income">{totalValueFormat(accountsInfo.totalAssets)}</Bold>
+                </FlexContainer>
+                <FlexContainer justifySmall = "space-between">            
+                        <Bold type = "expense">Total Liabilities</Bold>
+                        <Bold type = "expense">{totalValueFormat(accountsInfo.totalLiabilities)}</Bold>
+                </FlexContainer>
+            </AccountTotalContainer>
+            {(accountsInfo !== initialState ? accountsInfo : getAccounts()).items.map((item, key) => {
+                return (
+                    <AccountContainer key={key}>
+                        <FlexContainer>
+                            <Dot color={item.value} />
+                            <Bold>{item.accountName}</Bold>
+                        </FlexContainer>
+                        <p>{singleValueFormat(item.value, true)}</p>
+                    </AccountContainer>
+                );
+            })}
+        </ScrollingContainer>
     );
 }
 

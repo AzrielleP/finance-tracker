@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { generalColors } from './Themes-Style.styled';
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -11,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     body {
         padding: 0;
         margin: 0;
-        background: ${generalColors.white};
+        background: ${({theme}) => theme.background};
     }
 
     h1, h2 {
@@ -25,6 +24,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Open Sans', sans-serif;
         font-size: 12px;
         text-align: left;
+        
     }
 
     button {
@@ -32,6 +32,7 @@ export const GlobalStyle = createGlobalStyle`
         border: none;
         outline: none;
         background: none;
+        cursor: pointer;
     }
 
     @media screen and (min-width: 1024px) {

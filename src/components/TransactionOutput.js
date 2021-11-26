@@ -1,33 +1,47 @@
 import React from "react";
 import moment from "moment";
-import { ReactComponent as NoDataImage} from './styled-components/svg/NoData.svg';
-
+import { totalValueFormat, singleValueFormat } from "../helpers/calc";
+import { ReactComponent as NoDataImageLight } from "./styled-components/svg/NoData-Light.svg";
+import { ReactComponent as NoDataImageDark } from "./styled-components/svg/NoData-Dark.svg";
 import { ArrowButton, NewButton, TransactionDetails } from "./styled-components/Buttons.styled";
-import { LargeHeader, Bold, Subtitle, SubtitleLight, Small, SmallOverflowingText } from "./styled-components/Text.styled";
+import {
+	LargeHeader,
+	Bold,
+	Subtitle,
+	Small,
+	SmallOverflowingText,
+} from "./styled-components/Text.styled";
 import {
 	FlexContainer,
-	Container,
+	TransactionOutput,
 	LargeNumberContainer,
 	ScrollingContainer,
 	DailyTransactionData,
 	FixedContainer,
 	GridContainerHead,
-	GIFContainer
+	NoDataContainer,
 } from "./styled-components/Containers.styled";
-import { generalColors } from "./styled-components/Themes-Style.styled";
-import { ShowSidebarButton } from "./styled-components/Buttons.styled"
-import { ReactComponent as SidebarButton } from "./styled-components/svg/Sidebar.svg"
+import { ShowSidebarButton } from "./styled-components/Buttons.styled";
+import { ReactComponent as SidebarIcon } from "./styled-components/svg/Sidebar.svg";
 
 function Transaction(props) {
-	const { getTransactionId, moveToNext, moveToPrevious, dataToRender, setToAddForm, handleSidebar } = props;
+	const {
+		getTransactionId,
+		moveToNext,
+		moveToPrevious,
+		dataToRender,
+		setToAddForm,
+		handleSidebar,
+		theme,
+	} = props;
 
 	return (
-		<Container>
+		<TransactionOutput>
 			<FixedContainer>
-				<ShowSidebarButton onClick = {handleSidebar}>
-						<SidebarButton/>
+				<ShowSidebarButton onClick={handleSidebar} alignment="left">
+					<SidebarIcon />
 				</ShowSidebarButton>
-				<FlexContainer justify="space-between">
+				<FlexContainer justifySmall="space-between">
 					<FlexContainer>
 						<ArrowButton type="button" onClick={moveToPrevious}>
 							<LargeHeader>{"<"}</LargeHeader>
@@ -36,7 +50,8 @@ function Transaction(props) {
 						<LargeHeader>
 							{typeof dataToRender.month !== "string"
 								? moment.monthsShort(dataToRender.month)
-								: dataToRender.month}{" "}
+								: dataToRender.month}
+							{"  "}
 							{dataToRender.year}
 						</LargeHeader>
 
@@ -46,53 +61,49 @@ function Transaction(props) {
 					</FlexContainer>
 
 					<NewButton type="button" onClick={setToAddForm}>
-						<Bold color={generalColors.white}>New | + </Bold>
+						New | +
 					</NewButton>
 				</FlexContainer>
 
 				<FlexContainer justify="space-around">
-					<LargeNumberContainer>
-						<Bold textAlign = "center">INCOME</Bold>
-						<Subtitle textAlign = "center">
-							{dataToRender.monthIncomeTotal ? dataToRender.monthIncomeTotal : 0}
-						</Subtitle>
+					<LargeNumberContainer type="income">
+						<Bold>INCOME</Bold>
+						<Subtitle>{totalValueFormat(dataToRender.monthIncomeTotal)}</Subtitle>
 					</LargeNumberContainer>
 
-					<LargeNumberContainer>
-						<Bold textAlign = "center" color = {generalColors.red}>EXPENSE</Bold>
-						<Subtitle textAlign = "center" color = {generalColors.red}>
-							{dataToRender.monthExpenseTotal ? Math.abs(dataToRender.monthExpenseTotal) : 0}
-						</Subtitle>
+					<LargeNumberContainer type="expense">
+						<Bold>EXPENSE</Bold>
+						<Subtitle>{totalValueFormat(dataToRender.monthExpenseTotal)}</Subtitle>
 					</LargeNumberContainer>
 
-					<LargeNumberContainer>
-						<Bold textAlign = "center">TOTAL</Bold>
-						<Subtitle textAlign = "center" amount = {dataToRender.monthTotal}>
-							{dataToRender.monthTotal ? Math.abs(dataToRender.monthTotal) : 0}
-						</Subtitle>
+					<LargeNumberContainer type="total" amount={dataToRender.monthTotal}>
+						<Bold>TOTAL</Bold>
+						<Subtitle>{totalValueFormat(dataToRender.monthTotal, true)}</Subtitle>
 					</LargeNumberContainer>
 				</FlexContainer>
-
 			</FixedContainer>
 
 			{!dataToRender.hasOwnProperty("dailyTrans") ? (
-				<GIFContainer>
-					<NoDataImage/>
-					<br/>
+				<NoDataContainer>
+					{theme === "light" ? <NoDataImageLight /> : <NoDataImageDark />}
+                    <br/>
 					<Small>No Data Available</Small>
-				</GIFContainer>
+				</NoDataContainer>
 			) : (
-				<ScrollingContainer startHeight = {12}>
+				<ScrollingContainer>
 					{dataToRender.dailyTrans.map((subItem, key) => {
 						return (
 							<DailyTransactionData key={key}>
 								<GridContainerHead>
-									<Bold>{moment(subItem.day).format('DD')} | {moment(subItem.day).format('ddd')}</Bold>
 									<Bold>
-										{subItem.dayIncomeTotal ? subItem.dayIncomeTotal : 0}
+										{moment(subItem.day).format("DD")} |{" "}
+										{moment(subItem.day).format("ddd")}
 									</Bold>
-									<Bold textAlign = 'right' color = {generalColors.red}>
-										{subItem.dayExpenseTotal ? Math.abs(subItem.dayExpenseTotal) : 0}
+									<Bold type="income">
+										{totalValueFormat(subItem.dayIncomeTotal)}
+									</Bold>
+									<Bold type="expense">
+										{totalValueFormat(subItem.dayExpenseTotal)}
 									</Bold>
 								</GridContainerHead>
 
@@ -102,27 +113,31 @@ function Transaction(props) {
 											key={key}
 											onClick={getTransactionId}
 											data-id={value.id}
+											amount={value.transactionAmount}
 										>
 											{value.transactionType === "transfer" ? (
-												<Small>
-													Transfer
-												</Small>
+												<Small>Transfer</Small>
 											) : (
-												<SmallOverflowingText>{value.transactionCategory}</SmallOverflowingText>
+												<SmallOverflowingText>
+													{value.transactionCategory}
+												</SmallOverflowingText>
 											)}
-											
+
 											<div>
-												<p>{value.transactionNotes}</p>
+												<Small>{value.transactionNotes}</Small>
 												{value.transactionType === "transfer" ? (
 													<SmallOverflowingText>
-														{value.fromAccount} <>&rarr;</> {value.toAccount}{" "}
+														{value.fromAccount} <>&rarr;</>{" "}
+														{value.toAccount}{" "}
 													</SmallOverflowingText>
 												) : (
 													<Small>{value.fromAccount}</Small>
 												)}
 											</div>
 
-											<Small textAlign = "right" amount = {value.transactionAmount}>{Math.abs(value.transactionAmount)}</Small>
+											<Small>
+												{singleValueFormat(value.transactionAmount)}
+											</Small>
 										</TransactionDetails>
 									);
 								})}
@@ -131,7 +146,7 @@ function Transaction(props) {
 					})}
 				</ScrollingContainer>
 			)}
-		</Container>
+		</TransactionOutput>
 	);
 }
 export default Transaction;
