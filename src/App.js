@@ -188,13 +188,13 @@ function App() {
                         handleSidebar={handleSidebar}
                     />
 
-                    {/* <Sidebar
+                    <Sidebar
                         transaction={transaction}
                         accounts={accounts}
                         dateToRender={dateToRender}
                         handleSidebar={handleSidebar}
                         showSidebar={showSidebar}
-                    /> */}
+                    />
                 </AppContainer>
 
                 {/* <Settings

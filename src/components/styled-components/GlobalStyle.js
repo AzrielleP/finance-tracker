@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { generalColors } from './ThemeColors.styled';
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -25,6 +24,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Open Sans', sans-serif;
         font-size: 12px;
         text-align: left;
+        
     }
 
     button {

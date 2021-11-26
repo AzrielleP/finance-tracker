@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { generalColors, light, dark } from "./ThemeColors.styled";
+import { generalColors } from "./ThemeColors.styled";
 
 const handleColorType = (type) => {
     switch (type) {
@@ -22,6 +22,7 @@ export const Subtitle = styled.p`
     margin: 5px 0;
     font-weight: bold;
     font-size: 14px;
+    color: ${({type, theme }) => handleColorType(type, theme) || theme.text};
 
     @media screen and (min-width: 1024px) {
         font-size: 22px;
@@ -32,7 +33,7 @@ export const Bold = styled.p`
 	font-weight: bold;
 	font-size: 12px;
 	letter-spacing: 0.1em;
-    color: ${({type, theme, amount}) => handleColorType(type, theme) || theme.text};
+    color: ${({type, theme}) => handleColorType(type, theme) || theme.text};
 
     @media screen and (min-width: 1024px) {
         font-size: 16px;

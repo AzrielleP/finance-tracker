@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
-import { generalColors, light, dark } from "./ThemeColors.styled";
-import { Bold } from "./Text.styled";
+import { generalColors } from "./ThemeColors.styled";
 
 const handleColorType = (type) => {
     switch (type) {
@@ -40,13 +39,13 @@ export const FormLabel = styled.label`
     flex: 1;
     cursor: pointer;
     padding: 0.25em 0.5em;
-    border: 0.25px solid ${({theme}) => theme.textFaded};
+    border: 0.25px solid ${({theme}) => theme.fadedGrey};
     border-radius: 5px;
     background-color: ${({theme}) => theme.textBg};
 
     p {
         text-align: center;
-        color: ${({theme}) => theme.textFaded};
+        color: ${({theme}) => theme.fadedGrey};
     }
 `
 

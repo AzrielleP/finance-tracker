@@ -14,7 +14,8 @@ export const light = {
     textBg: lightGrey,
     background: white,
     border: darkGrey,
-    textFaded: darkGrey
+    fadedGrey: darkGrey,
+    modalBg: darkGrey,
 }
 
 export const dark = { 
@@ -22,7 +23,8 @@ export const dark = {
     textBg: blackAccent,
     background: black,
     border: lightGrey,
-    textFaded: darkGrey
+    fadedGrey: darkGrey,
+    modalBg: blackAccent,
 }
 
 export const generalColors = {

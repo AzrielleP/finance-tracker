@@ -57,7 +57,7 @@ export const ModalBackground = styled.div`
         height: 100vh;
         width: 100vw;
         opacity: 0.6;
-        background-color: ${generalColors.darkGrey};   
+        background-color: ${({theme}) => theme.modalBg};   
     }         
 `
 export const ModalContainer = styled.div`
@@ -144,6 +144,7 @@ export const SidebarContainer = styled.div`
         display: block;
         position: static;
         padding: 0 2vw;
+        border-left: 0.1px solid ${({theme}) => theme.fadedGrey};
     }
 `
 export const SidebarFixedContainer = styled(FixedContainer)`
@@ -151,7 +152,7 @@ export const SidebarFixedContainer = styled(FixedContainer)`
 `
 export const SidebarSelectors = styled(FlexContainer)`
     padding: 1em 0 0.5em 0;
-    border-bottom: 5px solid black;
+    border-bottom: 5px solid ${generalColors.blue};
     position: relative;
 
     label {
@@ -191,8 +192,8 @@ export const ChartContainer = styled.div`
     div {
             margin: auto;
             max-width: 20em; 
-        }
-
+    }
+  
     @media screen and (min-width: 1024px) {
         div {
             padding: 1em;
