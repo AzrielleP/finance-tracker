@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.js": "/finance-tracker/static/js/main.6485e092.chunk.js",
+    "main.js.map": "/finance-tracker/static/js/main.6485e092.chunk.js.map",
+    "runtime-main.js": "/finance-tracker/static/js/runtime-main.9d243eed.js",
+    "runtime-main.js.map": "/finance-tracker/static/js/runtime-main.9d243eed.js.map",
+    "static/js/2.ab0b0c06.chunk.js": "/finance-tracker/static/js/2.ab0b0c06.chunk.js",
+    "static/js/2.ab0b0c06.chunk.js.map": "/finance-tracker/static/js/2.ab0b0c06.chunk.js.map",
+    "index.html": "/finance-tracker/index.html",
+    "static/js/2.ab0b0c06.chunk.js.LICENSE.txt": "/finance-tracker/static/js/2.ab0b0c06.chunk.js.LICENSE.txt",
+    "static/media/CloseButton.e912a322.svg": "/finance-tracker/static/media/CloseButton.e912a322.svg",
+    "static/media/NoData-Dark.98bbdf4b.svg": "/finance-tracker/static/media/NoData-Dark.98bbdf4b.svg",
+    "static/media/NoData-Light.729e7c82.svg": "/finance-tracker/static/media/NoData-Light.729e7c82.svg",
+    "static/media/Settings.6a4695c9.svg": "/finance-tracker/static/media/Settings.6a4695c9.svg",
+    "static/media/Sidebar.f9ac4615.svg": "/finance-tracker/static/media/Sidebar.f9ac4615.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9d243eed.js",
+    "static/js/2.ab0b0c06.chunk.js",
+    "static/js/main.6485e092.chunk.js"
+  ]
+}
