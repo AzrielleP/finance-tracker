@@ -186,6 +186,7 @@ function App() {
                         dataToRender={dataToRender}
                         setToAddForm={setToAddForm}
                         handleSidebar={handleSidebar}
+                        theme = {theme}
                     />
 
                     <Sidebar
