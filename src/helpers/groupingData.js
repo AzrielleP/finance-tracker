@@ -137,22 +137,4 @@ const groupByCategory = (data, type, date) => {
     return groupedData;
 };
 
-// For updating transaction when amount or category is changed
-const updateTransaction = (transaction, currentValue, previousValue) => {
-    let updatedTransaction = [...transaction];
-    updatedTransaction
-        .filter(({ fromAccount, toAccount }) => fromAccount === previousValue || toAccount === previousValue)
-        .map((item) => {
-            if (item.fromAccount === previousValue) {
-                item.fromAccount = currentValue;
-            }
-            if (item.toAccount === previousValue) {
-                item.toAccount = currentValue;
-            }
-
-            return item;
-        });
-    return updatedTransaction;
-};
-
-export { processData, updateTransaction, groupByCategory };
+export { processData, groupByCategory };

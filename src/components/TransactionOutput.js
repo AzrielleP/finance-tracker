@@ -27,8 +27,8 @@ import { ReactComponent as SidebarIcon } from "./styled-components/svg/Sidebar.s
 function Transaction(props) {
 	const {
 		getTransactionId,
-		moveToNext,
-		moveToPrevious,
+		moveToNextMonth,
+		moveToPreviousMonth,
 		dataToRender,
 		setToAddForm,
 		handleSidebar,
@@ -43,7 +43,7 @@ function Transaction(props) {
 				</ShowSidebarButton>
 				<FlexContainer justifySmall="space-between">
 					<FlexContainer>
-						<ArrowButton type="button" onClick={moveToPrevious}>
+						<ArrowButton type="button" onClick={moveToPreviousMonth}>
 							<LargeHeader>{"<"}</LargeHeader>
 						</ArrowButton>
 
@@ -55,7 +55,7 @@ function Transaction(props) {
 							{dataToRender.year}
 						</LargeHeader>
 
-						<ArrowButton type="button" onClick={moveToNext}>
+						<ArrowButton type="button" onClick={moveToNextMonth}>
 							<LargeHeader>{">"}</LargeHeader>
 						</ArrowButton>
 					</FlexContainer>

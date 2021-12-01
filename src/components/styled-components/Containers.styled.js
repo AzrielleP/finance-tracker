@@ -64,8 +64,10 @@ export const ModalContainer = styled.div`
     position: absolute;
     height: 100vh;
     width: 100vw;
-    z-index: 10;
+    z-index: 20;
     padding: 10vw;
+    top: 0;
+    left: 0;
     background: ${({theme}) => theme.background};
 
     @media screen and (min-width: 768px) {

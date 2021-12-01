@@ -13,8 +13,7 @@ import { ReactComponent as CloseButton } from "./../styled-components/svg/CloseB
 import { ReactComponent as SettingsIcon } from "./../styled-components/svg/Settings.svg";
 
 function Sidebar(props) {
-    const { transaction, accounts, dateToRender, handleSidebar, showSidebar } = props;
-
+    const { transaction, accounts, dateToRender, handleSidebar, showSidebar, displaySettings } = props;
     const [option, setOption] = useState("categories");
     const handleOptionChange = (event) => {
         let value = event.target.value;
@@ -76,7 +75,9 @@ function Sidebar(props) {
                     <ShowSidebarButton onClick={handleSidebar} alignment='right'>
                         <CloseButton />
                     </ShowSidebarButton>
-                    <SettingsIcon />
+                    <button onClick = {displaySettings}>
+                        <SettingsIcon />
+                    </button>
                 </FlexContainer>
 
                 <SidebarSelectors justifySmall='space-around' option={option}>

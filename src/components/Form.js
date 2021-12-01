@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment";
 
+// Styled Components
 import { Small } from "./styled-components/Text.styled";
 import {
     FlexContainer,
