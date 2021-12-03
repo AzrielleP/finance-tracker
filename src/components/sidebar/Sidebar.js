@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SidebarCategories from "./Sidebar-Categories";
 import SidebarAccounts from "./Sidebar-Accounts";
+import ThemeToggler from "./../ThemeToggler";
 import { calcTotalOfFiltered, calcFromAccount } from "../../helpers/calc";
 import { computeAssets, computeLiabilities } from "../../helpers/calc";
 
@@ -10,10 +11,9 @@ import { SidebarRadio } from "../styled-components/Forms.styled";
 import { Bold } from "../styled-components/Text.styled";
 import { ShowSidebarButton } from "../styled-components/Buttons.styled";
 import { ReactComponent as CloseButton } from "./../styled-components/svg/CloseButton.svg";
-import { ReactComponent as SettingsIcon } from "./../styled-components/svg/Settings.svg";
 
 function Sidebar(props) {
-    const { transaction, accounts, dateToRender, handleSidebar, showSidebar, displaySettings } = props;
+    const { transaction, accounts, dateToRender, handleSidebar, showSidebar, handleDarkMode } = props;
     const [option, setOption] = useState("categories");
     const handleOptionChange = (event) => {
         let value = event.target.value;
@@ -75,9 +75,7 @@ function Sidebar(props) {
                     <ShowSidebarButton onClick={handleSidebar} alignment='right'>
                         <CloseButton />
                     </ShowSidebarButton>
-                    <button onClick = {displaySettings}>
-                        <SettingsIcon />
-                    </button>
+                    <ThemeToggler handleDarkMode = {handleDarkMode}/>
                 </FlexContainer>
 
                 <SidebarSelectors justifySmall='space-around' option={option}>

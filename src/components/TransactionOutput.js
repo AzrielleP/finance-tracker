@@ -32,7 +32,7 @@ function Transaction(props) {
 		dataToRender,
 		setToAddForm,
 		handleSidebar,
-		theme,
+		isDarkMode,
 	} = props;
 
 	return (
@@ -85,7 +85,7 @@ function Transaction(props) {
 
 			{!dataToRender.hasOwnProperty("dailyTrans") ? (
 				<NoDataContainer>
-					{theme === "light" ? <NoDataImageLight /> : <NoDataImageDark />}
+					{!isDarkMode ? <NoDataImageLight /> : <NoDataImageDark />}
                     <br/>
 					<Small>No Data Available</Small>
 				</NoDataContainer>

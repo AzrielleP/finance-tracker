@@ -51,7 +51,7 @@ function App() {
     // Determines if the sidebar is displayed or not on mobile mode
 	const [showSidebar, setShowSidebar] = useState(false); 
 
-	const [theme, setTheme] = useState("light");
+	const [isDarkMode, setIsDarkMode] = useState(false);
 
 	// * ==== FUNCTIONS : DATA ==== * //
 	const handleAddTransaction = (value) => {
@@ -122,6 +122,10 @@ function App() {
 		setShowSidebar((prev) => !prev);
 	};
 
+	const handleDarkMode = () => {
+		setIsDarkMode(!isDarkMode);
+	}
+
 	// * ==== USEEFFECT ==== * //
 
 	// Do not run useEffect on first render
@@ -162,7 +166,7 @@ function App() {
 
 	return (
 		<>
-			<ThemeProvider theme={ThemeColors[theme]}>
+			<ThemeProvider theme={isDarkMode ? ThemeColors.dark : ThemeColors.light}>
 				<GlobalStyle />
 
 				<ModalBackground show={showForm} />
@@ -187,7 +191,7 @@ function App() {
 						dataToRender={dataToRender}
 						setToAddForm={setToAddForm}
 						handleSidebar={handleSidebar}
-						theme={theme}
+						isDarkMode={isDarkMode}
 					/>
 
 					<Sidebar
@@ -196,6 +200,7 @@ function App() {
 						dateToRender={dateToRender}
 						handleSidebar={handleSidebar}
 						showSidebar={showSidebar}
+						handleDarkMode = {handleDarkMode}
 					/>
 				</AppContainer>
 			</ThemeProvider>
