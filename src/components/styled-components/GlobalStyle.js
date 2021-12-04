@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     body {
         padding: 0;
         margin: 0;
-        background: ${({theme}) => theme.background};
+        background: ${({ theme }) => theme.background};
     }
 
     h1, h2 {
@@ -40,4 +40,4 @@ export const GlobalStyle = createGlobalStyle`
             font-size: 18px;
         }
     }
-`
+`;

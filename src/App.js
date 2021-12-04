@@ -1,55 +1,53 @@
 import React, { useState, useEffect, useRef } from "react";
 import moment from "moment";
-import TransactionInput from "./components/TransactionInput";
-import TransactionOutput from "./components/TransactionOutput";
-import Sidebar from "./components/sidebar/Sidebar";
+import TransactionInput from "./components/TransactionInput/TransactionInput";
+import TransactionOutput from "./components/TransactionOutput/TransactionOutput";
+import Sidebar from "./components/Sidebar/Sidebar";
 import { processData } from "./helpers/groupingData";
 import { accountsList } from "./helpers/accountList";
 import { categoriesList } from "./helpers/categoriesList";
 
 // Styled Components
 import { GlobalStyle } from "./components/styled-components/GlobalStyle";
-import { AppContainer, ModalBackground } from "./components/styled-components/Containers.styled";
+import { AppContainer, ModalBackground } from "./components/styled-components/Default.styled";
 import { ThemeProvider } from "styled-components";
 import * as ThemeColors from "./components/styled-components/ThemeColors.styled";
 
-
 function App() {
-
-    // * === STATES - DATA === //
-    const [accounts] = useState(accountsList);
+	// * === STATES - DATA === //
+	const [accounts] = useState(accountsList);
 	const [categories] = useState(categoriesList);
 
-    // Stores the transaction data to be displayed on TransactionOutput
+	// Stores the transaction data to be displayed on TransactionOutput
 	const [processedData, setProcessedData] = useState([]);
-    
-    // Stores the submitted entries of the user
-	const [transaction, setTransaction] = useState([]); 
 
-    // Stores the transaction ID for editing / deleting
-	const [transId, setTransId] = useState(""); 
+	// Stores the submitted entries of the user
+	const [transaction, setTransaction] = useState([]);
 
-    // Stores the data of the selected transaction for editing
-	const [clickedTransData, setClickedTransData] = useState({}); 
+	// Stores the transaction ID for editing / deleting
+	const [transId, setTransId] = useState("");
 
-    // Stores the month (based on index) and year to be displayed in TransactionOutput
-    const [dateToRender, setDateToRender] = useState({
+	// Stores the data of the selected transaction for editing
+	const [clickedTransData, setClickedTransData] = useState({});
+
+	// Stores the month (based on index) and year to be displayed in TransactionOutput
+	const [dateToRender, setDateToRender] = useState({
 		month: moment(new Date()).month(),
 		year: moment(new Date()).year(),
-	}); 
+	});
 
-    // Stores the filtered data that the user will see based on the date selected
-    const [dataToRender, setDataToRender] = useState(dateToRender); 
+	// Stores the filtered data that the user will see based on the date selected
+	const [dataToRender, setDataToRender] = useState(dateToRender);
 
-    // * === STATES - CONDITIONAL RENDERING === //
-    // show/hide the Form component
-	const [showForm, setShowForm] = useState(false); 
+	// * === STATES - CONDITIONAL RENDERING === //
+	// show/hide the Form component
+	const [showForm, setShowForm] = useState(false);
 
-    // Two values: add and edit for TransactionInput
-	const [mode, setMode] = useState("add"); 
+	// Two values: add and edit for TransactionInput
+	const [mode, setMode] = useState("add");
 
-    // Determines if the sidebar is displayed or not on mobile mode
-	const [showSidebar, setShowSidebar] = useState(false); 
+	// Determines if the sidebar is displayed or not on mobile mode
+	const [showSidebar, setShowSidebar] = useState(false);
 
 	const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -112,8 +110,8 @@ function App() {
 	};
 
 	const hideForm = () => {
-        // Reset transaction ID to make the transaction re-clickable
-		setTransId(""); 
+		// Reset transaction ID to make the transaction re-clickable
+		setTransId("");
 		setShowForm(false);
 	};
 
@@ -124,7 +122,7 @@ function App() {
 
 	const handleDarkMode = () => {
 		setIsDarkMode(!isDarkMode);
-	}
+	};
 
 	// * ==== USEEFFECT ==== * //
 
@@ -200,7 +198,7 @@ function App() {
 						dateToRender={dateToRender}
 						handleSidebar={handleSidebar}
 						showSidebar={showSidebar}
-						handleDarkMode = {handleDarkMode}
+						handleDarkMode={handleDarkMode}
 					/>
 				</AppContainer>
 			</ThemeProvider>
