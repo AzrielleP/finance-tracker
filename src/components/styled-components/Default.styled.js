@@ -12,7 +12,7 @@ export const AppContainer = styled.div`
 		grid-template-rows: 1fr;
 	}
 
-	@media screen and (min-width: 1024px) {
+	@media screen and (min-width: 1120px) {
 		grid-template-columns: 75% 25%;
 	}
 `;

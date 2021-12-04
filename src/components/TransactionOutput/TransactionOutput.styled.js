@@ -5,7 +5,7 @@ import { generalColors } from "../styled-components/ThemeColors.styled";
 export const TransactionOutput = styled.div`
 	padding: 0 5vw;
 
-	@media screen and (min-width: 1024px) {
+	@media screen and (min-width: 1120px) {
 		padding: 0 7em;
 	}
 `;

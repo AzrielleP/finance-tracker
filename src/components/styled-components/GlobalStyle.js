@@ -35,7 +35,7 @@ export const GlobalStyle = createGlobalStyle`
         cursor: pointer;
     }
 
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 1120px) {
         p {
             font-size: 18px;
         }

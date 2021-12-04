@@ -8,7 +8,7 @@ export const ChartContainer = styled.div`
 		max-width: 20em;
 	}
 
-	@media screen and (min-width: 1024px) {
+	@media screen and (min-width: 1120px) {
 		div {
 			padding: 1em;
 		}

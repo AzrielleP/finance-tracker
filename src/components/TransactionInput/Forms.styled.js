@@ -80,7 +80,7 @@ const inputStyles = css`
 		width: 30em;
 	}
 
-	@media screen and (min-width: 1024px) {
+	@media screen and (min-width: 1120px) {
 		width: 28em;
 		font-size: 16px;
 	}

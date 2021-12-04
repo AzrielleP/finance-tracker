@@ -55,7 +55,7 @@ export const SidebarSelectors = styled(FlexContainer)`
 		margin: 0 0 0.5em 0;
 	}
 
-	@media screen and (min-width: 1024px) {
+	@media screen and (min-width: 1120px) {
 		padding: 1.5em 0 0.5em 0;
 	}
 `;
