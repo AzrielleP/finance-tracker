@@ -7,10 +7,4 @@ export const ChartContainer = styled.div`
 		margin: auto;
 		max-width: 20em;
 	}
-
-	@media screen and (min-width: 1120px) {
-		div {
-			padding: 1em;
-		}
-	}
 `;

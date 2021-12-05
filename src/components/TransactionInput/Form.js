@@ -217,7 +217,7 @@ function Form(props) {
 								name="transactionAmount"
 								id="transactionAmount"
 								onChange={handleValueChange}
-								value={values.transactionAmount ? values.transactionAmount : ""}
+								value={values.transactionAmount ? Math.abs(values.transactionAmount) : ""}
 								min="0"
 								placeholder="0"
 								onKeyDown={blockInvalidCharacter}
