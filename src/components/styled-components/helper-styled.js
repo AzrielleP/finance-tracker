@@ -6,6 +6,8 @@ export const handleColorTransType = (type) => {
 			return generalColors.blue;
 		case "expense":
 			return generalColors.red;
+		case "error":
+			return generalColors.red;
 		default:
 			return false;
 	}

@@ -13,7 +13,6 @@ import {
 	TransTypeContainer,
 	TransInputContainer,
 } from "./Forms.styled";
-import { generalColors } from "../styled-components/ThemeColors.styled";
 
 function Form(props) {
 	const {
@@ -116,7 +115,7 @@ function Form(props) {
 											);
 										})}
 									</FormSelect>
-									<Small color={generalColors.red}>{errorMsgs.fromAccount}</Small>
+									<Small type = "error">{errorMsgs.fromAccount}</Small>
 								</div>
 							</FlexContainer>
 
@@ -143,7 +142,7 @@ function Form(props) {
 											);
 										})}
 									</FormSelect>
-									<Small color={generalColors.red}>
+									<Small type = "error">
 										{errorMsgs.transactionCategory}
 									</Small>
 								</div>
@@ -176,7 +175,7 @@ function Form(props) {
 											);
 										})}
 									</FormSelect>
-									<Small color={generalColors.red}>{errorMsgs.fromAccount}</Small>
+									<Small type = "error">{errorMsgs.fromAccount}</Small>
 								</div>
 							</FlexContainer>
 
@@ -202,7 +201,7 @@ function Form(props) {
 											);
 										})}
 									</FormSelect>
-									<Small color={generalColors.red}>{errorMsgs.toAccount}</Small>
+									<Small type = "error">{errorMsgs.toAccount}</Small>
 								</div>
 							</FlexContainer>
 						</>
@@ -223,7 +222,7 @@ function Form(props) {
 								placeholder="0"
 								onKeyDown={blockInvalidCharacter}
 							/>
-							<Small color={generalColors.red}>{errorMsgs.transactionAmount}</Small>
+							<Small type = "error">{errorMsgs.transactionAmount}</Small>
 						</div>
 					</FlexContainer>
 

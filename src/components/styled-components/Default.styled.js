@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { handleColorTransType } from "./helper-styled";
 
 // Consists of styles that are used in more than 2 components (except for App)
 
