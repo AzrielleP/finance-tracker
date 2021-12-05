@@ -39,19 +39,6 @@ export const FixedContainer = styled.div`
 	z-index: 2;
 	background-color: ${({ theme }) => theme.background};
 `;
-export const LargeNumberContainer = styled.div`
-	flex: 1;
-	margin: 0.25em;
-	padding: 0.5em;
-	border: 1px solid;
-	border-radius: 10px;
-	border-color: ${({ type, theme }) => handleColorTransType(type, theme) || theme.text};
-
-	p {
-		text-align: center;
-		color: ${({ type, theme }) => handleColorTransType(type, theme) || theme.text};
-	}
-`;
 
 /* ======== Modal ======== */
 export const ModalBackground = styled.div`
@@ -102,6 +89,10 @@ export const ShowSidebarButton = styled.button`
 			: css`
 					margin-right: auto;
 			  `}
+	border: none;
+	&:hover, &:focus, &:active {
+		box-shadow: none;
+	}
 
 	@media screen and (min-width: 768px) {
 		display: none;

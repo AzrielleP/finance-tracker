@@ -24,7 +24,7 @@ export const LargeHeader = styled.h1`
 export const Subtitle = styled.p`
 	margin: 5px 0;
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 16px;
 	color: ${({ type, theme }) => handleColorType(type, theme) || theme.text};
 
 	@media screen and (min-width: 1120px) {
@@ -34,7 +34,7 @@ export const Subtitle = styled.p`
 
 export const Bold = styled.p`
 	font-weight: bold;
-	font-size: 12px;
+	font-size: 14px;
 	letter-spacing: 0.1em;
 	color: ${({ type, theme }) => handleColorType(type, theme) || theme.text};
 
@@ -43,7 +43,7 @@ export const Bold = styled.p`
 	}
 `;
 export const Small = styled.p`
-	font-size: 10px;
+	font-size: 11px;
 	letter-spacing: 0.1em;
 	color: ${({ type, theme }) => handleColorType(type, theme) || theme.text};
 

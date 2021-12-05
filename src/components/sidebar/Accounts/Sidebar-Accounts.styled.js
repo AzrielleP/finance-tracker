@@ -31,6 +31,7 @@ export const AccountContainer = styled(FlexContainer)`
 export const Dot = styled.span`
 	height: 10px;
 	width: 10px;
+	margin-right: 0.5em;
 	background-color: ${({ color }) => (color < 0 ? generalColors.red : generalColors.blue)};
 	border-radius: 50%;
 

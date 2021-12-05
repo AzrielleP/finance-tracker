@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { generalColors } from "../styled-components/ThemeColors.styled";
+import { handleColorTransType } from "../styled-components/helper-styled";
 
 /*  ========== Containers ========== */
 export const TransactionOutput = styled.div`
@@ -35,11 +36,29 @@ export const DailyTransactionData = styled.div`
 	padding: 1.5em 1em;
 	background: ${({ theme }) => theme.textBg};
 `;
+export const LargeNumberContainer = styled.div`
+	flex: 1;
+	margin: 0.20em;
+	padding: 0.5em;
+	border: 1px solid;
+	border-radius: 10px;
+	border-color: ${({ type, theme }) => handleColorTransType(type, theme) || theme.text};
+
+	p {
+		text-align: center;
+		color: ${({ type, theme }) => handleColorTransType(type, theme) || theme.text};
+	}
+`;
 
 /*  ========== Buttons ========== */
 export const ArrowButton = styled.button`
 	margin: 0 1em;
 	color: ${({ theme }) => theme.text};
+	border: none;
+	
+	&:hover, &:focus, &:active {
+		box-shadow: none;
+	}
 `;
 export const NewButton = styled.button`
 	padding: 0.5em 1em;
@@ -56,6 +75,11 @@ export const TransactionDetails = styled.button`
 	align-items: center;
 	width: 100%;
 	margin: 1.5em 0;
+	border: none;
+	
+	&:hover, &:focus, &:active {
+		box-shadow: none;
+	}
 
 	p:nth-child(3) {
 		text-align: right;

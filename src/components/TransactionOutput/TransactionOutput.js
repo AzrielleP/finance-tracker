@@ -14,6 +14,7 @@ import {
 	GridContainerHead,
 	NoDataContainer,
 	DailyTransactionData,
+	LargeNumberContainer,
 } from "./TransactionOutput.styled";
 import {
 	LargeHeader,
@@ -24,7 +25,6 @@ import {
 } from "../styled-components/Text.styled";
 import {
 	FlexContainer,
-	LargeNumberContainer,
 	ScrollingContainer,
 	FixedContainer,
 	ShowSidebarButton,
