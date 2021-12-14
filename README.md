@@ -1,8 +1,8 @@
 # Finance Tracker
 
-🎟️  Live URL : < N/A >
+🎟️  Live URL : https://aze-pelayo.github.io/finance-tracker/
 
-⚒️  Status: Ongoing
+⚒️  Status: Done
 
 **TABLE OF CONTENTS**
 - [Finance Tracker](#finance-tracker)
