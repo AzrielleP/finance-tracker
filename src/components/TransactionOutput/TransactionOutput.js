@@ -1,38 +1,44 @@
 import React from "react";
 import moment from "moment";
-import { totalValueFormat, singleValueFormat } from "../helpers/calc";
-import { ReactComponent as NoDataImageLight } from "./styled-components/svg/NoData-Light.svg";
-import { ReactComponent as NoDataImageDark } from "./styled-components/svg/NoData-Dark.svg";
-import { ArrowButton, NewButton, TransactionDetails } from "./styled-components/Buttons.styled";
+import { totalValueFormat, singleValueFormat } from "../../helpers/calc";
+
+// Styled Components
+import { ReactComponent as NoDataImageLight } from "../styled-components/svg/NoData-Light.svg";
+import { ReactComponent as NoDataImageDark } from "../styled-components/svg/NoData-Dark.svg";
+import { ReactComponent as SidebarIcon } from "../styled-components/svg/Sidebar.svg";
+import {
+	ArrowButton,
+	NewButton,
+	TransactionDetails,
+	TransactionOutput,
+	GridContainerHead,
+	NoDataContainer,
+	DailyTransactionData,
+	LargeNumberContainer,
+} from "./TransactionOutput.styled";
 import {
 	LargeHeader,
 	Bold,
 	Subtitle,
 	Small,
 	SmallOverflowingText,
-} from "./styled-components/Text.styled";
+} from "../styled-components/Text.styled";
 import {
 	FlexContainer,
-	TransactionOutput,
-	LargeNumberContainer,
 	ScrollingContainer,
-	DailyTransactionData,
 	FixedContainer,
-	GridContainerHead,
-	NoDataContainer,
-} from "./styled-components/Containers.styled";
-import { ShowSidebarButton } from "./styled-components/Buttons.styled";
-import { ReactComponent as SidebarIcon } from "./styled-components/svg/Sidebar.svg";
+	ShowSidebarButton,
+} from "../styled-components/Default.styled";
 
 function Transaction(props) {
 	const {
 		getTransactionId,
-		moveToNext,
-		moveToPrevious,
+		moveToNextMonth,
+		moveToPreviousMonth,
 		dataToRender,
 		setToAddForm,
 		handleSidebar,
-		theme,
+		isDarkMode,
 	} = props;
 
 	return (
@@ -43,7 +49,7 @@ function Transaction(props) {
 				</ShowSidebarButton>
 				<FlexContainer justifySmall="space-between">
 					<FlexContainer>
-						<ArrowButton type="button" onClick={moveToPrevious}>
+						<ArrowButton type="button" onClick={moveToPreviousMonth}>
 							<LargeHeader>{"<"}</LargeHeader>
 						</ArrowButton>
 
@@ -55,7 +61,7 @@ function Transaction(props) {
 							{dataToRender.year}
 						</LargeHeader>
 
-						<ArrowButton type="button" onClick={moveToNext}>
+						<ArrowButton type="button" onClick={moveToNextMonth}>
 							<LargeHeader>{">"}</LargeHeader>
 						</ArrowButton>
 					</FlexContainer>
@@ -85,8 +91,8 @@ function Transaction(props) {
 
 			{!dataToRender.hasOwnProperty("dailyTrans") ? (
 				<NoDataContainer>
-					{theme === "light" ? <NoDataImageLight /> : <NoDataImageDark />}
-                    <br/>
+					{!isDarkMode ? <NoDataImageLight /> : <NoDataImageDark />}
+					<br />
 					<Small>No Data Available</Small>
 				</NoDataContainer>
 			) : (

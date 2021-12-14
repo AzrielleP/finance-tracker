@@ -1,212 +1,209 @@
 import React, { useState, useEffect, useRef } from "react";
 import moment from "moment";
-import TransactionInput from "./components/TransactionInput";
-import TransactionOutput from "./components/TransactionOutput";
-import Settings from "./components/settings/Settings";
-import Sidebar from "./components/sidebar/Sidebar";
-import { processData, updateTransaction } from "./helpers/groupingData";
+import TransactionInput from "./components/TransactionInput/TransactionInput";
+import TransactionOutput from "./components/TransactionOutput/TransactionOutput";
+import Sidebar from "./components/Sidebar/Sidebar";
+import { processData } from "./helpers/groupingData";
+import { accountsList } from "./helpers/accountList";
+import { categoriesList } from "./helpers/categoriesList";
+
+// Styled Components
 import { GlobalStyle } from "./components/styled-components/GlobalStyle";
-import { AppContainer, ModalBackground } from "./components/styled-components/Containers.styled";
+import { AppContainer, ModalBackground } from "./components/styled-components/Default.styled";
 import { ThemeProvider } from "styled-components";
 import * as ThemeColors from "./components/styled-components/ThemeColors.styled";
 
 function App() {
-    const [accounts, setAccounts] = useState(["Cash", "Bank", "Other"]);
-    const [processedData, setProcessedData] = useState([]); // Stores the transaction data to be displayed on TransactionOutput
-    const [transaction, setTransaction] = useState([]); // Stores the submitted entries of the user
-    const [categories, setCategories] = useState({
-        income: ["Salary", "Interest", "Other"],
-        expense: ["Food", "Transportation", "Other"],
-    });
-    const [showForm, setShowForm] = useState(false); // show/hide the TransactionInput component
-    const [transId, setTransId] = useState(""); // Stores the transaction ID
-    const [clickedTransData, setClickedTransData] = useState({}); // Stores the data of the selected transaction for editing
-    const [mode, setMode] = useState("add"); // Two values: add and edit for TransactionInput
-    const [dateToRender, setDateToRender] = useState({
-        month: moment(new Date()).month(),
-        year: moment(new Date()).year(),
-    }); // Stores the month (based on index) and year to be displayed in TransactionOutput
+	// * === STATES - DATA === //
+	const [accounts] = useState(accountsList);
+	const [categories] = useState(categoriesList);
 
-    const [dataToRender, setDataToRender] = useState(dateToRender); // Stores the filtered data that the user will see based on the date selected
+	// Stores the transaction data to be displayed on TransactionOutput
+	const [processedData, setProcessedData] = useState([]);
 
-    const [showSidebar, setShowSidebar] = useState(false); // Determines if the sidebar is displayed or not on mobile mode
+	// Stores the submitted entries of the user
+	const [transaction, setTransaction] = useState([]);
 
-    const [theme, setTheme] = useState('light');
+	// Stores the transaction ID for editing / deleting
+	const [transId, setTransId] = useState("");
 
-    // * ==== FUNCTIONS ==== * //
-    const handleAddTransaction = (value) => {
-        setTransaction((prevData) => [value, ...prevData]);
-    };
+	// Stores the data of the selected transaction for editing
+	const [clickedTransData, setClickedTransData] = useState({});
 
-    const handleAddSettings = (valueToAdd, whereToAdd) => {
-        whereToAdd === "accounts"
-            ? setAccounts((prevData) => [valueToAdd, ...prevData])
-            : setCategories((prevData) => [valueToAdd, ...prevData]);
-    };
+	// Stores the month (based on index) and year to be displayed in TransactionOutput
+	const [dateToRender, setDateToRender] = useState({
+		month: moment(new Date()).month(),
+		year: moment(new Date()).year(),
+	});
 
-    const handleEdit = (value, index, whereToEdit) => {
-        let items = whereToEdit;
-        let previousValue = items[index];
-        let currentValue = previousValue;
-        currentValue = value;
-        items[index] = currentValue;
+	// Stores the filtered data that the user will see based on the date selected
+	const [dataToRender, setDataToRender] = useState(dateToRender);
 
-        whereToEdit === accounts ? setAccounts(items) : setCategories(items);
+	// * === STATES - CONDITIONAL RENDERING === //
+	// show/hide the Form component
+	const [showForm, setShowForm] = useState(false);
 
-        const updatedTransaction = updateTransaction(transaction, currentValue, previousValue);
-        setTransaction(updatedTransaction);
-    };
+	// Two values: add and edit for TransactionInput
+	const [mode, setMode] = useState("add");
 
-    const getTransactionIndex = (array, id) => array.map((item) => item.id).indexOf(Number(id));
+	// Determines if the sidebar is displayed or not on mobile mode
+	const [showSidebar, setShowSidebar] = useState(false);
 
-    const getTransactionId = (event) => {
-        event.preventDefault();
-        const target = event.currentTarget.getAttribute("data-id");
-        setTransId(target);
-    };
+	const [isDarkMode, setIsDarkMode] = useState(false);
 
-    const handleEditTransaction = (value) => {
-        const index = getTransactionIndex(transaction, transId);
-        let newTransaction = [...transaction];
-        newTransaction[index] = value;
-        setTransaction(newTransaction);
-    };
+	// * ==== FUNCTIONS : DATA ==== * //
+	const handleAddTransaction = (value) => {
+		setTransaction((prevData) => [value, ...prevData]);
+	};
 
-    const handleDeleteTransaction = () => {
-        const index = getTransactionIndex(transaction, transId);
-        setTransaction((prev) => prev.filter((item, i) => i !== index));
-        hideForm();
-    };
+	const getTransactionIndex = (array, id) => array.map((item) => item.id).indexOf(Number(id));
 
-    const setToAddForm = () => {
-        setMode("add");
-        displayForm();
-    };
+	const getTransactionId = (event) => {
+		event.preventDefault();
+		const target = event.currentTarget.getAttribute("data-id");
+		setTransId(target);
+	};
 
-    const displayForm = () => {
-        setShowForm(true);
-    };
+	const handleEditTransaction = (value) => {
+		const index = getTransactionIndex(transaction, transId);
+		let newTransaction = [...transaction];
+		newTransaction[index] = value;
+		setTransaction(newTransaction);
+	};
 
-    const hideForm = () => {
-        setTransId(""); // Reset transaction ID to make the transaction re-clickable
-        setShowForm(false);
-    };
+	const handleDeleteTransaction = () => {
+		const index = getTransactionIndex(transaction, transId);
+		setTransaction((prev) => prev.filter((item, i) => i !== index));
+		hideForm();
+	};
 
-    // Move to previous month
-    const moveToPrevious = () => {
-        let newDate = dateToRender;
-        if (newDate.month - 1 < 0) {
-            newDate.year = newDate.year - 1;
-            newDate.month = 11;
-        } else {
-            newDate.month = newDate.month - 1;
-        }
-        setDateToRender({ year: newDate.year, month: newDate.month });
-    };
+	const moveToPreviousMonth = () => {
+		let newDate = dateToRender;
+		if (newDate.month - 1 < 0) {
+			newDate.year = newDate.year - 1;
+			newDate.month = 11;
+		} else {
+			newDate.month = newDate.month - 1;
+		}
+		setDateToRender({ year: newDate.year, month: newDate.month });
+	};
 
-    // Move to next month
-    const moveToNext = () => {
-        let newDate = dateToRender;
-        if (newDate.month + 1 > 11) {
-            newDate.year = newDate.year + 1;
-            newDate.month = 0;
-        } else {
-            newDate.month = newDate.month + 1;
-        }
-        setDateToRender({ year: newDate.year, month: newDate.month });
-    };
+	const moveToNextMonth = () => {
+		let newDate = dateToRender;
+		if (newDate.month + 1 > 11) {
+			newDate.year = newDate.year + 1;
+			newDate.month = 0;
+		} else {
+			newDate.month = newDate.month + 1;
+		}
+		setDateToRender({ year: newDate.year, month: newDate.month });
+	};
 
-    const handleSidebar = (event) => {
-        event.preventDefault();
-        setShowSidebar((prev) => !prev);
-    };
+	// * ==== FUNCTIONS : CONDITIONAL RENDERING ==== * //
+	const setToAddForm = () => {
+		setMode("add");
+		displayForm();
+	};
 
-    // * ==== USEEFFECT ==== * //
+	const displayForm = () => {
+		setShowForm(true);
+	};
 
-    // Do not run useEffect on first render
-    // Side effect whenever we're adding/editing/deleting a new transaction
-    const firstUpdate = useRef(true);
-    useEffect(() => {
-        if (firstUpdate.current) {
-            firstUpdate.current = false;
-            return;
-        }
-        setProcessedData(processData(transaction));
-    }, [transaction]);
+	const hideForm = () => {
+		// Reset transaction ID to make the transaction re-clickable
+		setTransId("");
+		setShowForm(false);
+	};
 
-    // Side effect when we're changing the month to be displayed
-    useEffect(() => {
-        const filterDataToRender = () => {
-            let data = processedData.filter(
-                ({ month, year }) =>
-                    month === moment.monthsShort(dateToRender.month) && year === dateToRender.year.toString()
-            );
+	const handleSidebar = (event) => {
+		event.preventDefault();
+		setShowSidebar((prev) => !prev);
+	};
 
-            data.length !== 0 ? setDataToRender(data[0]) : setDataToRender(dateToRender);
-        };
+	const handleDarkMode = () => {
+		setIsDarkMode(!isDarkMode);
+	};
 
-        filterDataToRender();
-    }, [processedData, dateToRender]);
+	// * ==== USEEFFECT ==== * //
 
-    // Side effect when we're clicking a transaction to edit it
-    useEffect(() => {
-        if (transId !== "") {
-            const index = getTransactionIndex(transaction, transId);
-            setClickedTransData(transaction[index]);
-            setMode("edit");
-            displayForm();
-        }
-    }, [transId]);
+	// Do not run useEffect on first render
+	// Side effect whenever we're adding/editing/deleting a new transaction
+	const firstUpdate = useRef(true);
+	useEffect(() => {
+		if (firstUpdate.current) {
+			firstUpdate.current = false;
+			return;
+		}
+		setProcessedData(processData(transaction));
+	}, [transaction]);
 
-    return (
-        <>
+	// Side effect when we're changing the month to be displayed
+	useEffect(() => {
+		const filterDataToRender = () => {
+			let data = processedData.filter(
+				({ month, year }) =>
+					month === moment.monthsShort(dateToRender.month) &&
+					year === dateToRender.year.toString()
+			);
 
-            <ThemeProvider theme = {ThemeColors[theme]}>
-                <GlobalStyle />
+			data.length !== 0 ? setDataToRender(data[0]) : setDataToRender(dateToRender);
+		};
 
-                <ModalBackground show={showForm} />
-                {showForm && (
-                    <TransactionInput
-                        accounts={accounts}
-                        categories={categories}
-                        handleAddTransaction={handleAddTransaction}
-                        clickedTransData={clickedTransData}
-                        mode={mode}
-                        hideForm={hideForm}
-                        handleEditTransaction={handleEditTransaction}
-                        handleDeleteTransaction={handleDeleteTransaction}
-                    />
-                )}
+		filterDataToRender();
+	}, [processedData, dateToRender]);
 
-                <AppContainer>
-                    <TransactionOutput
-                        getTransactionId={getTransactionId}
-                        moveToNext={moveToNext}
-                        moveToPrevious={moveToPrevious}
-                        dataToRender={dataToRender}
-                        setToAddForm={setToAddForm}
-                        handleSidebar={handleSidebar}
-                        theme = {theme}
-                    />
+	// Side effect when we're clicking a transaction to edit it
+	useEffect(() => {
+		if (transId !== "") {
+			const index = getTransactionIndex(transaction, transId);
+			setClickedTransData(transaction[index]);
+			setMode("edit");
+			displayForm();
+		}
+	}, [transId]);
 
-                    <Sidebar
-                        transaction={transaction}
-                        accounts={accounts}
-                        dateToRender={dateToRender}
-                        handleSidebar={handleSidebar}
-                        showSidebar={showSidebar}
-                    />
-                </AppContainer>
+	return (
+		<>
+			<ThemeProvider theme={isDarkMode ? ThemeColors.dark : ThemeColors.light}>
+				<GlobalStyle />
 
-                {/* <Settings
-                    accounts={accounts}
-                    categories={categories}
-                    handleAddSettings={handleAddSettings}
-                    handleEdit={handleEdit}
-                /> */}
-            </ThemeProvider>
-        </>
-    );
+				<ModalBackground show={showForm} />
+				{showForm && (
+					<TransactionInput
+						accounts={accounts}
+						categories={categories}
+						handleAddTransaction={handleAddTransaction}
+						clickedTransData={clickedTransData}
+						mode={mode}
+						hideForm={hideForm}
+						handleEditTransaction={handleEditTransaction}
+						handleDeleteTransaction={handleDeleteTransaction}
+					/>
+				)}
+
+				<AppContainer>
+					<TransactionOutput
+						getTransactionId={getTransactionId}
+						moveToNextMonth={moveToNextMonth}
+						moveToPreviousMonth={moveToPreviousMonth}
+						dataToRender={dataToRender}
+						setToAddForm={setToAddForm}
+						handleSidebar={handleSidebar}
+						isDarkMode={isDarkMode}
+					/>
+
+					<Sidebar
+						transaction={transaction}
+						accounts={accounts}
+						dateToRender={dateToRender}
+						handleSidebar={handleSidebar}
+						showSidebar={showSidebar}
+						handleDarkMode={handleDarkMode}
+					/>
+				</AppContainer>
+			</ThemeProvider>
+		</>
+	);
 }
 
 export default App;
