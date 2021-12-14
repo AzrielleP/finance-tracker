@@ -221,6 +221,7 @@ function Form(props) {
 								min="0"
 								placeholder="0"
 								onKeyDown={blockInvalidCharacter}
+								step = "0.01"
 							/>
 							<Small type = "error">{errorMsgs.transactionAmount}</Small>
 						</div>

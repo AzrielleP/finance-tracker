@@ -61,7 +61,7 @@ export const ArrowButton = styled.button`
 	}
 `;
 export const NewButton = styled.button`
-	padding: 0.5em 1em;
+	padding: 0.75em 1em;
 	border-radius: 10px;
 	background-color: ${generalColors.blue};
 	font: bold 14px "Open Sans", sans-serif;
