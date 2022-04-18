@@ -2,7 +2,7 @@
 
 🎟️  Live URL : https://aze-pelayo.github.io/finance-tracker/
 
-⚒️  Status: Done
+⚒️  Status: MVP Done - Currently checking of ways to optimize it: UI redesign, Firebase Integration, Redux
 
 **TABLE OF CONTENTS**
 - [Finance Tracker](#finance-tracker)
