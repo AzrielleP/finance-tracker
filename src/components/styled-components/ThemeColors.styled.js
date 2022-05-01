@@ -1,36 +1,31 @@
 // Colors
-const blue = "#2589C8";
-const red = "#E94957";
-const darkGrey = "#ADADAD";
-const lightGrey = "#F5F5F5";
-const white = "#FBFBFB";
-const black = "#1D1F23";
-const blackAccent = "#272A30";
+const blue = "#279EE9";
+const red = "#F17148";
+const grey = "#BDBDBD";
+const lightGrey = "#FBFBFB";
+const white = "#FFFFFF";
+const black = "#3D4042";
+const veryBlack = "#36383D";
 
 // Themes
 
 export const light = {
 	text: black,
-	textBg: lightGrey,
-	background: white,
-	border: darkGrey,
-	fadedGrey: darkGrey,
-	modalBg: darkGrey,
+	textBg: white,
+	background: lightGrey,
 };
 
 export const dark = {
-	text: lightGrey,
-	textBg: blackAccent,
-	background: black,
-	border: lightGrey,
-	fadedGrey: darkGrey,
-	modalBg: blackAccent,
+	text: white,
+	textBg: black,
+	background: veryBlack,
+	border: grey,
 };
 
 export const generalColors = {
 	blue: blue,
 	red: red,
-	darkGrey: darkGrey,
-	lightGrey: lightGrey,
-	white: white,
+	modalBg: grey,
+	border: grey,
+	white: white
 };

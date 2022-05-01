@@ -13,7 +13,7 @@ import {
 	SidebarSelectors,
 	SidebarRadio,
 } from "./Sidebar.styled";
-import { Bold } from "../styled-components/Text.styled";
+import { Main } from "../styled-components/Text.styled";
 import { ReactComponent as CloseButton } from "./../styled-components/svg/CloseButton.svg";
 
 function Sidebar(props) {
@@ -76,12 +76,12 @@ function Sidebar(props) {
 	return (
 		<SidebarContainer $display={showSidebar}>
 			<SidebarFixedContainer>
-				<FlexContainer justifySmall="space-between" justifyLarge="flex-end">
+				{/* <FlexContainer justifySmall="space-between" justifyLarge="flex-end">
 					<ShowSidebarButton onClick={handleSidebar} alignment="right">
 						<CloseButton />
 					</ShowSidebarButton>
 					<ThemeToggler handleDarkMode={handleDarkMode} />
-				</FlexContainer>
+				</FlexContainer> */}
 
 				<SidebarSelectors justifySmall="space-around" option={option}>
 					<SidebarRadio
@@ -92,9 +92,9 @@ function Sidebar(props) {
 						onChange={handleOptionChange}
 						id="categories"
 					/>
-					<Bold as="label" htmlFor="categories">
-						CATEGORIES
-					</Bold>
+					<Main as="label" htmlFor="categories">
+						Transactions
+					</Main>
 
 					<SidebarRadio
 						type="radio"
@@ -104,13 +104,13 @@ function Sidebar(props) {
 						onChange={handleOptionChange}
 						id="accounts"
 					/>
-					<Bold as="label" htmlFor="accounts">
-						ACCOUNTS
-					</Bold>
+					<Main as="label" htmlFor="accounts">
+						Stats
+					</Main>
 				</SidebarSelectors>
 			</SidebarFixedContainer>
 
-			{option === "categories" && (
+			{/* {option === "categories" && (
 				<SidebarCategories transaction={transaction} dateToRender={dateToRender} />
 			)}
 			{option === "accounts" && (
@@ -119,7 +119,7 @@ function Sidebar(props) {
 					getAccounts={getAccounts}
 					initialState={initialState}
 				/>
-			)}
+			)} */}
 		</SidebarContainer>
 	);
 }

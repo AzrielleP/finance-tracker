@@ -13,18 +13,9 @@ export const GlobalStyle = createGlobalStyle`
         background: ${({ theme }) => theme.background};
     }
 
-    h1, h2 {
-        font-family:'Poppins', sans-serif;
-        font-weight: 700;
-        letter-spacing: 0%;
-    }
-
     p, label {
-        margin: 0;
-        font-family: 'Open Sans', sans-serif;
-        font-size: 12px;
-        text-align: left;
-        
+        font-family: 'Roboto', sans-serif;
+        margin: 0; 
     }
 
     button {
@@ -47,12 +38,6 @@ export const GlobalStyle = createGlobalStyle`
         &:active {
             box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
             transform: translateY(0);
-        }
-    }
-
-    @media screen and (min-width: 1120px) {
-        p {
-            font-size: 18px;
         }
     }
 `;

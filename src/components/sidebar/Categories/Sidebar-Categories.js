@@ -6,7 +6,13 @@ import { groupByCategory } from "../../../helpers/groupingData";
 // Styled Components
 import { ScrollingContainer } from "../../styled-components/Default.styled";
 import { ChartContainer } from "./Sidebar-Categories.styled";
-import { Small, Subtitle } from "../../styled-components/Text.styled";
+import {
+	Large,
+	Main,
+	Bold,
+	Light,
+	Small,
+} from "../../styled-components/Text.styled";
 
 function SidebarCategories(props) {
 	const { transaction, dateToRender } = props;
@@ -21,9 +27,9 @@ function SidebarCategories(props) {
 	return (
 		<ScrollingContainer>
 			<ChartContainer>
-				<Subtitle>Income</Subtitle>
+				<Main>Income</Main>
 				{incomeCategories.length === 0 ? (
-					<Small>No available data</Small>
+					<Main>No available data</Main>
 				) : (
 					<div>
 						<Pie
@@ -35,9 +41,9 @@ function SidebarCategories(props) {
 			</ChartContainer>
 
 			<ChartContainer>
-				<Subtitle>Expense</Subtitle>
+				<Main>Expense</Main>
 				{expenseCategories.length === 0 ? (
-					<Small>No available data</Small>
+					<Main>No available data</Main>
 				) : (
 					<div>
 						<Pie

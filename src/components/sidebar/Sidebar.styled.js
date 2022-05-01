@@ -4,15 +4,12 @@ import { FlexContainer, FixedContainer } from "../styled-components/Default.styl
 
 /* ========== Containers ========== */
 export const SidebarContainer = styled.div`
-	display: ${({ $display }) => ($display ? "block" : "none")};
 	position: absolute;
 	left: 0;
-	top: 0;
-	padding: 0 8vw;
+	bottom: 0;
 	z-index: 10;
-	min-height: 100vh;
 	width: 100%;
-	background: ${({ theme }) => theme.background};
+	border-top: 0.25px solid ${generalColors.border};
 
 	@media screen and (min-width: 768px) {
 		display: block;
@@ -21,9 +18,11 @@ export const SidebarContainer = styled.div`
 		border-left: 0.1px solid ${({ theme }) => theme.fadedGrey};
 	}
 `;
+
 export const SidebarFixedContainer = styled(FixedContainer)`
-	background-color: ${({ theme }) => theme.background};
+	background-color: none;
 `;
+
 export const SidebarSelectors = styled(FlexContainer)`
 	padding: 1em 0 0.5em 0;
 	border-bottom: 5px solid ${generalColors.blue};

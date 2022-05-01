@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { generalColors } from "../styled-components/ThemeColors.styled";
 
 // Consists of styles that are used in more than 2 components (except for App)
 
@@ -20,11 +21,20 @@ export const FlexContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: ${({ justifySmall }) => justifySmall};
+	background: ${({ theme }) => theme.textBg};
 
 	@media screen and (min-width: 768px) {
 		justify-content: ${({ justifyLarge }) => justifyLarge};
 	}
 `;
+
+ export const FlexContainerBordered = styled(FlexContainer)`
+ 	border-top: 0.1px solid ${generalColors.border};
+ 	border-bottom: 0.1px solid ${generalColors.border};
+	margin-top: -1px;
+	margin-left: -1px;
+ `;
+
 export const ScrollingContainer = styled.div`
 	overflow: auto;
 	z-index: 1;
@@ -33,7 +43,6 @@ export const FixedContainer = styled.div`
 	position: sticky;
 	top: 0;
 	left: 0;
-	padding: 3em 0 1em 0;
 	width: 100%;
 	z-index: 2;
 	background-color: ${({ theme }) => theme.background};
