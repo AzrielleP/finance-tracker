@@ -79,7 +79,7 @@ const inputStyles = css`
 	outline: 0;
 	border-width: 0 0 0.5px;
 	color: ${({ theme }) => theme.text};
-	background-color: ${({ theme }) => theme.background};
+	background-color: ${({ theme }) => theme.textBg};
 	border-color: ${generalColors.border};
 
 	@media screen and (min-width: 768px) {
@@ -105,9 +105,9 @@ export const FormButton = styled.button`
 	flex: 1;
 	margin: 0.5em 0;
 	padding: 0.5em;
-	font: bold 12px "Roboto", sans-serif;
-	color: ${({ value }) => (!value ? generalColors.grey : generalColors.white)};
+	font: 12px "Roboto", sans-serif;
+	color: ${({ value }) => (!value ? ({theme}) => theme.color : generalColors.white)};
 	background-color: ${({ value }) => handleColorButtonType(value) || "none"};
-	border: 1px solid ${({ value }) => handleColorButtonType(value) || generalColors.border};
+	border: 0.5px solid ${({ value }) => handleColorButtonType(value) || generalColors.border};
 	border-radius: 5px;
 `;
