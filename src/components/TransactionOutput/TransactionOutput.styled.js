@@ -40,7 +40,6 @@ export const NoDataContainer = styled.div`
 
 export const LargeNumberContainer = styled.div`
 	flex: 1;
-	margin: 0.5em;
 	text-align: center;
 
 	p:nth-child(2) {
@@ -50,7 +49,7 @@ export const LargeNumberContainer = styled.div`
 
 /*  ========== Buttons ========== */
 export const ArrowButton = styled.button`
-	margin: 0 1em;
+	margin: 0 0.75em;
 	color: ${({ theme }) => theme.text};
 	
 	&:hover, &:focus, &:active {
@@ -58,12 +57,29 @@ export const ArrowButton = styled.button`
 	}
 `;
 export const NewButton = styled.button`
-	padding: 0.75em 1em;
-	border-radius: 10px;
-	background-color: ${generalColors.red};
-	font: bold 14px "Open Sans", sans-serif;
-	color: ${generalColors.white};
+	display: none;
+	@media screen and (min-width: 1120px) {
+		padding: 0.75em 1em;
+		border-radius: 10px;
+		background-color: ${generalColors.red};
+		font-size: 20px;
+		color: ${generalColors.white};
+	}
+
 `;
+
+export const NewButtonMobile = styled.button`
+	position: fixed;
+	bottom: 3em;
+	right: 0.7em;
+	padding: 0.5em 0.8em;
+	border-radius: 50%;
+	font-size: 20px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+	background-color: ${generalColors.red};
+	color: ${generalColors.white};
+`
+
 export const TransactionDetails = styled.button`
 	display: grid;
 	grid-template-columns: 1fr 2fr 1fr;

@@ -27,5 +27,6 @@ export const generalColors = {
 	red: red,
 	modalBg: grey,
 	border: grey,
+	grey: grey,
 	white: white
 };

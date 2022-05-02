@@ -8,6 +8,8 @@ export const handleColorTransType = (type) => {
 			return generalColors.red;
 		case "error":
 			return generalColors.red;
+		case "transData":
+			return generalColors.grey;
 		default:
 			return false;
 	}

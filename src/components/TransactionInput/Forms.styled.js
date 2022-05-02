@@ -4,15 +4,20 @@ import { handleColorButtonType, handleColorTransType } from "../styled-component
 import { FlexContainer } from "../styled-components/Default.styled";
 
 /* ========== Containers ========== */
+export const TitleContainer = styled.div`
+	padding: 1em;
+`;
+
 export const TransTypeContainer = styled(FlexContainer)`
-	margin: 1em 0;
+	margin: 1em 0.5em;
+	background-color: ${({ theme }) => theme.background};
 
 	& label:nth-child(4) {
 		margin: 0 0.5em;
 	}
 `;
 export const TransInputContainer = styled.div`
-	margin: 2em 0;
+	margin: 2em 1em;
 
 	& button:nth-child(1) {
 		margin-right: 0.5em;
@@ -29,8 +34,13 @@ export const TransInputContainer = styled.div`
 	& > div {
 		margin: 1em 0;
 
-		& > p {
-			color: ${({ theme }) => theme.text};
+		& > label {
+			font-size: 12px;
+			color: ${generalColors.grey};
+		}
+
+		& > input {
+			color: ${({theme}) => theme.color}
 		}
 	}
 `;
@@ -47,34 +57,30 @@ export const FormRadio = styled.input`
 	&:checked + label {
 		background-color: ${({ theme }) => theme.background};
 		border-color: ${({ value, theme }) => handleColorTransType(value, theme) || theme.text};
-
-		p {
-			color: ${({ value, theme }) => handleColorTransType(value, theme) || theme.text};
-		}
+		color: ${({ value, theme }) => handleColorTransType(value, theme) || theme.text};
 	}
 `;
+
 export const FormLabel = styled.label`
 	flex: 1;
 	cursor: pointer;
 	padding: 0.25em 0.5em;
-	border: 0.25px solid ${({ theme }) => theme.fadedGrey};
+	border: 0.25px solid ${generalColors.border};
 	border-radius: 5px;
-	background-color: ${({ theme }) => theme.textBg};
-
-	p {
-		text-align: center;
-		color: ${({ theme }) => theme.fadedGrey};
-	}
+	background-color: ${({ theme }) => theme.background};
+	font-size: 12px;
+	text-align: center;
+	color: ${generalColors.border}
 `;
 
 const inputStyles = css`
-	width: 60vw;
-	font-family: "Open Sans", sans-serif;
+	width: 70vw;
+	font-family: "Roboto", sans-serif;
 	outline: 0;
 	border-width: 0 0 0.5px;
 	color: ${({ theme }) => theme.text};
 	background-color: ${({ theme }) => theme.background};
-	border-color: ${({ theme }) => theme.border};
+	border-color: ${generalColors.border};
 
 	@media screen and (min-width: 768px) {
 		width: 30em;
@@ -99,9 +105,9 @@ export const FormButton = styled.button`
 	flex: 1;
 	margin: 0.5em 0;
 	padding: 0.5em;
-	font: bold 14px "Open Sans", sans-serif;
-	color: ${({ value }) => (!value ? generalColors.darkGrey : generalColors.white)};
+	font: bold 12px "Roboto", sans-serif;
+	color: ${({ value }) => (!value ? generalColors.grey : generalColors.white)};
 	background-color: ${({ value }) => handleColorButtonType(value) || "none"};
-	border: 1px solid ${({ value }) => handleColorButtonType(value) || generalColors.darkGrey};
+	border: 1px solid ${({ value }) => handleColorButtonType(value) || generalColors.border};
 	border-radius: 5px;
 `;

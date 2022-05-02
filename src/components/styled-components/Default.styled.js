@@ -29,6 +29,7 @@ export const FlexContainer = styled.div`
 `;
 
  export const FlexContainerBordered = styled(FlexContainer)`
+ 	padding: 0.5em 0.5em;
  	border-top: 0.1px solid ${generalColors.border};
  	border-bottom: 0.1px solid ${generalColors.border};
 	margin-top: -1px;
@@ -67,10 +68,9 @@ export const ModalContainer = styled.div`
 	height: 100vh;
 	width: 100vw;
 	z-index: 20;
-	padding: 10vw;
 	top: 0;
 	left: 0;
-	background: ${({ theme }) => theme.background};
+	background: ${({ theme }) => theme.textBg};
 
 	@media screen and (min-width: 768px) {
 		left: 50%;

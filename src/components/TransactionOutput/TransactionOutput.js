@@ -7,6 +7,7 @@ import { ReactComponent as SidebarIcon } from "../styled-components/svg/Sidebar.
 import {
 	ArrowButton,
 	NewButton,
+	NewButtonMobile,
 	TransactionDetails,
 	TransactionOutput,
 	GridContainerHead,
@@ -91,7 +92,7 @@ function Transaction(props) {
 
 			{!dataToRender.hasOwnProperty("dailyTrans") ? (
 				<NoDataContainer>
-					<Main>No Data Available</Main>
+					<Main type = "transData">No Data Available</Main>
 				</NoDataContainer>
 			) : (
 				<ScrollingContainer>
@@ -120,9 +121,9 @@ function Transaction(props) {
 											amount={value.transactionAmount}
 										>
 											{value.transactionType === "transfer" ? (
-												<Main>Transfer</Main>
+												<Main type = "transData">Transfer</Main>
 											) : (
-												<OverflowingText>
+												<OverflowingText type = "transData">
 													{value.transactionCategory}
 												</OverflowingText>
 											)}
@@ -130,12 +131,12 @@ function Transaction(props) {
 											<div>
 												<Main>{value.transactionNotes}</Main>
 												{value.transactionType === "transfer" ? (
-													<OverflowingText>
+													<OverflowingText type = "transData">
 														{value.fromAccount} <>&rarr;</>{" "}
 														{value.toAccount}{" "}
 													</OverflowingText>
 												) : (
-													<Main>{value.fromAccount}</Main>
+													<Main type = "transData">{value.fromAccount}</Main>
 												)}
 											</div>
 
@@ -150,6 +151,8 @@ function Transaction(props) {
 					})}
 				</ScrollingContainer>
 			)}
+
+			<NewButtonMobile onClick={setToAddForm}>+</NewButtonMobile>
 		</TransactionOutput>
 	);
 }
