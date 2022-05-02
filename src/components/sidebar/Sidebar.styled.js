@@ -4,7 +4,7 @@ import { FlexContainer, FixedContainer } from "../styled-components/Default.styl
 
 /* ========== Containers ========== */
 export const SidebarContainer = styled.div`
-	position: absolute;
+	position: fixed;
 	left: 0;
 	bottom: 0;
 	z-index: 10;

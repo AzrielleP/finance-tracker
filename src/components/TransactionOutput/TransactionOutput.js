@@ -14,6 +14,7 @@ import {
 	NoDataContainer,
 	DailyTransactionData,
 	LargeNumberContainer,
+	DayContainer
 } from "./TransactionOutput.styled";
 import {
 	Large,
@@ -100,10 +101,14 @@ function Transaction(props) {
 						return (
 							<DailyTransactionData key={key}>
 								<GridContainerHead>
-									<Bold>
-										{moment(subItem.day).format("DD")} |{" "}
-										{moment(subItem.day).format("ddd")}
-									</Bold>
+									<div>
+										<Bold>
+											{moment(subItem.day).format("DD")}
+										</Bold>
+										<DayContainer day = {moment(subItem.day).format("ddd")}>
+											<Small>{moment(subItem.day).format("ddd")}</Small>
+										</DayContainer>
+									</div>
 									<Main type="income">
 										{totalValueFormat(subItem.dayIncomeTotal)}
 									</Main>

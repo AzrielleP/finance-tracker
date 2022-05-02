@@ -4,6 +4,7 @@ import { handleColorTransType } from "../styled-components/helper-styled";
 
 /*  ========== Containers ========== */
 export const TransactionOutput = styled.div`
+	padding-bottom: 5em;
 	@media screen and (min-width: 1120px) {
 		padding: 0 7em;
 	}
@@ -22,8 +23,13 @@ export const GridContainerHead = styled.div`
 	grid-template-columns: 2fr 1fr 1fr;
 	grid-template-rows: 1fr;
 	grid-gap: 0.5em;
-	padding: 0.5em 1em;
+	align-items: center;
+	padding: 0.25em 1em;
 	border-bottom: 0.5px solid ${generalColors.border};
+
+	& p {
+		display: inline;
+	}
 
 	p:nth-child(3) {
 		text-align: right;
@@ -44,6 +50,29 @@ export const LargeNumberContainer = styled.div`
 
 	p:nth-child(2) {
 		color: ${({ type, theme }) => handleColorTransType(type, theme) || theme.text};
+	}
+`;
+
+export const DayContainer = styled.div`
+	display: inline-block;
+	width: 2em;
+	border-radius: 5px;
+	margin-left: 0.5em;
+	padding: 0.05em 0.25em 0.25em 0.25em;
+	text-align: center;
+	background-color: ${({day}) => {
+		switch(day) {
+			case "Sun":
+				return generalColors.red;
+			case "Sat":
+				return generalColors.blue;
+			default:
+				return generalColors.grey;
+		}
+	}};
+
+	p {
+		color: ${generalColors.white};
 	}
 `;
 
