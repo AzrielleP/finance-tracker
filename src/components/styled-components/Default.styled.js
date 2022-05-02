@@ -64,7 +64,7 @@ export const ModalBackground = styled.div`
 	}
 `;
 export const ModalContainer = styled.div`
-	position: absolute;
+	position: fixed;
 	height: 100vh;
 	width: 100vw;
 	z-index: 20;
@@ -73,6 +73,7 @@ export const ModalContainer = styled.div`
 	background: ${({ theme }) => theme.textBg};
 
 	@media screen and (min-width: 768px) {
+		position: absolute;
 		left: 50%;
 		top: 50%;
 		transform: translate(-50%, -50%);
