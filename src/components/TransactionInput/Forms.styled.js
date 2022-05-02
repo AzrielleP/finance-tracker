@@ -104,7 +104,7 @@ export const FormSelect = styled.select`
 export const FormButton = styled.button`
 	flex: 1;
 	margin: 0.5em 0;
-	padding: 0.5em;
+	padding: 0.75em 0.5em;
 	font: 12px "Roboto", sans-serif;
 	color: ${({ value }) => (!value ? ({theme}) => theme.color : generalColors.white)};
 	background-color: ${({ value }) => handleColorButtonType(value) || "none"};
