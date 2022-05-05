@@ -2,8 +2,8 @@ import React from "react";
 import moment from "moment";
 
 // Styled Components
-import { Main, Bold, Small } from "../styled-components/Text.styled";
-import { FlexContainer, ModalContainer } from "../styled-components/Default.styled";
+import { Bold, Small } from "../../styled-components/Text.styled";
+import { FlexContainer, ModalContainer } from "../../styled-components/Default.styled";
 import {
 	FormRadio,
 	FormLabel,

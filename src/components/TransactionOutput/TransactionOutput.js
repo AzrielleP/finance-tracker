@@ -42,9 +42,6 @@ function Transaction(props) {
 	return (
 		<TransactionOutput>
 			<FixedContainer>
-				{/* <ShowSidebarButton onClick={handleSidebar} alignment="left">
-					<SidebarIcon />
-				</ShowSidebarButton> */}
 				<FlexContainerBordered justifySmall="space-between">
 					<FlexContainer>
 						<ArrowButton type="button" onClick={moveToPreviousMonth}>

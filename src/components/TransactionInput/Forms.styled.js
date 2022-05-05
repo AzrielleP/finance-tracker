@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
-import { generalColors } from "../styled-components/ThemeColors.styled";
-import { handleColorButtonType, handleColorTransType } from "../styled-components/helper-styled";
-import { FlexContainer } from "../styled-components/Default.styled";
+import { generalColors } from "../../styled-components/ThemeColors.styled";
+import { handleColorButtonType, handleColorTransType } from "../../styled-components/helper-styled";
+import { FlexContainer } from "../../styled-components/Default.styled";
 
 /* ========== Containers ========== */
 export const TitleContainer = styled.div`

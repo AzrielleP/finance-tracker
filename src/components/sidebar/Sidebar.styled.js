@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
-import { generalColors } from "../styled-components/ThemeColors.styled";
-import { FlexContainer, FixedContainer } from "../styled-components/Default.styled";
+import { generalColors } from "../../styled-components/ThemeColors.styled";
+import { FlexContainer } from "../../styled-components/Default.styled";
 
 /* ========== Containers ========== */
 export const SidebarContainer = styled.div`
@@ -19,34 +19,13 @@ export const SidebarContainer = styled.div`
 	}
 `;
 
-export const SidebarFixedContainer = styled(FixedContainer)`
-	background-color: none;
-`;
-
 export const SidebarSelectors = styled(FlexContainer)`
 	padding: 1em 0 0.5em 0;
-	border-bottom: 5px solid ${generalColors.blue};
 	position: relative;
+	background: ${({ theme }) => theme.background};
 
 	label {
 		cursor: pointer;
-	}
-
-	&:after {
-		position: absolute;
-		bottom: -5px;
-		height: 5.1px;
-		width: 50%;
-		${({ option }) =>
-			option === "categories"
-				? css`
-						right: 0;
-				  `
-				: css`
-						left: 0;
-				  `};
-		content: "";
-		background-color: ${({ theme }) => theme.background};
 	}
 
 	@media screen and (min-width: 768px) {

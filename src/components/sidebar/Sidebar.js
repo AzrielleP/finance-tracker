@@ -1,25 +1,21 @@
 import React, { useState, useEffect } from "react";
-import SidebarCategories from "./Categories/Sidebar-Categories";
-import SidebarAccounts from "./Accounts/Sidebar-Accounts";
 import ThemeToggler from "../ThemeToggler/ThemeToggler";
 import { calcTotalOfFiltered, calcFromAccount } from "../../helpers/calc";
 import { computeAssets, computeLiabilities } from "../../helpers/calc";
 
 // Styled Components
-import { FlexContainer, ShowSidebarButton } from "../styled-components/Default.styled";
+import { FlexContainer, FixedContainer } from "../../styled-components/Default.styled";
 import {
 	SidebarContainer,
-	SidebarFixedContainer,
 	SidebarSelectors,
 	SidebarRadio,
 } from "./Sidebar.styled";
-import { Main } from "../styled-components/Text.styled";
-import { ReactComponent as CloseButton } from "./../styled-components/svg/CloseButton.svg";
+import { Main } from "../../styled-components/Text.styled";
 
 function Sidebar(props) {
-	const { transaction, accounts, dateToRender, handleSidebar, showSidebar, handleDarkMode } =
+	const { transaction, accounts, dateToRender, handleDarkMode } =
 		props;
-	const [option, setOption] = useState("categories");
+	const [option, setOption] = useState("transactions");
 	const handleOptionChange = (event) => {
 		let value = event.target.value;
 		setOption(value);
@@ -74,12 +70,9 @@ function Sidebar(props) {
 	}, [transaction, accounts]);
 
 	return (
-		<SidebarContainer $display={showSidebar}>
-			<SidebarFixedContainer>
+		<SidebarContainer>
+			<FixedContainer>
 				{/* <FlexContainer justifySmall="space-between" justifyLarge="flex-end">
-					<ShowSidebarButton onClick={handleSidebar} alignment="right">
-						<CloseButton />
-					</ShowSidebarButton>
 					<ThemeToggler handleDarkMode={handleDarkMode} />
 				</FlexContainer> */}
 
@@ -88,12 +81,24 @@ function Sidebar(props) {
 						type="radio"
 						name="sidebarOption"
 						value="categories"
-						checked={option === "categories"}
+						checked={option === "transactions"}
 						onChange={handleOptionChange}
-						id="categories"
+						id="transactions"
 					/>
-					<Main as="label" htmlFor="categories">
+					<Main as="label" htmlFor="transactions">
 						Transactions
+					</Main>
+
+					<SidebarRadio
+						type="radio"
+						name="sidebarOption"
+						value="stats"
+						checked={option === "stats"}
+						onChange={handleOptionChange}
+						id="stats"
+					/>
+					<Main as="label" htmlFor="stats">
+						Stats
 					</Main>
 
 					<SidebarRadio
@@ -105,16 +110,28 @@ function Sidebar(props) {
 						id="accounts"
 					/>
 					<Main as="label" htmlFor="accounts">
-						Stats
+						Accounts
+					</Main>
+
+					<SidebarRadio
+						type="radio"
+						name="sidebarOption"
+						value="settings"
+						checked={option === "settings"}
+						onChange={handleOptionChange}
+						id="stats"
+					/>
+					<Main as="label" htmlFor="settings">
+						Settings
 					</Main>
 				</SidebarSelectors>
-			</SidebarFixedContainer>
+			</FixedContainer>
 
-			{/* {option === "categories" && (
-				<SidebarCategories transaction={transaction} dateToRender={dateToRender} />
+			{/* {option === "stats" && (
+				<Stats transaction={transaction} dateToRender={dateToRender} />
 			)}
 			{option === "accounts" && (
-				<SidebarAccounts
+				<Accounts
 					accountsInfo={accountsInfo}
 					getAccounts={getAccounts}
 					initialState={initialState}

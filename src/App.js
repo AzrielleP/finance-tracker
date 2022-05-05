@@ -8,10 +8,10 @@ import { accountsList } from "./helpers/accountList";
 import { categoriesList } from "./helpers/categoriesList";
 
 // Styled Components
-import { GlobalStyle } from "./components/styled-components/GlobalStyle";
-import { AppContainer, ModalBackground } from "./components/styled-components/Default.styled";
+import { GlobalStyle } from "./styled-components/GlobalStyle";
+import { AppContainer, ModalBackground } from "./styled-components/Default.styled";
 import { ThemeProvider } from "styled-components";
-import * as ThemeColors from "./components/styled-components/ThemeColors.styled";
+import * as ThemeColors from "./styled-components/ThemeColors.styled";
 
 function App() {
 	// * === STATES - DATA === //

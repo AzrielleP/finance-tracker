@@ -6,13 +6,7 @@ import { groupByCategory } from "../../../helpers/groupingData";
 // Styled Components
 import { ScrollingContainer } from "../../styled-components/Default.styled";
 import { ChartContainer } from "./Sidebar-Categories.styled";
-import {
-	Large,
-	Main,
-	Bold,
-	Light,
-	Small,
-} from "../../styled-components/Text.styled";
+import { Main } from "../../styled-components/Text.styled";
 
 function SidebarCategories(props) {
 	const { transaction, dateToRender } = props;
