@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { generalColors } from "../styled-components/ThemeColors.styled";
+import { generalColors } from "./ThemeColors.styled";
 
 // Consists of styles that are used in more than 2 components (except for App)
 
@@ -84,26 +84,5 @@ export const ModalContainer = styled.div`
 		margin-left: auto;
 		margin-right: auto;
 		border-radius: 10px;
-	}
-`;
-
-/* ======== Buttons ======== */
-export const ShowSidebarButton = styled.button`
-	display: block;
-	${({ alignment }) =>
-		alignment === "left"
-			? css`
-					margin-left: auto;
-			  `
-			: css`
-					margin-right: auto;
-			  `}
-	border: none;
-	&:hover, &:focus, &:active {
-		box-shadow: none;
-	}
-
-	@media screen and (min-width: 768px) {
-		display: none;
 	}
 `;
