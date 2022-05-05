@@ -9,13 +9,13 @@ export const SidebarContainer = styled.div`
 	bottom: 0;
 	z-index: 10;
 	width: 100%;
-	border-top: 0.25px solid ${generalColors.border};
+	border-top: 0.25px solid ${generalColors.grey};
 
 	@media screen and (min-width: 768px) {
 		display: block;
 		position: static;
 		padding: 0 2vw;
-		border-left: 0.1px solid ${({ theme }) => theme.fadedGrey};
+		border-left: 0.1px solid ${generalColors.grey};
 	}
 `;
 

@@ -19,14 +19,11 @@ export const dark = {
 	text: white,
 	textBg: black,
 	background: veryBlack,
-	border: grey,
 };
 
 export const generalColors = {
 	blue: blue,
 	red: red,
-	modalBg: grey,
-	border: grey,
 	grey: grey,
 	white: white
 };

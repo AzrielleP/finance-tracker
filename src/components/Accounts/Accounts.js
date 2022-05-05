@@ -3,7 +3,7 @@ import { totalValueFormat, singleValueFormat } from "../../../helpers/calc";
 
 // Styled Components
 import { ScrollingContainer, FlexContainer } from "../../styled-components/Default.styled";
-import { Dot, AccountContainer, AccountTotalContainer } from "./Sidebar-Accounts.styled";
+import { Dot, AccountContainer, AccountTotalContainer } from "./Accounts.styled";
 import { Bold } from "../../styled-components/Text.styled";
 
 function SidebarAccounts(props) {

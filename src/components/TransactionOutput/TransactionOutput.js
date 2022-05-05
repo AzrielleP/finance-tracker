@@ -3,7 +3,6 @@ import moment from "moment";
 import { totalValueFormat, singleValueFormat } from "../../helpers/calc";
 
 // Styled Components
-import { ReactComponent as SidebarIcon } from "../styled-components/svg/Sidebar.svg";
 import {
 	ArrowButton,
 	NewButton,
@@ -23,14 +22,13 @@ import {
 	Light,
 	Small,
 	OverflowingText
-} from "../styled-components/Text.styled";
+} from "../../styled-components/Text.styled";
 import {
 	FlexContainer,
 	ScrollingContainer,
 	FixedContainer,
 	FlexContainerBordered,
-	ShowSidebarButton,
-} from "../styled-components/Default.styled";
+} from "../../styled-components/Default.styled";
 
 function Transaction(props) {
 	const {
@@ -39,8 +37,6 @@ function Transaction(props) {
 		moveToPreviousMonth,
 		dataToRender,
 		setToAddForm,
-		handleSidebar,
-		isDarkMode,
 	} = props;
 
 	return (

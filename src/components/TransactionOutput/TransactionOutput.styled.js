@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { generalColors } from "../styled-components/ThemeColors.styled";
-import { handleColorTransType } from "../styled-components/helper-styled";
+import { generalColors } from "../../styled-components/ThemeColors.styled";
+import { handleColorTransType } from "../../styled-components/helper-styled";
 
 /*  ========== Containers ========== */
 export const TransactionOutput = styled.div`
@@ -12,8 +12,8 @@ export const TransactionOutput = styled.div`
 
 export const DailyTransactionData = styled.div`
 	margin: 0 0 1em 0;
-	border-top: 0.1px solid ${generalColors.border};
-	border-bottom: 0.1px solid ${generalColors.border};
+	border-top: 0.1px solid ${generalColors.grey};
+	border-bottom: 0.1px solid ${generalColors.grey};
 	background: ${({ theme }) => theme.textBg};
 `;
 
@@ -25,7 +25,7 @@ export const GridContainerHead = styled.div`
 	grid-gap: 0.5em;
 	align-items: center;
 	padding: 0.25em 1em;
-	border-bottom: 0.5px solid ${generalColors.border};
+	border-bottom: 0.5px solid ${generalColors.grey};
 
 	& p {
 		display: inline;

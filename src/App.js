@@ -46,9 +46,6 @@ function App() {
 	// Two values: add and edit for TransactionInput
 	const [mode, setMode] = useState("add");
 
-	// Determines if the sidebar is displayed or not on mobile mode
-	const [showSidebar, setShowSidebar] = useState(false);
-
 	const [isDarkMode, setIsDarkMode] = useState(false);
 
 	// * ==== FUNCTIONS : DATA ==== * //
@@ -113,11 +110,6 @@ function App() {
 		// Reset transaction ID to make the transaction re-clickable
 		setTransId("");
 		setShowForm(false);
-	};
-
-	const handleSidebar = (event) => {
-		event.preventDefault();
-		setShowSidebar((prev) => !prev);
 	};
 
 	const handleDarkMode = () => {
@@ -188,16 +180,12 @@ function App() {
 						moveToPreviousMonth={moveToPreviousMonth}
 						dataToRender={dataToRender}
 						setToAddForm={setToAddForm}
-						handleSidebar={handleSidebar}
-						isDarkMode={isDarkMode}
 					/>
 
 					<Sidebar
 						transaction={transaction}
 						accounts={accounts}
 						dateToRender={dateToRender}
-						handleSidebar={handleSidebar}
-						showSidebar={showSidebar}
 						handleDarkMode={handleDarkMode}
 					/>
 				</AppContainer>

@@ -30,8 +30,8 @@ export const FlexContainer = styled.div`
 
  export const FlexContainerBordered = styled(FlexContainer)`
  	padding: 0.5em 0.5em;
- 	border-top: 0.1px solid ${generalColors.border};
- 	border-bottom: 0.1px solid ${generalColors.border};
+ 	border-top: 0.1px solid ${generalColors.grey};
+ 	border-bottom: 0.1px solid ${generalColors.grey};
 	margin-top: -1px;
 	margin-left: -1px;
  `;

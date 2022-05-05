@@ -20,23 +20,12 @@ export const Main = styled.p`
 	}
 `;
 
-export const Bold = styled.p`
+export const Bold = styled(Main)`
 	font-weight: bold;
-	font-size: 12px;
-	color: ${({ type, theme }) => handleColorTransType(type, theme) || theme.text};
-
-	@media screen and (min-width: 1120px) {
-		font-size: 20px;
-	}
 `;
-export const Light = styled.p`
-	font-weight: 300;
-	font-size: 12px;
-	color: ${({ type, theme }) => handleColorTransType(type, theme) || theme.text};
 
-	@media screen and (min-width: 1120px) {
-		font-size: 20px;
-	}
+export const Light = styled(Main)`
+	font-weight: 300;
 `;
 
 export const Small = styled.p`

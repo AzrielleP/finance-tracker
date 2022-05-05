@@ -65,12 +65,12 @@ export const FormLabel = styled.label`
 	flex: 1;
 	cursor: pointer;
 	padding: 0.25em 0.5em;
-	border: 0.25px solid ${generalColors.border};
+	border: 0.25px solid ${generalColors.grey};
 	border-radius: 5px;
 	background-color: ${({ theme }) => theme.background};
 	font-size: 12px;
 	text-align: center;
-	color: ${generalColors.border}
+	color: ${generalColors.grey}
 `;
 
 const inputStyles = css`
@@ -80,7 +80,7 @@ const inputStyles = css`
 	border-width: 0 0 0.5px;
 	color: ${({ theme }) => theme.text};
 	background-color: ${({ theme }) => theme.textBg};
-	border-color: ${generalColors.border};
+	border-color: ${generalColors.grey};
 
 	@media screen and (min-width: 768px) {
 		width: 30em;
@@ -108,6 +108,6 @@ export const FormButton = styled.button`
 	font: 12px "Roboto", sans-serif;
 	color: ${({ value }) => (!value ? ({theme}) => theme.color : generalColors.white)};
 	background-color: ${({ value }) => handleColorButtonType(value) || "none"};
-	border: 0.5px solid ${({ value }) => handleColorButtonType(value) || generalColors.border};
+	border: 0.5px solid ${({ value }) => handleColorButtonType(value) || generalColors.grey};
 	border-radius: 5px;
 `;
