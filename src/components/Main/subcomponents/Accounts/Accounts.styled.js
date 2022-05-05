@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { generalColors } from "../../styled-components/ThemeColors.styled";
-import { FlexContainer } from "../../styled-components/Default.styled";
-import { handleColorTransType } from "../../styled-components/helper-styled";
+import { generalColors, handleColorTransType } from "../../../../styled-components/ThemeColors.styled";
+import { FlexContainer } from "../../../../styled-components/Default.styled";
 
 export const AccountTotalContainer = styled.div`
 	width: 100%;

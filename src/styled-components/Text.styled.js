@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { handleColorTransType } from "./helper-styled";
+import { handleColorTransType } from "./ThemeColors.styled";
 
 export const Large = styled.p`
 	font-weight: bold;

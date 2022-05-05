@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { generalColors } from "../../styled-components/ThemeColors.styled";
+import { generalColors } from "../../../../../styled-components/ThemeColors.styled";
 
 export const Slider = styled.span`
 	position: absolute;

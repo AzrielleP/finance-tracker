@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Pie } from "react-chartjs-2";
 import { createData, customization } from "./chartSettings";
-import { groupByCategory } from "../../../helpers/groupingData";
+import { groupByCategory } from "../../helpers/groupingData";
 
 // Styled Components
-import { ScrollingContainer } from "../../styled-components/Default.styled";
-import { ChartContainer } from "./Sidebar-Categories.styled";
-import { Main } from "../../styled-components/Text.styled";
+import { ScrollingContainer } from "../../../../styled-components/Default.styled";
+import { ChartContainer } from "./Stats.styled";
+import { Main } from "../../../../styled-components/Text.styled";
 
-function SidebarCategories(props) {
+function Stats(props) {
 	const { transaction, dateToRender } = props;
 	const [incomeCategories, setIncomeCategories] = useState([]);
 	const [expenseCategories, setExpenseCategories] = useState([]);
@@ -51,4 +51,4 @@ function SidebarCategories(props) {
 	);
 }
 
-export default SidebarCategories;
+export default Stats;

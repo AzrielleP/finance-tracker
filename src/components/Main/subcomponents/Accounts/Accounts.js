@@ -1,10 +1,10 @@
 import React from "react";
-import { totalValueFormat, singleValueFormat } from "../../../helpers/calc";
+import { totalValueFormat, singleValueFormat } from "../../../../helpers/calc";
 
 // Styled Components
-import { ScrollingContainer, FlexContainer } from "../../styled-components/Default.styled";
+import { ScrollingContainer, FlexContainer } from "../../../../styled-components/Default.styled";
 import { Dot, AccountContainer, AccountTotalContainer } from "./Accounts.styled";
-import { Bold } from "../../styled-components/Text.styled";
+import { Bold } from "../../../../styled-components/Text.styled";
 
 function SidebarAccounts(props) {
 	const { accountsInfo, getAccounts, initialState } = props;

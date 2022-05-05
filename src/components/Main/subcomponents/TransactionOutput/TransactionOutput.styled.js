@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { generalColors } from "../../styled-components/ThemeColors.styled";
-import { handleColorTransType } from "../../styled-components/helper-styled";
+import { generalColors,handleColorTransType } from "../../../../styled-components/ThemeColors.styled";
 
 /*  ========== Containers ========== */
 export const TransactionOutput = styled.div`

@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import { totalValueFormat, singleValueFormat } from "../../helpers/calc";
+import { totalValueFormat, singleValueFormat } from "../../../../helpers/calc";
 
 // Styled Components
 import {
@@ -22,13 +22,13 @@ import {
 	Light,
 	Small,
 	OverflowingText
-} from "../../styled-components/Text.styled";
+} from "../../../../styled-components/Text.styled";
 import {
 	FlexContainer,
 	ScrollingContainer,
 	FixedContainer,
 	FlexContainerBordered,
-} from "../../styled-components/Default.styled";
+} from "../../../../styled-components/Default.styled";
 
 function Transaction(props) {
 	const {
@@ -45,7 +45,7 @@ function Transaction(props) {
 				<FlexContainerBordered justifySmall="space-between">
 					<FlexContainer>
 						<ArrowButton type="button" onClick={moveToPreviousMonth}>
-							<i class="fa-solid fa-angle-left"></i>
+							<i className="fa-solid fa-angle-left"></i>
 						</ArrowButton>
 
 						<Large>
@@ -57,7 +57,7 @@ function Transaction(props) {
 						</Large>
 
 						<ArrowButton type="button" onClick={moveToNextMonth}>
-							<i class="fa-solid fa-angle-right"></i>
+							<i className ="fa-solid fa-angle-right"></i>
 						</ArrowButton>
 					</FlexContainer>
 
