@@ -50,7 +50,7 @@ export const SidebarLabel = styled.label`
 	}
 
 	@media screen and (min-width: 1024px) {
-		margin: 2em;
+		margin: 2em 1em;
 		i {
 			display: inline;
 			margin-right: 1em;

@@ -11,6 +11,10 @@ export const AppContainer = styled.div`
 		grid-template-columns: 20% 80%;
 		grid-template-rows: 1fr;
 	}
+
+	@media screen and (min-width: 1440px) {
+		grid-template-columns: 15% 85%;
+	}
 `;
 
 export const FlexContainer = styled.div`
