@@ -85,7 +85,8 @@ export const DayContainer = styled.div`
 export const NewButton = styled.button`
 	display: none;
 	@media screen and (min-width: 1120px) {
-		padding: 0.75em 1em;
+		display: block;
+		padding: 0.5em .75em;
 		border-radius: 10px;
 		background-color: ${generalColors.red};
 		font-size: 20px;
@@ -104,6 +105,10 @@ export const NewButtonMobile = styled.button`
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 	background-color: ${generalColors.red};
 	color: ${generalColors.white};
+
+	@media screen and (min-width: 720px) {
+		display: none;
+	}
 `
 
 export const TransactionDetails = styled.button`
