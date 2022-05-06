@@ -16,7 +16,7 @@ export const Main = styled.p`
 	color: ${({ type, theme }) => handleColorTransType(type, theme) || theme.text};
 
 	@media screen and (min-width: 1120px) {
-		font-size: 20px;
+		font-size: 18px;
 	}
 `;
 
@@ -33,7 +33,7 @@ export const Small = styled.p`
 	color: ${({ type, theme }) => handleColorTransType(type, theme) || theme.text};
 
 	@media screen and (min-width: 1120px) {
-		font-size: 16px;
+		font-size: 14px;
 	}
 `;
 

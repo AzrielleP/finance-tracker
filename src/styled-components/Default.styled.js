@@ -8,12 +8,12 @@ export const AppContainer = styled.div`
 	@media screen and (min-width: 768px) {
 		display: grid;
 		grid-auto-columns: 1fr;
-		grid-template-columns: 70% 30%;
+		grid-template-columns: 30% 70%;
 		grid-template-rows: 1fr;
 	}
 
 	@media screen and (min-width: 1120px) {
-		grid-template-columns: 75% 25%;
+		grid-template-columns: 25% 75%;
 	}
 `;
 
@@ -38,6 +38,10 @@ export const FlexContainer = styled.div`
 
  export const FlexHeader = styled(FlexContainerBordered)`
 	padding: 1em 0.75em;
+
+	@media screen and (min-width: 1120px) {
+		padding: 2em 6vw;
+	}
  `;
 
 export const ScrollingContainer = styled.div`

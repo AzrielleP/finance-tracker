@@ -4,9 +4,6 @@ import { generalColors,handleColorTransType } from "../../../../styled-component
 /*  ========== Containers ========== */
 export const TransactionOutput = styled.div`
 	padding-bottom: 5em;
-	@media screen and (min-width: 1120px) {
-		padding: 0 7em;
-	}
 `;
 
 export const DailyTransactionData = styled.div`
@@ -32,6 +29,10 @@ export const GridContainerHead = styled.div`
 
 	p:nth-child(3) {
 		text-align: right;
+	}
+
+	@media screen and (min-width: 1120px) {
+		padding: 0.5em 7vw;
 	}
 `;
 
@@ -73,6 +74,11 @@ export const DayContainer = styled.div`
 	p {
 		color: ${generalColors.white};
 	}
+
+	@media screen and (min-width: 1120px) {
+		width: 2.5em;
+		padding: 0.4em 0.5em 0.5em 0.5em;
+	}	
 `;
 
 /*  ========== Buttons ========== */
@@ -128,5 +134,9 @@ export const TransactionDetails = styled.button`
 				return theme.text;
 			}
 		}};
+	}
+
+	@media screen and (min-width: 1120px) {
+		padding: 0.5em 7vw;
 	}
 `;

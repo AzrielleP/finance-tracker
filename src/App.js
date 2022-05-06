@@ -27,14 +27,15 @@ function App() {
 				<GlobalStyle />
 
 				<AppContainer>
-					<Main
-						handleDarkMode = {handleDarkMode}
-						option = {option}
-					/>
 					<Sidebar
 						option = {option}
 						handleOptionChange = {handleOptionChange}
 					/>
+					<Main
+						handleDarkMode = {handleDarkMode}
+						option = {option}
+					/>
+					
 				</AppContainer>
 			</ThemeProvider>
 		</>
