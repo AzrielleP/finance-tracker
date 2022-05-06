@@ -91,6 +91,7 @@ const inputStyles = css`
 	
 	@media screen and (min-width: 1024px) {
 		width: 37vw;
+		max-width: 500px;
 		font-size: 18px;
 	}
 `;

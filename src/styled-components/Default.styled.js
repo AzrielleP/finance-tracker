@@ -8,7 +8,7 @@ export const AppContainer = styled.div`
 	@media screen and (min-width: 1024px) {
 		display: grid;
 		grid-auto-columns: 1fr;
-		grid-template-columns: 25% 75%;
+		grid-template-columns: 20% 80%;
 		grid-template-rows: 1fr;
 	}
 `;
@@ -82,16 +82,12 @@ export const ModalContainer = styled.div`
 		left: 50%;
 		top: 50%;
 		transform: translate(-50%, -50%);
-		height: 30em;
+		height: 60vh;
 		width: 60vw;
+		max-width: 825px;
 		z-index: 30;
 		margin-left: auto;
 		margin-right: auto;
 		border-radius: 10px;
 	};
-
-	@media screen and (min-width: 1120px) {
-		max-width: 50vw;
-		height: 35em;
-	}
 `;

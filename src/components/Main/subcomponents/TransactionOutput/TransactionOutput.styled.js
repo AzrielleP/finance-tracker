@@ -20,7 +20,7 @@ export const GridContainerHead = styled.div`
 	grid-template-rows: 1fr;
 	grid-gap: 0.5em;
 	align-items: center;
-	padding: 0.25em 1.5em;
+	padding: 0.25em 7vw;
 	border-bottom: 0.5px solid ${generalColors.grey};
 
 	& p {
@@ -123,7 +123,7 @@ export const TransactionDetails = styled.button`
 	grid-gap: 1em;
 	align-items: center;
 	width: 100%;
-	padding: 0.5em 1.5em;
+	padding: 0.5em 7vw;
 	
 	&:hover, &:focus, &:active {
 		box-shadow: none;
@@ -144,9 +144,5 @@ export const TransactionDetails = styled.button`
 				return theme.text;
 			}
 		}};
-	}
-
-	@media screen and (min-width: 1024px) {
-		padding: 0.5em 7vw;
 	}
 `;
