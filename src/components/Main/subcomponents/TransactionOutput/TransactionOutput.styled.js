@@ -23,7 +23,7 @@ export const GridContainerHead = styled.div`
 	grid-template-rows: 1fr;
 	grid-gap: 0.5em;
 	align-items: center;
-	padding: 0.25em 1em;
+	padding: 0.25em 1.5em;
 	border-bottom: 0.5px solid ${generalColors.grey};
 
 	& p {
@@ -107,7 +107,7 @@ export const TransactionDetails = styled.button`
 	grid-gap: 1em;
 	align-items: center;
 	width: 100%;
-	padding: 0.5em 1em;
+	padding: 0.5em 1.5em;
 	
 	&:hover, &:focus, &:active {
 		box-shadow: none;

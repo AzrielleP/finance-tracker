@@ -29,11 +29,15 @@ export const FlexContainer = styled.div`
 `;
 
  export const FlexContainerBordered = styled(FlexContainer)`
- 	padding: 0.5em 0.5em;
+ 	padding: 0.5em 1.5em;
  	border-top: 0.1px solid ${generalColors.grey};
  	border-bottom: 0.1px solid ${generalColors.grey};
 	margin-top: -1px;
 	margin-left: -1px;
+ `;
+
+ export const FlexHeader = styled(FlexContainerBordered)`
+	padding: 1em 0.75em;
  `;
 
 export const ScrollingContainer = styled.div`

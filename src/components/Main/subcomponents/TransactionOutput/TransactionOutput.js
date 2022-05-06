@@ -26,6 +26,7 @@ import {
 	ScrollingContainer,
 	FixedContainer,
 	FlexContainerBordered,
+	FlexHeader
 } from "../../../../styled-components/Default.styled";
 
 function Transaction(props) {
@@ -40,7 +41,7 @@ function Transaction(props) {
 	return (
 		<TransactionOutput>
 			<FixedContainer>
-				<FlexContainerBordered justifySmall="space-between">
+				<FlexHeader justifySmall="space-between">
 					<DatePicker 
 						moveToNextMonth = {moveToNextMonth}
 						moveToPreviousMonth = {moveToPreviousMonth}
@@ -49,7 +50,7 @@ function Transaction(props) {
 					<NewButton type="button" onClick={setToAddForm}>
 						New | +
 					</NewButton>
-				</FlexContainerBordered>
+				</FlexHeader>
 
 				<FlexContainerBordered justify="space-around">
 					<LargeNumberContainer type="income">
