@@ -1,10 +1,10 @@
 import React from "react";
 import moment from "moment";
+import DatePicker from "../DatePicker/DatePicker";
 import { totalValueFormat, singleValueFormat } from "../../../../helpers/calc";
 
 // Styled Components
 import {
-	ArrowButton,
 	NewButton,
 	NewButtonMobile,
 	TransactionDetails,
@@ -16,7 +16,6 @@ import {
 	DayContainer
 } from "./TransactionOutput.styled";
 import {
-	Large,
 	Main,
 	Bold,
 	Light,
@@ -24,7 +23,6 @@ import {
 	OverflowingText
 } from "../../../../styled-components/Text.styled";
 import {
-	FlexContainer,
 	ScrollingContainer,
 	FixedContainer,
 	FlexContainerBordered,
@@ -43,24 +41,11 @@ function Transaction(props) {
 		<TransactionOutput>
 			<FixedContainer>
 				<FlexContainerBordered justifySmall="space-between">
-					<FlexContainer>
-						<ArrowButton type="button" onClick={moveToPreviousMonth}>
-							<i className="fa-solid fa-angle-left"></i>
-						</ArrowButton>
-
-						<Large>
-							{typeof dataToRender.month !== "string"
-								? moment.monthsShort(dataToRender.month)
-								: dataToRender.month}
-							{"  "}
-							{dataToRender.year}
-						</Large>
-
-						<ArrowButton type="button" onClick={moveToNextMonth}>
-							<i className ="fa-solid fa-angle-right"></i>
-						</ArrowButton>
-					</FlexContainer>
-
+					<DatePicker 
+						moveToNextMonth = {moveToNextMonth}
+						moveToPreviousMonth = {moveToPreviousMonth}
+						dataToRender = {dataToRender}
+					/>
 					<NewButton type="button" onClick={setToAddForm}>
 						New | +
 					</NewButton>

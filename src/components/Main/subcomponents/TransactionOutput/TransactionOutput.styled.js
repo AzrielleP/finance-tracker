@@ -76,14 +76,6 @@ export const DayContainer = styled.div`
 `;
 
 /*  ========== Buttons ========== */
-export const ArrowButton = styled.button`
-	margin: 0 0.75em;
-	color: ${({ theme }) => theme.text};
-	
-	&:hover, &:focus, &:active {
-		box-shadow: none;
-	}
-`;
 export const NewButton = styled.button`
 	display: none;
 	@media screen and (min-width: 1120px) {
