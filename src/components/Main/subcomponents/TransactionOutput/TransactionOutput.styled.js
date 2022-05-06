@@ -84,13 +84,18 @@ export const DayContainer = styled.div`
 /*  ========== Buttons ========== */
 export const NewButton = styled.button`
 	display: none;
-	@media screen and (min-width: 1120px) {
+	@media screen and (min-width: 768px) {
 		display: block;
 		padding: 0.5em .75em;
-		border-radius: 10px;
+		border-radius: 5px;
 		background-color: ${generalColors.red};
-		font-size: 20px;
+		font-size: 12px;
 		color: ${generalColors.white};
+	}
+
+	@media screen and (min-width: 1120px) {
+		border-radius: 10px;
+		font-size: 20px;
 	}
 
 `;
@@ -106,7 +111,7 @@ export const NewButtonMobile = styled.button`
 	background-color: ${generalColors.red};
 	color: ${generalColors.white};
 
-	@media screen and (min-width: 720px) {
+	@media screen and (min-width: 768px) {
 		display: none;
 	}
 `
