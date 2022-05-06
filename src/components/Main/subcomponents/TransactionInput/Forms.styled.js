@@ -33,11 +33,6 @@ export const TransInputContainer = styled.div`
 	& > div {
 		margin: 1em 0;
 
-		& > label {
-			font-size: 12px;
-			color: ${generalColors.grey};
-		}
-
 		& > input {
 			color: ${({theme}) => theme.color}
 		}
@@ -60,16 +55,29 @@ export const FormRadio = styled.input`
 	}
 `;
 
-export const FormLabel = styled.label`
+export const RadioLabel = styled.label`
 	flex: 1;
 	cursor: pointer;
-	padding: 0.25em 0.5em;
+	padding: 0.5em 0.5em;
 	border: 0.25px solid ${generalColors.grey};
 	border-radius: 5px;
 	background-color: ${({ theme }) => theme.background};
 	font-size: 12px;
 	text-align: center;
-	color: ${generalColors.grey}
+	color: ${generalColors.grey};
+
+	@media screen and (min-width: 1120px) {
+		font-size: 18px;
+	}
+`;
+
+export const FormLabel = styled.label`
+	font-size: 12px;
+	color: ${generalColors.grey};
+
+	@media screen and (min-width: 1120px) {
+		font-size: 18px;
+	}
 `;
 
 const inputStyles = css`
@@ -80,14 +88,14 @@ const inputStyles = css`
 	color: ${({ theme }) => theme.text};
 	background-color: ${({ theme }) => theme.textBg};
 	border-color: ${generalColors.grey};
-
+	
 	@media screen and (min-width: 768px) {
-		width: 30em;
+		width: 37vw;
 	}
 
 	@media screen and (min-width: 1120px) {
-		width: 28em;
-		font-size: 16px;
+		width: 30vw;
+		font-size: 18px;
 	}
 `;
 
@@ -105,8 +113,12 @@ export const FormButton = styled.button`
 	margin: 0.5em 0;
 	padding: 0.75em 0.5em;
 	font: 12px "Roboto", sans-serif;
-	color: ${({ value }) => (!value ? ({theme}) => theme.color : generalColors.white)};
+	color: ${({ value }) => (!value ? ({theme}) => theme.text : generalColors.white)};
 	background-color: ${({ value }) => handleColorButtonType(value) || "none"};
 	border: 0.5px solid ${({ value }) => handleColorButtonType(value) || generalColors.grey};
 	border-radius: 5px;
+
+	@media screen and (min-width: 1120px) {
+		font-size: 18px;
+	}
 `;

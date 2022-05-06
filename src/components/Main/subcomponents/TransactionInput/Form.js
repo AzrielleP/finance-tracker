@@ -6,6 +6,7 @@ import { Bold, Small } from "../../../../styled-components/Text.styled";
 import { FlexContainer, ModalContainer } from "../../../../styled-components/Default.styled";
 import {
 	FormRadio,
+	RadioLabel,
 	FormLabel,
 	FormInput,
 	FormSelect,
@@ -47,9 +48,9 @@ function Form(props) {
 						onChange={handleValueChange}
 					/>
 
-					<FormLabel htmlFor="income">
+					<RadioLabel htmlFor="income">
 						Income
-					</FormLabel>
+					</RadioLabel>
 
 					<FormRadio
 						type="radio"
@@ -60,9 +61,9 @@ function Form(props) {
 						onChange={handleValueChange}
 					/>
 
-					<FormLabel htmlFor="expense">
+					<RadioLabel htmlFor="expense">
 						Expense
-					</FormLabel>
+					</RadioLabel>
 
 					<FormRadio
 						type="radio"
@@ -73,17 +74,17 @@ function Form(props) {
 						onChange={handleValueChange}
 					/>
 
-					<FormLabel htmlFor="transfer">
+					<RadioLabel htmlFor="transfer">
 						Transfer
-					</FormLabel>
+					</RadioLabel>
 				</TransTypeContainer>
 
 				<TransInputContainer>
 					{/* Transaction information */}
 					<FlexContainer justifySmall="space-between">
-						<label htmlFor="transactionDate">
+						<FormLabel htmlFor="transactionDate">
 							Date
-						</label>
+						</FormLabel>
 						<FormInput
 							type="date"
 							name="transactionDate"
@@ -97,9 +98,9 @@ function Form(props) {
 					{values.transactionType !== "transfer" && (
 						<>
 							<FlexContainer justifySmall="space-between">
-								<label htmlFor="fromAccount">
+								<FormLabel htmlFor="fromAccount">
 									Account
-								</label>
+								</FormLabel>
 								<div>
 									<FormSelect
 										value={values.fromAccount}
@@ -123,9 +124,9 @@ function Form(props) {
 							</FlexContainer>
 
 							<FlexContainer justifySmall="space-between">
-								<label htmlFor="transactionCategory">
+								<FormLabel htmlFor="transactionCategory">
 									Category
-								</label>
+								</FormLabel>
 
 								<div>
 									<FormSelect
@@ -157,9 +158,9 @@ function Form(props) {
 					{values.transactionType === "transfer" && (
 						<>
 							<FlexContainer justifySmall="space-between">
-								<label htmlFor="fromAccount">
+								<FormLabel htmlFor="fromAccount">
 									From
-								</label>
+								</FormLabel>
 								<div>
 									<FormSelect
 										value={values.fromAccount}
@@ -183,9 +184,9 @@ function Form(props) {
 							</FlexContainer>
 
 							<FlexContainer justifySmall="space-between">
-								<label htmlFor="toAccount">
+								<FormLabel htmlFor="toAccount">
 									To
-								</label>
+								</FormLabel>
 								<div>
 									<FormSelect
 										value={values.toAccount}
@@ -211,9 +212,9 @@ function Form(props) {
 					)}
 
 					<FlexContainer justifySmall="space-between">
-						<label htmlFor="transactionAmount">
+						<FormLabel htmlFor="transactionAmount">
 							Amount
-						</label>
+						</FormLabel>
 						<div>
 							<FormInput
 								type="number"
@@ -231,9 +232,9 @@ function Form(props) {
 					</FlexContainer>
 
 					<FlexContainer justifySmall="space-between">
-						<label htmlFor="transactionNotes">
+						<FormLabel htmlFor="transactionNotes">
 							Notes
-						</label>
+						</FormLabel>
 						<FormInput
 							type="text"
 							name="transactionNotes"

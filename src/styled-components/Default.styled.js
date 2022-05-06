@@ -68,7 +68,7 @@ export const ModalBackground = styled.div`
 		height: 100vh;
 		width: 100vw;
 		opacity: 0.6;
-		background-color: ${({ theme }) => theme.modalBg};
+		background-color: ${generalColors.modalBg};
 	}
 `;
 export const ModalContainer = styled.div`
@@ -79,18 +79,23 @@ export const ModalContainer = styled.div`
 	top: 0;
 	left: 0;
 	background: ${({ theme }) => theme.textBg};
+	padding: 5vw;
 
 	@media screen and (min-width: 768px) {
 		position: absolute;
 		left: 50%;
 		top: 50%;
 		transform: translate(-50%, -50%);
-		height: 35em;
-		width: 45em;
+		height: 30em;
+		width: 60vw;
 		z-index: 30;
-		padding: 5em;
 		margin-left: auto;
 		margin-right: auto;
 		border-radius: 10px;
+	};
+
+	@media screen and (min-width: 1120px) {
+		max-width: 50vw;
+		height: 35em;
 	}
 `;

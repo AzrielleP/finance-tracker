@@ -25,7 +25,8 @@ export const generalColors = {
 	blue: blue,
 	red: red,
 	grey: grey,
-	white: white
+	white: white,
+	modalBg: "rgba(189,189,189,0.7)"
 };
 
 // Helper functions
