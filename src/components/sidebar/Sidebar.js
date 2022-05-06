@@ -1,73 +1,69 @@
 import React from "react";
 
 // Styled Components
-import { FixedContainer } from "../../styled-components/Default.styled";
-import {
-	SidebarContainer,
-	SidebarSelectors,
-	SidebarRadio,
-} from "./Sidebar.styled";
-import { Main } from "../../styled-components/Text.styled";
+import { SidebarContainer, SidebarSelectors, SidebarRadio, SidebarLabel } from "./Sidebar.styled";
 
 function Sidebar(props) {
-	const { option, handleOptionChange } =
-		props;
-		
-	return (
-		<SidebarContainer>
-			<FixedContainer>
-				<SidebarSelectors justifySmall="space-around" option={option}>
-					<SidebarRadio
-						type="radio"
-						name="sidebarOption"
-						value="transactions"
-						checked={option === "transactions"}
-						onChange={handleOptionChange}
-						id="transactions"
-					/>
-					<Main as="label" htmlFor="transactions">
-						Transactions
-					</Main>
+    const { option, handleOptionChange } = props;
 
-					<SidebarRadio
-						type="radio"
-						name="sidebarOption"
-						value="stats"
-						checked={option === "stats"}
-						onChange={handleOptionChange}
-						id="stats"
-					/>
-					<Main as="label" htmlFor="stats">
-						Stats
-					</Main>
+    return (
+        <SidebarContainer>
+            <SidebarSelectors justifySmall='space-around' option={option}>
+                <SidebarRadio
+                    type='radio'
+                    name='sidebarOption'
+                    value='transactions'
+                    checked={option === "transactions"}
+                    onChange={handleOptionChange}
+                    id='transactions'
+                />
 
-					<SidebarRadio
-						type="radio"
-						name="sidebarOption"
-						value="accounts"
-						checked={option === "accounts"}
-						onChange={handleOptionChange}
-						id="accounts"
-					/>
-					<Main as="label" htmlFor="accounts">
-						Accounts
-					</Main>
+                <SidebarLabel htmlFor='transactions'>
+                    <i className='fa-solid fa-book'></i>
+                    Transactions
+                </SidebarLabel>
 
-					<SidebarRadio
-						type="radio"
-						name="sidebarOption"
-						value="settings"
-						checked={option === "settings"}
-						onChange={handleOptionChange}
-						id="settings"
-					/>
-					<Main as="label" htmlFor="settings">
-						Settings
-					</Main>
-				</SidebarSelectors>
-			</FixedContainer>
-		</SidebarContainer>
-	);
+                <SidebarRadio
+                    type='radio'
+                    name='sidebarOption'
+                    value='stats'
+                    checked={option === "stats"}
+                    onChange={handleOptionChange}
+                    id='stats'
+                />
+                <SidebarLabel htmlFor='stats'>
+                    <i className='fa-solid fa-chart-column'></i>
+                    Stats
+                </SidebarLabel>
+
+                <SidebarRadio
+                    type='radio'
+                    name='sidebarOption'
+                    value='accounts'
+                    checked={option === "accounts"}
+                    onChange={handleOptionChange}
+                    id='accounts'
+                />
+                <SidebarLabel htmlFor='accounts'>
+                    <i className='fa-solid fa-coins'></i>
+                    Accounts
+                </SidebarLabel>
+
+                <SidebarRadio
+                    type='radio'
+                    name='sidebarOption'
+                    value='settings'
+                    checked={option === "settings"}
+                    onChange={handleOptionChange}
+                    id='settings'
+                />
+                <SidebarLabel htmlFor='settings'>
+                    <i className='fa-solid fa-gear'></i>
+                    Settings
+                </SidebarLabel>
+            </SidebarSelectors>
+        </SidebarContainer>
+    );
 }
 
 export default Sidebar;

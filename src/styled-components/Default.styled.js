@@ -5,15 +5,11 @@ import { generalColors } from "./ThemeColors.styled";
 
 /* ======== Containers ======== */
 export const AppContainer = styled.div`
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 1024px) {
 		display: grid;
 		grid-auto-columns: 1fr;
-		grid-template-columns: 30% 70%;
-		grid-template-rows: 1fr;
-	}
-
-	@media screen and (min-width: 1120px) {
 		grid-template-columns: 25% 75%;
+		grid-template-rows: 1fr;
 	}
 `;
 
@@ -23,7 +19,7 @@ export const FlexContainer = styled.div`
 	justify-content: ${({ justifySmall }) => justifySmall};
 	background: ${({ theme }) => theme.textBg};
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 1024px) {
 		justify-content: ${({ justifyLarge }) => justifyLarge};
 	}
 `;
@@ -39,7 +35,7 @@ export const FlexContainer = styled.div`
  export const FlexHeader = styled(FlexContainerBordered)`
 	padding: 1em 0.75em;
 
-	@media screen and (min-width: 1120px) {
+	@media screen and (min-width: 1024px) {
 		padding: 2em 6vw;
 	}
  `;
@@ -59,7 +55,7 @@ export const FixedContainer = styled.div`
 
 /* ======== Modal ======== */
 export const ModalBackground = styled.div`
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 1024px) {
 		display: ${({ show }) => (show ? "block" : "none")};
 		position: absolute;
 		top: 0;
@@ -81,7 +77,7 @@ export const ModalContainer = styled.div`
 	background: ${({ theme }) => theme.textBg};
 	padding: 5vw;
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 1024px) {
 		position: absolute;
 		left: 50%;
 		top: 50%;

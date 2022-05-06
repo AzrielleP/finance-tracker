@@ -66,7 +66,7 @@ export const RadioLabel = styled.label`
 	text-align: center;
 	color: ${generalColors.grey};
 
-	@media screen and (min-width: 1120px) {
+	@media screen and (min-width: 1024px) {
 		font-size: 18px;
 	}
 `;
@@ -75,7 +75,7 @@ export const FormLabel = styled.label`
 	font-size: 12px;
 	color: ${generalColors.grey};
 
-	@media screen and (min-width: 1120px) {
+	@media screen and (min-width: 1024px) {
 		font-size: 18px;
 	}
 `;
@@ -89,12 +89,8 @@ const inputStyles = css`
 	background-color: ${({ theme }) => theme.textBg};
 	border-color: ${generalColors.grey};
 	
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 1024px) {
 		width: 37vw;
-	}
-
-	@media screen and (min-width: 1120px) {
-		width: 30vw;
 		font-size: 18px;
 	}
 `;
@@ -118,7 +114,7 @@ export const FormButton = styled.button`
 	border: 0.5px solid ${({ value }) => handleColorButtonType(value) || generalColors.grey};
 	border-radius: 5px;
 
-	@media screen and (min-width: 1120px) {
+	@media screen and (min-width: 1024px) {
 		font-size: 18px;
 	}
 `;

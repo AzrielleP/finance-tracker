@@ -11,7 +11,7 @@ export const ArrowButton = styled.button`
     i {
         font-size: 14px; 
 
-        @media screen and (min-width: 1120px) {
+        @media screen and (min-width: 1024px) {
         font-size: 36px;
         }
     }

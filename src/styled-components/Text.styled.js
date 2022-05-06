@@ -6,18 +6,13 @@ export const Large = styled.p`
 	font-size: 14px;
 	color: ${({ theme }) => theme.text};
 
-	@media screen and (min-width: 1120px) {
+	@media screen and (min-width: 1024px) {
 		font-size: 36px;
 	}
 `;
 
 export const Main = styled.p`
-	font-size: 12px;
 	color: ${({ type, theme }) => handleColorTransType(type, theme) || theme.text};
-
-	@media screen and (min-width: 1120px) {
-		font-size: 18px;
-	}
 `;
 
 export const Bold = styled(Main)`
@@ -32,7 +27,7 @@ export const Small = styled.p`
 	font-size: 9px;
 	color: ${({ type, theme }) => handleColorTransType(type, theme) || theme.text};
 
-	@media screen and (min-width: 1120px) {
+	@media screen and (min-width: 1024px) {
 		font-size: 14px;
 	}
 `;

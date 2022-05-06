@@ -14,9 +14,16 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     p, label {
+        font-size: 12px;
         font-family: 'Roboto', sans-serif;
         margin: 0; 
+
+        @media screen and (min-width: 1024px) {
+            font-size: 18px;
+        }
     }
+
+
 
     button {
         padding: 0;

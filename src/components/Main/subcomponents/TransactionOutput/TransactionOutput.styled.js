@@ -31,7 +31,7 @@ export const GridContainerHead = styled.div`
 		text-align: right;
 	}
 
-	@media screen and (min-width: 1120px) {
+	@media screen and (min-width: 1024px) {
 		padding: 0.5em 7vw;
 	}
 `;
@@ -75,7 +75,7 @@ export const DayContainer = styled.div`
 		color: ${generalColors.white};
 	}
 
-	@media screen and (min-width: 1120px) {
+	@media screen and (min-width: 1024px) {
 		width: 2.5em;
 		padding: 0.4em 0.5em 0.5em 0.5em;
 	}	
@@ -84,7 +84,7 @@ export const DayContainer = styled.div`
 /*  ========== Buttons ========== */
 export const NewButton = styled.button`
 	display: none;
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 1024px) {
 		display: block;
 		padding: 0.5em .75em;
 		border-radius: 5px;
@@ -93,7 +93,7 @@ export const NewButton = styled.button`
 		color: ${generalColors.white};
 	}
 
-	@media screen and (min-width: 1120px) {
+	@media screen and (min-width: 1024px) {
 		border-radius: 10px;
 		font-size: 20px;
 	}
@@ -111,7 +111,7 @@ export const NewButtonMobile = styled.button`
 	background-color: ${generalColors.red};
 	color: ${generalColors.white};
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 1024px) {
 		display: none;
 	}
 `
@@ -146,7 +146,7 @@ export const TransactionDetails = styled.button`
 		}};
 	}
 
-	@media screen and (min-width: 1120px) {
+	@media screen and (min-width: 1024px) {
 		padding: 0.5em 7vw;
 	}
 `;

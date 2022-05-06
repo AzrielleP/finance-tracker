@@ -34,7 +34,7 @@ export const Dot = styled.span`
 	background-color: ${({ color }) => (color < 0 ? generalColors.red : generalColors.blue)};
 	border-radius: 50%;
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 1024) {
 		height: 15px;
 		width: 15px;
 	}
