@@ -50,11 +50,12 @@ export const SidebarLabel = styled.label`
 	}
 
 	@media screen and (min-width: 1024px) {
-		margin: 2em 1em;
+		margin: 2em 0.75em;
+		font-size: 20px;
 		i {
 			display: inline;
-			margin-right: 1em;
-			font-size: 20px;
+			margin-right: 0.75em;
+			font-size: 24px;
 		}
 	}
 `;
