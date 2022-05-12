@@ -11,7 +11,7 @@ export const Slider = styled.span`
 	&::before {
 		content: "";
 		position: absolute;
-		top: 4px;
+		top: 3px;
 		left: 5px;
 		width: 15px;
 		height: 15px;
@@ -31,7 +31,8 @@ export const ThemeTogglerContainer = styled.div`
 		position: absolute;
 		width: 100%;
 		height: 100%;
-		background-color: ${({ theme }) => theme.modalBg};
+		background-color: ${({ theme }) => theme.themeTogglerBg};
+		border: 1px solid ${generalColors.grey};
 		border-radius: 23px;
 		cursor: pointer;
 	}
@@ -41,12 +42,12 @@ export const ThemeTogglerContainer = styled.div`
 	}
 
 	input:checked ~ ${Slider} {
-		background-color: ${({ theme }) => theme.modalBg};
+		background-color: ${({ theme }) => theme.themeTogglerBg};
 	}
 
 	input:checked ~ ${Slider}::before {
 		transform: translateX(23px);
-		background-color: ${({ theme }) => theme.modalBg};
+		background-color: ${({ theme }) => theme.themeTogglerBg};
 		box-shadow: inset 6px -5px 0px 0px ${generalColors.white};
 	}
 `;

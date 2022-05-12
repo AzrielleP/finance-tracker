@@ -13,12 +13,14 @@ export const light = {
 	text: black,
 	textBg: white,
 	background: lightGrey,
+	themeTogglerBg: grey,
 };
 
 export const dark = {
 	text: white,
 	textBg: black,
 	background: veryBlack,
+	themeTogglerBg: black,
 };
 
 export const generalColors = {
