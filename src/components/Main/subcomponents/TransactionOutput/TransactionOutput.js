@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import Totals from "../Totals/Totals";
 import DatePicker from "../DatePicker/DatePicker";
 import { totalValueFormat, singleValueFormat } from "../../../../helpers/calc";
 
@@ -12,21 +13,18 @@ import {
 	GridContainerHead,
 	NoDataContainer,
 	DailyTransactionData,
-	LargeNumberContainer,
 	DayContainer
 } from "./TransactionOutput.styled";
 import {
 	Main,
 	Bold,
-	Light,
 	Small,
 	OverflowingText
 } from "../../../../styled-components/Text.styled";
 import {
 	ScrollingContainer,
 	FixedContainer,
-	FlexContainerBordered,
-	FlexHeader
+	FlexHeader,
 } from "../../../../styled-components/Default.styled";
 
 function Transaction(props) {
@@ -52,22 +50,11 @@ function Transaction(props) {
 					</NewButton>
 				</FlexHeader>
 
-				<FlexContainerBordered justify="space-around">
-					<LargeNumberContainer type="income">
-						<Light>Income</Light>
-						<Main>{totalValueFormat(dataToRender.monthIncomeTotal)}</Main>
-					</LargeNumberContainer>
-
-					<LargeNumberContainer type="expense">
-						<Light>Expense</Light>
-						<Main>{totalValueFormat(dataToRender.monthExpenseTotal)}</Main>
-					</LargeNumberContainer>
-
-					<LargeNumberContainer type="total" amount={dataToRender.monthTotal}>
-						<Light>Total</Light>
-						<Main>{totalValueFormat(dataToRender.monthTotal, true)}</Main>
-					</LargeNumberContainer>
-				</FlexContainerBordered>
+				<Totals dataAsset = {dataToRender.monthIncomeTotal}
+						dataExpense = {dataToRender.monthExpenseTotal}
+						dataTotal = {dataToRender.monthTotal}
+						heading = {['Income', 'Expense', 'Total']}
+				/>
 			</FixedContainer>
 
 			{!dataToRender.hasOwnProperty("dailyTrans") ? (

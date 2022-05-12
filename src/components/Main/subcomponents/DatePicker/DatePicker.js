@@ -2,15 +2,15 @@ import React from "react";
 import moment from "moment";
 
 // Styled Components
-import { ArrowButton } from './DatePicker.styled';
+import { ArrowButton, DatePickerContainer } from './DatePicker.styled';
 import { Large } from '../../../../styled-components/Text.styled';
-import { FlexContainer } from '../../../../styled-components/Default.styled';
+
 
 function DatePicker(props) {
     const {moveToNextMonth, moveToPreviousMonth, dataToRender} = props;
 
     return (
-        <FlexContainer>
+        <DatePickerContainer>
             <ArrowButton type='button' onClick={moveToPreviousMonth}>
                 <i className='fa-solid fa-angle-left'></i>
             </ArrowButton>
@@ -24,7 +24,7 @@ function DatePicker(props) {
             <ArrowButton type='button' onClick={moveToNextMonth}>
                 <i className='fa-solid fa-angle-right'></i>
             </ArrowButton>
-        </FlexContainer>
+        </DatePickerContainer>
     );
 }
 

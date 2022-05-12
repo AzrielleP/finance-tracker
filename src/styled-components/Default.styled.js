@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { generalColors } from "./ThemeColors.styled";
 
 // Consists of styles that are used in more than 2 components (except for App)
@@ -37,10 +37,10 @@ export const FlexContainer = styled.div`
  `;
 
  export const FlexHeader = styled(FlexContainerBordered)`
-	padding: 1em 0.75em;
+	padding: 1em 7vw;
 
 	@media screen and (min-width: 1024px) {
-		padding: 2em 6vw;
+		padding: 2em 7vw;
 	}
  `;
 

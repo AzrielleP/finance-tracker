@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { generalColors,handleColorTransType } from "../../../../styled-components/ThemeColors.styled";
+import { generalColors } from "../../../../styled-components/ThemeColors.styled";
 
 /*  ========== Containers ========== */
 export const TransactionOutput = styled.div`
@@ -42,15 +42,6 @@ export const NoDataContainer = styled.div`
 	align-items: center;
 	justify-content: center;
 	height: 50vh;
-`;
-
-export const LargeNumberContainer = styled.div`
-	flex: 1;
-	text-align: center;
-
-	p:nth-child(2) {
-		color: ${({ type, theme }) => handleColorTransType(type, theme) || theme.text};
-	}
 `;
 
 export const DayContainer = styled.div`

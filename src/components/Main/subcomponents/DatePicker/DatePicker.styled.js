@@ -1,7 +1,18 @@
 import styled from "styled-components";
+import { FlexContainer } from '../../../../styled-components/Default.styled';
+
+export const DatePickerContainer = styled(FlexContainer) `
+    button:nth-child(1) {
+        margin: 0 1em 0 0;
+    }
+
+    button:nth-child(3) {
+        margin: 0 0 0 1em;
+    }
+
+`
 
 export const ArrowButton = styled.button`
-    margin: 0 1em;
     color: ${({ theme }) => theme.text};
 
     &:hover, &:focus, &:active {
