@@ -39,13 +39,13 @@ const totalValueFormat = (value, signed) => {
     return value
         ?  (Math.abs(value)) > 999999
             ? numeral(toFormat).format("0.0a")
-            : numeral(toFormat).format("0.00")
-        : numeral(0).format("0.00");
+            : numeral(toFormat).format("0,0.00")
+        : numeral(0).format("0,0.00");
 };
 
 const singleValueFormat = (value, signed) => {
     let toFormat = signed ? value : Math.abs(value);
-    return numeral(toFormat).format("0.00");
+    return numeral(toFormat).format("0,0.00");
 };
 
 // * For transactions

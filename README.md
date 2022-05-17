@@ -2,7 +2,7 @@
 
 🎟️  Live URL : https://aze-pelayo.github.io/finance-tracker/
 
-⚒️  Status: MVP Done - Currently checking of ways to optimize it: UI redesign, Firebase Integration, Redux
+⚒️  Status: MVP Done - Currently adding tests and looking on adding/editing accounts and categories 
 
 **TABLE OF CONTENTS**
 - [Finance Tracker](#finance-tracker)
@@ -27,16 +27,19 @@ This side project is heavily inspired by the finance tracker that I personally u
 
 # Screenshots
 ☀️ Light Mode
-![No Data - Light Mode](./screenshots/screenshot_LM_nodata.png)
-![Form - Light Mode](./screenshots/screenshot_LM_form.png)
-![Categories - Light Mode](./screenshots/screenshot_LM_categories.png)
+![Transactions - Light Mode](./screenshots/screenshot_LM_transactions.png)
+![Add Transaction - Light Mode](./screenshots/screenshot_LM_addTransaction.png)
+![Stats - Light Mode](./screenshots/screenshot_LM_stats.png)
 ![Accounts - Light Mode](./screenshots/screenshot_LM_accounts.png)
+![Settings - Light Mode](./screenshots/screenshot_LM_settings.png)
 
 🌙 Dark Mode
-![No Data - Dark Mode](./screenshots/screenshot_DM_nodata.png)
-![Form - Dark Mode](./screenshots/screenshot_DM_form.png)
-![Categories - Dark Mode](./screenshots/screenshot_DM_categories.png)
+![Transactions - Dark Mode](./screenshots/screenshot_DM_transactions.png)
+![Add Transaction - Dark Mode](./screenshots/screenshot_DM_addTransaction.png)
+![Stats - Dark Mode](./screenshots/screenshot_DM_stats.png)
 ![Accounts - Dark Mode](./screenshots/screenshot_DM_accounts.png)
+![Settings - Dark Mode](./screenshots/screenshot_DM_settings.png)
+
 
 # Setup/Installation
 

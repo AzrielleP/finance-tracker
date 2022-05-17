@@ -1,127 +1,69 @@
-import React, { useState, useEffect } from "react";
-import SidebarCategories from "./Categories/Sidebar-Categories";
-import SidebarAccounts from "./Accounts/Sidebar-Accounts";
-import ThemeToggler from "../ThemeToggler/ThemeToggler";
-import { calcTotalOfFiltered, calcFromAccount } from "../../helpers/calc";
-import { computeAssets, computeLiabilities } from "../../helpers/calc";
+import React from "react";
 
 // Styled Components
-import { FlexContainer, ShowSidebarButton } from "../styled-components/Default.styled";
-import {
-	SidebarContainer,
-	SidebarFixedContainer,
-	SidebarSelectors,
-	SidebarRadio,
-} from "./Sidebar.styled";
-import { Bold } from "../styled-components/Text.styled";
-import { ReactComponent as CloseButton } from "./../styled-components/svg/CloseButton.svg";
+import { SidebarContainer, SidebarSelectors, SidebarRadio, SidebarLabel } from "./Sidebar.styled";
 
 function Sidebar(props) {
-	const { transaction, accounts, dateToRender, handleSidebar, showSidebar, handleDarkMode } =
-		props;
-	const [option, setOption] = useState("categories");
-	const handleOptionChange = (event) => {
-		let value = event.target.value;
-		setOption(value);
-	};
+    const { option, handleOptionChange } = props;
 
-	const initialState = {
-		totalAssets: 0,
-		totalLiabilities: 0,
-		items: [],
-	};
-	const [accountsInfo, setAccountsInfo] = useState(initialState);
+    return (
+        <SidebarContainer>
+            <SidebarSelectors justifySmall='space-around' option={option}>
+                <SidebarRadio
+                    type='radio'
+                    name='sidebarOption'
+                    value='transactions'
+                    checked={option === "transactions"}
+                    onChange={handleOptionChange}
+                    id='transactions'
+                />
 
-	// Create an initial render
-	const getAccounts = () => {
-		let initial = initialState;
-		for (let element of accounts) {
-			let account = {
-				accountName: element,
-				value: 0,
-			};
-			initial.items.push(account);
-		}
-		return initial;
-	};
+                <SidebarLabel htmlFor='transactions'>
+                    <i className='fa-solid fa-book'></i>
+                    Transactions
+                </SidebarLabel>
 
-	useEffect(() => {
-		const handleData = () => {
-			let data = initialState;
+                <SidebarRadio
+                    type='radio'
+                    name='sidebarOption'
+                    value='stats'
+                    checked={option === "stats"}
+                    onChange={handleOptionChange}
+                    id='stats'
+                />
+                <SidebarLabel htmlFor='stats'>
+                    <i className='fa-solid fa-chart-column'></i>
+                    Stats
+                </SidebarLabel>
 
-			for (let element of accounts) {
-				let account = {
-					accountName: element,
-					value: 0,
-				};
+                <SidebarRadio
+                    type='radio'
+                    name='sidebarOption'
+                    value='accounts'
+                    checked={option === "accounts"}
+                    onChange={handleOptionChange}
+                    id='accounts'
+                />
+                <SidebarLabel htmlFor='accounts'>
+                    <i className='fa-solid fa-coins'></i>
+                    Accounts
+                </SidebarLabel>
 
-				// Compute total amount of account
-				account.value =
-					calcTotalOfFiltered(transaction, "toAccount", element, "transactionAmount") +
-					calcFromAccount(transaction, "fromAccount", element, "transactionAmount");
-
-				data.items.push(account);
-			}
-
-			if (data.items.length !== 0) {
-				data.totalAssets = computeAssets(data.items);
-				data.totalLiabilities = computeLiabilities(data.items);
-			}
-
-			setAccountsInfo(data);
-		};
-		handleData();
-	}, [transaction, accounts]);
-
-	return (
-		<SidebarContainer $display={showSidebar}>
-			<SidebarFixedContainer>
-				<FlexContainer justifySmall="space-between" justifyLarge="flex-end">
-					<ShowSidebarButton onClick={handleSidebar} alignment="right">
-						<CloseButton />
-					</ShowSidebarButton>
-					<ThemeToggler handleDarkMode={handleDarkMode} />
-				</FlexContainer>
-
-				<SidebarSelectors justifySmall="space-around" option={option}>
-					<SidebarRadio
-						type="radio"
-						name="sidebarOption"
-						value="categories"
-						checked={option === "categories"}
-						onChange={handleOptionChange}
-						id="categories"
-					/>
-					<Bold as="label" htmlFor="categories">
-						CATEGORIES
-					</Bold>
-
-					<SidebarRadio
-						type="radio"
-						name="sidebarOption"
-						value="accounts"
-						checked={option === "accounts"}
-						onChange={handleOptionChange}
-						id="accounts"
-					/>
-					<Bold as="label" htmlFor="accounts">
-						ACCOUNTS
-					</Bold>
-				</SidebarSelectors>
-			</SidebarFixedContainer>
-
-			{option === "categories" && (
-				<SidebarCategories transaction={transaction} dateToRender={dateToRender} />
-			)}
-			{option === "accounts" && (
-				<SidebarAccounts
-					accountsInfo={accountsInfo}
-					getAccounts={getAccounts}
-					initialState={initialState}
-				/>
-			)}
-		</SidebarContainer>
-	);
+                <SidebarRadio
+                    type='radio'
+                    name='sidebarOption'
+                    value='settings'
+                    checked={option === "settings"}
+                    onChange={handleOptionChange}
+                    id='settings'
+                />
+                <SidebarLabel htmlFor='settings'>
+                    <i className='fa-solid fa-gear'></i>
+                    Settings
+                </SidebarLabel>
+            </SidebarSelectors>
+        </SidebarContainer>
+    );
 }
 
 export default Sidebar;

@@ -1,66 +1,65 @@
-import styled, { css } from "styled-components";
-import { generalColors } from "../styled-components/ThemeColors.styled";
-import { FlexContainer, FixedContainer } from "../styled-components/Default.styled";
+import styled from "styled-components";
+import { generalColors } from "../../styled-components/ThemeColors.styled";
 
 /* ========== Containers ========== */
 export const SidebarContainer = styled.div`
-	display: ${({ $display }) => ($display ? "block" : "none")};
-	position: absolute;
+	position: fixed;
 	left: 0;
-	top: 0;
-	padding: 0 8vw;
+	bottom: 0;
 	z-index: 10;
-	min-height: 100vh;
 	width: 100%;
-	background: ${({ theme }) => theme.background};
+	border-top: 0.25px solid ${generalColors.grey};
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 1024px) {
 		display: block;
 		position: static;
 		padding: 0 2vw;
-		border-left: 0.1px solid ${({ theme }) => theme.fadedGrey};
+		height: 100vh;
+		border-right: 0.1px solid ${generalColors.grey};
 	}
 `;
-export const SidebarFixedContainer = styled(FixedContainer)`
-	background-color: ${({ theme }) => theme.background};
-`;
-export const SidebarSelectors = styled(FlexContainer)`
-	padding: 1em 0 0.5em 0;
-	border-bottom: 5px solid ${generalColors.blue};
+
+export const SidebarSelectors = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	height:100%;
+	padding: 0.5em 0 0.5em 0;
 	position: relative;
+	background: ${({ theme }) => theme.background};
 
-	label {
-		cursor: pointer;
-	}
-
-	&:after {
-		position: absolute;
-		bottom: -5px;
-		height: 5.1px;
-		width: 50%;
-		${({ option }) =>
-			option === "categories"
-				? css`
-						right: 0;
-				  `
-				: css`
-						left: 0;
-				  `};
-		content: "";
-		background-color: ${({ theme }) => theme.background};
-	}
-
-	@media screen and (min-width: 768px) {
-		padding: 0.5em 0 0.5em 0;
+	@media screen and (min-width: 1024px) {
+		flex-flow: column;
+		align-items: flex-start;
+		justify-content: center;
+		padding: 10vw 0;
 		margin: 0 0 0.5em 0;
-	}
-
-	@media screen and (min-width: 1120px) {
-		padding: 1.5em 0 0.5em 0;
 	}
 `;
 
 /* ========== Inputs ========== */
+export const SidebarLabel = styled.label`
+	cursor: pointer;
+	text-align: center;
+	color: ${generalColors.grey};
+
+	i {
+		display: block;
+		font-size: 18px;
+		margin-bottom: 0.2em;
+	}
+
+	@media screen and (min-width: 1024px) {
+		margin: 2em 0.75em;
+		font-size: 20px;
+		i {
+			display: inline;
+			margin-right: 0.75em;
+			font-size: 24px;
+		}
+	}
+`;
+
 export const SidebarRadio = styled.input`
 	display: none;
 	-webkit-appearance: none;
@@ -68,4 +67,11 @@ export const SidebarRadio = styled.input`
 	-ms-appearance: none;
 	-o-appearance: none;
 	appearance: none;
+
+	&:checked {
+		& + ${SidebarLabel} {
+			color: ${generalColors.red};
+		}
+	}
 `;
+
