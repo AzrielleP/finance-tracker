@@ -55,6 +55,11 @@ To start the server:
 npm start
 ```
 
+To deploy to GitHub pages:
+```bash
+npm run deploy
+```
+
 To visit the app:
 
 ```bash
