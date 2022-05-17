@@ -1,54 +1,96 @@
 import React, { useState, useEffect } from "react";
-import { Pie } from "react-chartjs-2";
-import { createData, customization } from "./chartSettings";
+import DataToShow from "./DataToShow";
+import DatePicker from "../DatePicker/DatePicker";
 import { groupByCategory } from "../../../../helpers/groupingData";
 
 // Styled Components
-import { ScrollingContainer } from "../../../../styled-components/Default.styled";
-import { ChartContainer } from "./Stats.styled";
-import { Main } from "../../../../styled-components/Text.styled";
+import {
+    FixedContainer,
+    ScrollingContainer,
+    FlexHeader,
+    FlexContainer,
+} from "../../../../styled-components/Default.styled";
+import { MobileScrollingContainer, RadioContainer, StatsRadio, StatsFlexContainer, DesktopScrollingContainer } from "./Stats.styled";
+import { Bold } from "../../../../styled-components/Text.styled";
 
-function SidebarCategories(props) {
-	const { transaction, dateToRender } = props;
-	const [incomeCategories, setIncomeCategories] = useState([]);
-	const [expenseCategories, setExpenseCategories] = useState([]);
+function Stats(props) {
+    const { transaction, dateToRender, dataToRender, moveToNextMonth, moveToPreviousMonth } = props;
+    const [incomeCategories, setIncomeCategories] = useState([]);
+    const [expenseCategories, setExpenseCategories] = useState([]);
 
-	useEffect(() => {
-		setIncomeCategories(groupByCategory(transaction, "income", dateToRender));
-		setExpenseCategories(groupByCategory(transaction, "expense", dateToRender));
-	}, [transaction, dateToRender]);
+    const [selection, setSelection] = useState("income");
 
-	return (
-		<ScrollingContainer>
-			<ChartContainer>
-				<Main>Income</Main>
-				{incomeCategories.length === 0 ? (
-					<Main>No available data</Main>
-				) : (
-					<div>
-						<Pie
-							data={createData(incomeCategories, "income")}
-							options={customization(incomeCategories)}
-						/>
-					</div>
-				)}
-			</ChartContainer>
+    const handleSelection = (event) => {
+        let value = event.target.value;
+        setSelection(value);
+    };
 
-			<ChartContainer>
-				<Main>Expense</Main>
-				{expenseCategories.length === 0 ? (
-					<Main>No available data</Main>
-				) : (
-					<div>
-						<Pie
-							data={createData(expenseCategories, "expense")}
-							options={customization(expenseCategories)}
-						/>
-					</div>
-				)}
-			</ChartContainer>
-		</ScrollingContainer>
-	);
+    useEffect(() => {
+        setIncomeCategories(groupByCategory(transaction, "income", dateToRender, dataToRender));
+        setExpenseCategories(groupByCategory(transaction, "expense", dateToRender, dataToRender));
+    }, [transaction, dateToRender, dataToRender]);
+
+    return (
+        <div>
+            <FixedContainer>
+                <FlexHeader>
+                    <DatePicker
+                        moveToNextMonth={moveToNextMonth}
+                        moveToPreviousMonth={moveToPreviousMonth}
+                        dataToRender={dataToRender}
+                    />
+                </FlexHeader>
+
+                {/* Mobile Mode */}
+                <RadioContainer selection={selection} justifySmall='space-around'>
+                    <StatsRadio
+                        type='radio'
+                        name='statsSelection'
+                        value='income'
+                        checked={selection === "income"}
+                        onChange={handleSelection}
+                        id='income'
+                    />
+
+                    <Bold htmlFor='income' as='label'>
+                        Income
+                    </Bold>
+
+                    <StatsRadio
+                        type='radio'
+                        name='statsSelection'
+                        value='expense'
+                        checked={selection === "expense"}
+                        onChange={handleSelection}
+                        id='expense'
+                    />
+
+                    <Bold htmlFor='expense' as='label'>
+                        Expense
+                    </Bold>
+                </RadioContainer>
+            </FixedContainer>
+
+            {/* Mobile Mode */}
+            <MobileScrollingContainer>
+                {selection === "income" && (
+                    <DataToShow data = {incomeCategories} type = "income"/>
+                )}
+
+                {selection === "expense" && (
+                    <DataToShow data = {expenseCategories} type = "expense"/>
+                )}
+            </MobileScrollingContainer>
+
+            {/* Desktop Mode */}
+            <DesktopScrollingContainer>
+                    <StatsFlexContainer>
+                        <DataToShow data = {incomeCategories} type = "income"/>
+                        <DataToShow data = {expenseCategories} type = "expense"/>
+                    </StatsFlexContainer>
+            </DesktopScrollingContainer>
+        </div>
+    );
 }
 
-export default SidebarCategories;
+export default Stats;

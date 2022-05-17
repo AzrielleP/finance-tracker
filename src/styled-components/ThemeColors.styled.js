@@ -31,6 +31,29 @@ export const generalColors = {
 	modalBg: "rgba(189,189,189,0.7)"
 };
 
+// Pie chart colors
+export const income = [
+	"#023E8A",
+	"#0077B6",
+	"#0096C7",
+	"#00B4D8",
+	"#48CAE4",
+	"#82DDED",
+	"#ADE8F4",
+	"#CAF0F8",
+];
+
+export const expense = [
+	"#800F2F",
+	"#A4133C",
+	"#C9184A",
+	"#FF4D6D",
+	"#FF758F",
+	"#FF8FA3",
+	"#FFB3C1",
+	"#FFF0F3",
+];
+
 // Helper functions
 export const handleColorTransType = (type) => {
 	switch (type) {

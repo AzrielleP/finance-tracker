@@ -173,7 +173,7 @@ function Main(props) {
 			setMode("edit");
 			displayForm();
 		}
-	}, [transId]);
+	}, [transId, transaction]);
 
 	useEffect(() => {
 		const handleData = () => {
@@ -234,6 +234,9 @@ function Main(props) {
 				<Stats 
 					transaction={transaction} 
 					dateToRender={dateToRender}
+					dataToRender = {dataToRender}
+					moveToNextMonth={moveToNextMonth}
+					moveToPreviousMonth={moveToPreviousMonth}
 				/>
 			)}
 

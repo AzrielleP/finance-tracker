@@ -1,4 +1,5 @@
 import moment from "moment";
+import numeral from "numeral";
 import { computeTransAmounts, filter, calcTotalOfFiltered } from "./calc";
 import { sortByDate, sortByCategory, sortByValue } from "./sort";
 
@@ -93,13 +94,14 @@ const groupByDate = (data) => {
 	return modifiedData;
 };
 
-const groupByCategory = (data, type, date) => {
+const groupByCategory = (data, type, date, total) => {
 	/*
 		Desired output
 		[
 			{
 				categoryName: ___
 				totalAmount: ___
+				percent: ___
 			},
 			...
 		]
@@ -124,6 +126,7 @@ const groupByCategory = (data, type, date) => {
 			let category = {
 				categoryName: element,
 				value: 0,
+				percent: 0,
 			};
 
 			// Calculate total amount of a category
@@ -136,6 +139,11 @@ const groupByCategory = (data, type, date) => {
 					"transactionAmount"
 				)
 			);
+
+			const toDivide = type === "income" ? total.monthIncomeTotal : total.monthExpenseTotal;
+			category.percent = numeral(Math.abs(category.value/toDivide)).format('0%');
+
+			if(category.percent === "0%") category.percent = "1%";
 
 			groupedData.push(category);
 		}
