@@ -4,8 +4,8 @@ const red = "#F17148";
 const grey = "#BDBDBD";
 const lightGrey = "#FBFBFB";
 const white = "#FFFFFF";
-const black = "#3D4042";
-const veryBlack = "#36383D";
+const black = "#292C2E";
+const veryBlack = "#2C2D30";
 
 // Themes
 

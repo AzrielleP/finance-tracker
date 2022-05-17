@@ -11,7 +11,7 @@ const createData = (data, colorType) => {
 			{
 				data: inPercent,
 				backgroundColor: colorType === "income" ? income : expense,
-				borderWidth: 1,
+				borderWidth: 0.5,
 			},
 		],
 	};
