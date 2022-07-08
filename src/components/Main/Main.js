@@ -19,7 +19,7 @@ import { ModalBackground } from "../../styled-components/Default.styled";
 
 function Main(props) {
 	// * === PROPS === * //
-	const {option, handleDarkMode} = props;
+	const {option, handleDarkMode, isDarkMode} = props;
  
 	// * === STATES - DATA === //
 	const [accounts] = useState(accountsList);
@@ -251,6 +251,7 @@ function Main(props) {
 			{option === "settings" && (
 				<Settings
 					handleDarkMode = {handleDarkMode}
+					isDarkMode = {isDarkMode}
 				/>
 			)}
 		</>

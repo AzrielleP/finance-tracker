@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Sidebar from "./components/Sidebar/Sidebar";
+import Sidebar from "./components/sidebar/Sidebar";
 import Main from "./components/Main/Main";
 
 
@@ -33,6 +33,7 @@ function App() {
 					/>
 					<Main
 						handleDarkMode = {handleDarkMode}
+						isDarkMode = {isDarkMode}
 						option = {option}
 					/>
 					
