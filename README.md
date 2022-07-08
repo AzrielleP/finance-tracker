@@ -2,7 +2,7 @@
 
 🎟️  Live URL : https://aze-pelayo.github.io/finance-tracker/
 
-⚒️  Status: MVP Done - Currently adding tests and looking on adding/editing accounts and categories 
+⚒️  Status: MVP Done - Currently looking on adding/editing accounts and categories as well as adding tests.
 
 **TABLE OF CONTENTS**
 - [Finance Tracker](#finance-tracker)

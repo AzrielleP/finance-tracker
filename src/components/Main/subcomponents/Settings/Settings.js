@@ -7,7 +7,7 @@ import { OptionContainer } from "./Settings.styled";
 import { Large, Main }  from "../../../../styled-components/Text.styled";
 
 function Settings(props) {
-    const { handleDarkMode } = props;
+    const { handleDarkMode, isDarkMode } = props;
     return (
         <div>
             <FixedContainer>
@@ -17,7 +17,7 @@ function Settings(props) {
             </FixedContainer>
             <OptionContainer justifySmall = "space-between">
                 <Main>Toggle Dark Mode</Main>
-                <ThemeToggler handleDarkMode={handleDarkMode} />
+                <ThemeToggler handleDarkMode={handleDarkMode} isDarkMode={isDarkMode}/>
             </OptionContainer>
         </div>
         )
